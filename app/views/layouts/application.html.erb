@@ -8,6 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
+
+  <!-- Fonts -->
+
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900" rel="stylesheet">
   
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -23,55 +27,85 @@
 </head>
 
 <body>
-  
+
   <div class="header">
     <div class="container">
-      <%= link_to home_path do %>
-        <div class="site_title">
-          <h1>Title of Project</h1>
-          <h2>Subtitle for CDRH Rails Solr API Site</h2>
-        </div>
-      <% end %>
-    </div>
+      <div class="row">
+        <div class="col-md-8">
+          
+          <div class="site_title">
+            <h1>
+            <%= link_to home_path do %>
+            <span class="cap">J</span>ournals <span class="sml">of the</span><br/> <span class="cap">L</span>ewis &amp; <span class="cap">C</span>lark <span class="cap">E</span>xpedition
+            <% end %>
+            </h1>
+          </div><!-- /site_title -->
+          
+        </div><!-- /column -->
+        <div class="col-md-4">
+          <div class="home_search">
+            <form class="form-inline pull-right">
+              <div class="form-group">
+                <input type="text" class="form-control" id="main_site_search" placeholder="Search Terms">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span class="sr-only">Search</span></button>
+            </form>
+            <br/>
+            <a href="advanced_search.html" class="pull-right">Advanced Search</a>
+          </div><!-- /home_search -->
+        </div><!-- /column -->
+      </div><!-- /row -->
+    </div><!-- /container -->
 
-    <div class="navbar navbar-default">
+
+
+    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-        <!-- TODO kmd Karin are we using this toggler? -->
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-         
+          
         </div>
-        <div class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Browse", browse_path %></li>
-            <li><%= link_to "Search", search_path %></li>
+            <li><%= link_to "Journals", journals_path %></li>
+            <li><%= link_to "Books & Articles", texts_path %></li>
+            <li><%= link_to "Images & Maps", images_path %></li>
+            <li><%= link_to "Audio & Video", multimedia_path %></li>
+            <li><%= link_to "Interactive Map", map_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "About", about_path %></li>
           </ul>
-        </div>
+        </div><!--/.nav-collapse -->
+      </div><!-- /container -->
+    </nav>
 
+
+
+
+
+</div><!-- /header -->
+
+<div class="container" id="wrapper">
+  <%= yield %>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="footer_info">
+      <p>Created by the <a href="http://cdrh.unl.edu">Center for Digital Research in the Humanities</a>.</p>
+      <div class="footer_logo">
+        <a href="http://www.unl.edu"><%= image_tag 'unl_black.png' %></a>
       </div>
-    </div>
-  </div><!-- /header -->
-
-  <div class="container" id="wrapper">
-    <%= yield %>
-  </div>
-
-  <div class="footer">
-    <div class="container">
-      <div class="footer_info">
-        <p>Created by the <a href="http://cdrh.unl.edu">Center for Digital Research in the Humanities</a>.</p>
-        <div class="footer_logo">
-          <a href="http://www.unl.edu"><%= image_tag 'unl_black.png' %></a>
-        </div>
-      </div><!-- /footer_info -->
-    </div> <!-- /container -->
-  </div><!-- /footer -->
+    </div><!-- /footer_info -->
+  </div> <!-- /container -->
+</div><!-- /footer -->
 </body>
 
 </html>

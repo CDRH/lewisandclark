@@ -4,6 +4,16 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+
+#Not working, don't know why -kmd
+# config.sass.line_comments = false
+# config.sass.line_numbers = false
+# config.sass.debug_info = false
+# config.sass.trace_selectors = false
+# config.sass.style = 'compressed'
+# config.sass.cache = false
+# config.sass.always_update = true
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
