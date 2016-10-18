@@ -1,0 +1,5 @@
+development:
+  solr_url: http://server.unl.edu:port/solr/project
+production:
+
+test:

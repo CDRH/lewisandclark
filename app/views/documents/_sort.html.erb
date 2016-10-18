@@ -1,0 +1,16 @@
+Sort by: <br />
+<%# if this is a search page, then default to score, else use title %>
+<% date_selected = sort_by == "date asc" %>
+<% title_selected = sort_by == "title asc" %>
+<% score_selected = sort_by == "score desc" %>
+
+<% if query %>
+  <%# if query exists, then score should be the default and should be displayed %>
+  <% score_selected = true if !sort_by %>
+  <%= link_to "Relevancy", search_path(sort("score desc")), :class => "btn btn-xs #{score_selected == true ? 'btn-info' : 'btn-default'}" %>
+<% else %>
+  <% title_selected = true if !score_selected && !date_selected %>
+<% end %>
+
+<%= link_to "Title", search_path(sort("title asc")), :class => "btn btn-xs #{title_selected == true ? 'btn-info' : 'btn-default'}" %>
+<%= link_to "Date", search_path(sort("date asc")), :class => "btn btn-xs #{date_selected == true ? 'btn-info' : 'btn-default'}" %>

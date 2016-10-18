@@ -1,0 +1,298 @@
+/**************************************/
+/* Bootstrap IMPORT */
+@import "bootstrap";
+/* /Bootstrap IMPORT */
+/**************************************/
+
+#wrapper {
+  margin-top: 20px; }
+
+.site_title h1 {
+  font-family: 'Alice', serif;
+  font-size: 4.5em;
+  margin: .2em 0 0 0;
+  color: $brand-info; }
+
+
+.site_title h1 span {
+  color: $brand-primary; }
+
+.site_title h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.8em;
+  color: $brand-success;
+  margin: 0 0 .5em 0; }
+
+.tei_element {
+  color: $brand-primary; }
+
+.tei_attribute {
+  color: $brand-info; }
+
+.tei_attribute_value {
+  color: $brand-success; }
+
+.header .navbar {
+  font-size: 1.2em;
+}
+
+body {
+  /*background-image: url(sample_bg.jpg);*/
+  /*  background-color: #f1e0b4; */ }
+
+.container {
+  background-color: RGBA(255, 255, 255, 0.9); }
+
+.navbar {
+  margin: 0; }
+
+#wrapper {
+  margin: 0 auto;
+  padding-top: 2em; }
+
+@media (min-width: 992px) {
+    /*body {
+    background-color: #aaa;
+  }*/
+  
+  .site_title h1 {
+    display: inline-block;
+    width: 50%;
+    line-height: 1em;
+    font-size: 6em; }
+
+
+  .site_title h2 {
+    display: inline-block;
+    width: 45%;
+    font-size: 2.6em;
+    padding-left: .2em;
+    line-height: 1em; }
+
+
+  .secondary_title {
+    display: inline-block; } }
+
+.navbar {
+  border: none;
+  border-right: none;
+  border-left: none;
+  background-image: url(sample_bg.gif); }
+
+
+.footer .container {
+  background-image: url(sample_bg.gif);
+  padding: 15px 50px;
+}
+
+.footer .container .footer_info {
+  background-color: RGBA(255, 255, 255, 0.9);
+  padding: 10px;
+  overflow: auto;
+}
+
+.footer .container .footer_logo {
+  float: right;
+}
+
+.footer .container .footer_info p {
+  width: 60%;
+  float: left;
+}
+
+.footer {
+  margin-bottom: 400px;
+}
+
+#wrapper {
+  padding-bottom: 4em;
+}
+
+/*
+@media (max-width: 767px) {
+
+  .go {
+    color: #ccc; } }
+
+
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* TODO kmd Are we using all of these in non-austen projects? */
+
+/* Page jump Navigation */
+
+.pagination_container {
+  text-align: right;
+  padding:.4em 0 0 0;
+}
+
+.pagination {
+  margin:0 0 0 0;
+}
+
+.search_controls {
+  margin: .2em 0 1em 0;
+}
+
+.main_search_text {
+  width: 100% !important;
+  margin-right: -2.15em;
+  padding-right:2.6em;
+  float:left;
+}
+  
+.panel-primary {
+  clear:both;
+}
+
+.submit_main_search_text {
+  float: right;
+  width: 100%;
+}
+
+.search_results_info ul {
+  margin:0;
+  padding:0;
+  list-style-type: none;
+  font-size: .9em;
+}
+
+.search_results_info li {
+  padding-left: 1em ;
+  text-indent: -1em ;
+}
+
+.paginationJump {
+  width: 3em;
+  border: 1px solid #aaa;
+  margin: 0;
+  // padding: .2em;
+  border-radius: 0px;
+}
+
+.pagination input.submit {
+  border: 1px solid #aaa;
+  background-color: #faf8ef;
+  margin: 0 0 0 -1px;
+  padding: .2em;
+}
+
+form.jumpForm {
+  display: inline;
+}
+
+/* Temporary */
+.search_results {
+  border-bottom: solid $light-base 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search_results em {
+  background-color: yellow;
+}
+
+.home_text {
+  font-size: 1.5em;
+  line-height: 1.4em; 
+}
+  
+.home_intro {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+}
+
+.home_text .initial_word {
+  font-family: 'Alice';
+  font-size: 1.9em;
+  color: $brand-success; 
+}
+
+/* ==========================================================================
+   Browse
+   ========================================================================== */
+
+.browselist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: auto;
+}
+
+.browselist li {
+  float: left;
+}
+
+.browselist li a {
+  padding: 2px 5px;
+  margin: 2px 4px 2px 0px;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  background-color: #ee937d;
+  color: #2e2e2e;
+  border: 1px solid #e3e3d0;
+}
+
+li.qty1 a {
+  background-color: #fcf3e0;
+}
+
+li.qty2 a {
+  background-color: #fcecd3;
+}
+
+li.qty3 a {
+  background-color: #fbe6ca;
+}
+
+li.qty4 a {
+  background-color: #fae1bf;
+}
+
+li.qty5 a {
+  background-color: #fad8b5;
+}
+
+li.qty6 a {
+  background-color: #f7cfa9;
+}
+
+li.qty7 a {
+  background-color: #f6c6a0;
+}
+
+li.qty8 a {
+  background-color: #f4bb97;
+}
+
+li.qty9 a {
+  background-color: #f2b08f;
+}
+
+li.qty10 a {
+  background-color: #eea587;
+}
+
+li.qty11 a {
+  background-color: #f09b82;
+}
+
+li.qty12 a {
+  background-color: #ee937d;
+}
+
+.browse h3 {
+  clear: both;
+  margin: .7em 0;
+}
+
+.browsenumber {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: .1em;
+}
