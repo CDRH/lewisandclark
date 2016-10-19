@@ -1,5 +1,177 @@
 <h2>Advanced Search</h2>
 
-<p>
-Damage report! Now we know what they mean by 'advanced' tactical training. Is it my imagination, or have tempers become a little frayed on the ship lately? You did exactly what you had to do. You considered all your options, you tried every alternative and then you made the hard choice. In all trust, there is the possibility for betrayal. Earl Grey tea, watercress sandwiches... and Bularian canapés? Are you up for promotion? Wait a minute - you've been declared dead. You can't give orders around here. Some days you get the bear, and some days the bear gets you. Maybe if we felt any human loss as keenly as we feel one of those close to us, human history would be far less bloody. The Enterprise computer system is controlled by three primary main processor cores, cross-linked with a redundant melacortz ramistat, fourteen kiloquad interface modules. Well, that's certainly good to know. Well, I'll say this for him - he's sure of himself. Maybe we better talk out here; the observation lounge has turned into a swamp. A lot of things can change in twelve years, Admiral. Computer, belay that order. Congratulations - you just destroyed the Enterprise. Ensign Babyface! Did you come here for something in particular or just general Riker-bashing? and attack the Romulans. Besides, you look good in a dress. Fear is the true enemy, the only enemy. I will obey your orders. I will serve this ship as First Officer. And in an attack against the Enterprise, I will die with this crew. But I will not break my oath of loyalty to Starfleet.
-</p>
+<form>
+  <div class="form-group">
+    <label for="map_search_terms">Search Term</label>
+    <input type="text" class="form-control" id="map_search_terms" placeholder="">
+    <a class="btn btn-info" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Show search help
+    </a>
+  </div>
+
+
+
+
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+
+      <h3>Search Help </h3>
+
+      <h4>Basic search</h4>
+
+      <p>Simply enter the word you wish to find and the search engine will search for every instance of the word in the journals. For example: Fight. All instances of the use of the word fight will show up on the results page. </p>
+
+      <h4>Wildcard search</h4>
+
+      <p>Using an asterisk (*) will increase the odds of finding the results you are seeking. For example: Fight*. The search results will display every instance of fight, fights, fighting, etc. More than one wildcard may be used. For example: *ricar*. This search will return most references to the Aricara tribe, including Ricara, Ricares, Aricaris, Ricaries, Ricaree, Ricareis, and Ricarra. Using a question mark (?) instead of an asterisk (*) will allow you to search for a single character. For example, r?n will find all instances of ran and run, but will not find rain or ruin. </p>
+
+      <h4>Capitalization</h4>
+
+      <p>Searches are not case sensitive. For example: george will come up with the same results as George.</p>
+
+      <h4>Phrase search</h4>
+
+      <p>Searching for a specific phrase may help narrow down the results. Rather long phrases are no problem. For example: "This white pudding we all esteem".</p>
+
+      <h4>Subsequent searches</h4>
+
+      <p>Because of the creative spellings used by the journalists, it may be necessary to try your search multiple times. For example: P?ro*. This search brings up numerous variant spellings of the French word pirogue, "a large dugout canoe or open boat." Searching for P?*r*og?* will bring up other variant spellings. Searching for canoe or boat also may be helpful.</p>
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Limit by author</h3>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Lewis
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Clark
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Ordway
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Gass
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Whitehouse
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Floyd
+            </label>
+          </div>
+        </div>
+      </div>
+    </div><!-- /column -->
+    <div class="col-md-6">
+      <h3>Limit by site section</h3>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Journals
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Journal Supplementary Materials
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Images
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Articles
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Books
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Multimedia
+            </label>
+          </div>
+        </div>
+      </div>
+    </div><!-- /column -->
+  </div><!-- /row -->
+
+
+  
+  <h3>Limit by date range</h3>
+
+  
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group form-inline">
+        <label for="map_search_terms">Date From</label><br/>
+        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group form-inline">
+        <label for="map_search_terms">Date To</label><br/>
+        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <p>Note: I'd be interested in fancier/better date choosing possibilities</p>
+    </div>
+  </div>
+
+  
+
+  
+
+
+
+
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
