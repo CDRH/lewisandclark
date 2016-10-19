@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   get 'journals_toc' => 'static#journals_toc', as: :journals_toc
   get 'journals_about' => 'static#journals_about', as: :journals_about
 
-  # documents
-  get 'browse' => 'documents#browse', as: :browse
-  get 'search' => 'documents#search', as: :search
-  get 'doc/:id' => 'documents#show', as: :doc,  :constraints => { :id => /[^\/]+/ }
+  # items
+  get 'browse' => 'items#browse', as: :browse
+  get 'search' => 'items#search', as: :search
+  get 'item/:id' => 'items#show', as: :item,  :constraints => { :id => /[^\/]+/ }
 
   # errors
   match '/404', to: 'errors#not_found', via: :all

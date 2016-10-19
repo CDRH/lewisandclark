@@ -1,4 +1,4 @@
-module DocumentsHelper
+module ItemsHelper
 
   def any_facets_selected?
     selected = false

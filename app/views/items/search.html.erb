@@ -37,7 +37,7 @@
     <!-- sorting and pagination -->
     <div class="row search_controls">
       <div class="col-md-3 search_limit">
-        <% if (@docs[:num_found] > 1) %>
+        <% if (@items[:num_found] > 1) %>
           <%= render partial: "sort", 
             locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
             } %>
@@ -49,15 +49,15 @@
     </div>
 
     <!-- search results section -->
-    <h4>Your search for <%= params[:qtext] %> returned <%= @docs[:num_found] %> <%= result_text(@docs[:num_found]) %></h4>
+    <h4>Your search for <%= params[:qtext] %> returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
 
 
-    <% if @docs[:num_found] > 0 %>
-      <% @docs[:docs].each do |doc| %>
+    <% if @items[:num_found] > 0 %>
+      <% @items[:docs].each do |doc| %>
         <div class="searchResults">
           <div class="row">
             <div class="col-md-12 search_results_info">
-              <%= link_to doc["title"], doc_path(doc["id"]) %>
+              <%= link_to doc["title"], item_path(doc["id"]) %>
               <ul>
                 <li><strong>Date</strong>: <%= doc["dateDisplay"] %></li>
                 <li><strong>Creator</strong>: <%= doc["creator"] %></li>

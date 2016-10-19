@@ -1,4 +1,4 @@
-class DocumentsController < ApplicationController
+class ItemsController < ApplicationController
 
   def browse
     @page_type = "browse"
@@ -17,10 +17,10 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    @page_type = "document"
-    @doc = $solr.get_item_by_id(params["id"])
-    if @doc
-      url = @doc["uriHTML"]
+    @page_type = "item"
+    @item = $solr.get_item_by_id(params["id"])
+    if @item
+      url = @item["uriHTML"]
       begin
         @res = Net::HTTP.get(URI.parse(url)) if url
       rescue
@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
       end
     else
       # If you don't want a generic 404 page, you could handle this in the show.html.erb
-      # view by using an else to detect @doc
+      # view by using an else to detect @item
       raise ActionController::RoutingError.new('Not Found')
     end
   end
@@ -41,8 +41,8 @@ class DocumentsController < ApplicationController
     # if none filled in, display all results with asterisks
     params.delete("facet.field")  # why is this happening oh man
     options = create_search_options(params)
-    @docs = $solr.query(options)
-    @total_pages = @docs[:pages]
+    @items = $solr.query(options)
+    @total_pages = @items[:pages]
     @facets = $solr.get_facets(options)
   end
 
