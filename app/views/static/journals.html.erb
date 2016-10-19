@@ -3,33 +3,33 @@
 <h4>Journals</h4>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
 
     <div class="list-group">
-  <%= link_to journals_index_path, {:class=>"list-group-item active list-group-item-info"} do %>
-    <h4 class="list-group-item-heading">Browse by Index</h4>
-    <p class="list-group-item-text">Normalized Name Entities</p>
-  <% end %>
-  <%= link_to journals_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
-    <h4 class="list-group-item-heading">Browse by Date</h4>
-    <p class="list-group-item-text">Calendar View</p>
-  <% end %>
-  <%= link_to map_path, {:class=>"list-group-item active list-group-item-info"} do %>
-    <h4 class="list-group-item-heading">Browse by Map</h4>
-    <p class="list-group-item-text">(Forthcoming)</p>
-  <% end %>
-  
-</div>
+      <%= link_to journals_index_path, {:class=>"list-group-item active list-group-item-info"} do %>
+      <h4 class="list-group-item-heading">Browse by Index</h4>
+      <p class="list-group-item-text">Normalized Name Entities</p>
+      <% end %>
+      <%= link_to journals_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
+      <h4 class="list-group-item-heading">Browse by Date</h4>
+      <p class="list-group-item-text">Calendar View</p>
+      <% end %>
+      <%= link_to map_path, {:class=>"list-group-item active list-group-item-info"} do %>
+      <h4 class="list-group-item-heading">Browse by Map</h4>
+      <p class="list-group-item-text">(Forthcoming)</p>
+      <% end %>
+
+    </div>
 
   </div>
-  <div class="col-md-4 ">
+  <div class="col-md-6">
 
    <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Search the Journals</h3>
     </div>
     <div class="panel-body">
-    <p>Use the simple search below, or try the <a href="advanced_search.html">Advanced Search</a></p>
+      <p>Use the simple search below, or try the <a href="advanced_search.html">Advanced Search</a></p>
       <form>
         <div class="form-group">
           <label for="map_search_terms">Search Term</label>
@@ -84,22 +84,25 @@
   
   <h5>Search date range</h5>
 
-  <p>Note: I'd be interested in fancier/better date choosing possibilities</p>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group form-inline">
+        <label for="map_search_terms">Date From</label><br/>
+        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
+      </div>
+    </div>
 
-  <div class="form-group form-inline">
-    <label for="map_search_terms">Date From</label><br/>
-    <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-    <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-    <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
+    <div class="col-md-6">
+      <div class="form-group form-inline">
+        <label for="map_search_terms">Date To</label><br/>
+        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
+        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
+      </div>
+    </div>
   </div>
-
-  <div class="form-group form-inline">
-    <label for="map_search_terms">Date To</label><br/>
-    <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-    <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-    <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
-  </div>
-
   <br/>
 
 
@@ -109,8 +112,8 @@
   <!-- </div> --><!-- /collapse -->
 
 
-  
-  <a href="map_search_results.html" type="submit" class="btn btn-default">Search</a>
+
+  <a href="map_search_results.html" type="submit" class="btn btn-primary pull-right">Search</a>
 </form>
 
 
@@ -121,38 +124,29 @@
 
 </div>
 
-<div class="col-md-4 ">
+<div class="col-md-3">
 
-<div class="list-group">
-  <%= link_to journals_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
+  <div class="list-group">
+    <%= link_to journals_date_path, {:class=>"list-group-item active list-group-item-info"} do %>
     <h4 class="list-group-item-heading">Table of Contents</h4>
     <p class="list-group-item-text">Explore the Journals</p>
-  <% end %>
- 
-  
-</div>
-
-<div class="list-group">
-  <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="list-group-item active list-group-item-primary">
-    <h4 class="list-group-item-heading">Buy the Print Editions</h4>
-    <p class="list-group-item-text">Print Editions of The Journals of the Lewis & Clark Expedition are available throguh the University of Nebraska Press</p>
-  </a>
- 
-  
-</div>
+    <% end %>
 
 
+  </div>
+
+  <div class="list-group">
+    <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="list-group-item active list-group-item-primary">
+      <h4 class="list-group-item-heading">Buy the Print Editions</h4>
+      <p class="list-group-item-text">Print editions of <em>The Journals of the Lewis & Clark Expedition</em> are available through the University of Nebraska Press</p>
+    </a>
 
 
- <!--  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Buy the Journals</h3>
-    </div>
-    <div class="panel-body">
-      <p>Print Editions of The Journals of the Lewis & Clark Expedition are available throguh the University of Nebraska Press</p>
-      <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="btn btn-primary">Buy the Print Editions</a>
-    </div>
-  </div> -->
+  </div>
+
+
+
+
 </div>
 </div><!-- /row -->
 
