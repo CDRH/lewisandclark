@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'advanced_search' => 'static#advanced_search', as: :advanced_search
   get 'journals_index' => 'static#journals_index', as: :journals_index
   get 'journals_date' => 'static#journals_date', as: :journals_date
+  get 'journals_toc' => 'static#journals_toc', as: :journals_toc
+  get 'journals_about' => 'static#journals_about', as: :journals_about
 
   # documents
   get 'browse' => 'documents#browse', as: :browse
