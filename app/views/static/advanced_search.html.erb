@@ -10,7 +10,7 @@
     <br/>
   </div>
 
-   <div class="collapse" id="collapseExample">
+  <div class="collapse" id="collapseExample">
     <div class="well">
 
       <h3>Search Help </h3>
@@ -44,165 +44,116 @@
 
 
 
-<div>
+  <div>
 
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Journals</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Journal Supplementary</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">All</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Everything but Journal Entries</a></li>
-  </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
-       
-        <h3>Limit by Author </h3>
-        <div class="three_column">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Lewis
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Clark
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Ordway
-            </label>
-          </div>
+<div class="btn-group">
+  <button type="button" class="btn  btn-success" aria-label="Left Align" data-toggle="collapse" href="#journal_search_options" aria-expanded="false" aria-controls="journal_search_options">Journals</button>
+  <button type="button" class="btn btn-success not_journal" aria-label="Center Align">Journals Supplementary</button>
+  <button type="button" class="btn btn-success not_journal" aria-label="Right Align">All</button>
+  <button type="button" class="btn btn-success not_journal" aria-label="Justify">Everything but Journals</button> </div>
+
+
+
+<!-- <div class="btn-group" data-toggle="buttons">
       
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Gass
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Whitehouse
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Floyd
-            </label>
-          </div>
-        </div><!-- three column -->
-        <h3>Limit by Date</h3>
-        <div class="row">
-        <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date From</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
-      </div>
+      <label class="btn btn-success">
+        <input type="radio" name="options" id="option2" autocomplete="off"  data-toggle="collapse" href="#journal_search_options" aria-expanded="false" aria-controls="journal_search_options">
+        Journals
+      </label>
+
+      <label class="btn btn-success">
+        <input type="radio" name="options" id="option1" autocomplete="off">
+        Journals Supplementary
+      </label>
+
+      <label class="btn btn-success">
+        <input type="radio" name="options" id="option2" autocomplete="off">
+        All
+      </label>
+
+      <label class="btn btn-success">
+        <input type="radio" name="options" id="option2" autocomplete="off">
+        Everything but Journals
+      </label>
+
+    
     </div>
-
-    <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date To</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
-      </div>
-    </div>
-    <div class="col-md-6">
-    <br/>
-    <button type="submit" class="btn btn-primary pull-right">Submit Search</button>
-    </div>
-      </div>
-      
-    </div><!-- /tabpanel journals -->
-    <div role="tabpanel" class="tab-pane" id="profile">
-      <h3>Limit by Date</h3>
-        <div class="row">
-        <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date From</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date To</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
-      </div>
-    </div>
-    <div class="col-md-6">
-    <br/>
-    <button type="submit" class="btn btn-primary pull-right">Submit Search</button>
-    </div>
-      </div>
-
-    </div><!-- /tabpanel journals supplementary-->
-    <div role="tabpanel" class="tab-pane" id="messages">
-      <h3>Limit by Date</h3>
-        <div class="row">
-        <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date From</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date To</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
-      </div>
-    </div>
-    <div class="col-md-6">
-    <br/>
-    <button type="submit" class="btn btn-primary pull-right">Submit Search</button>
-    </div>
-      </div>
-    </div><!-- /tabpanel all -->
-    <div role="tabpanel" class="tab-pane" id="settings">
-      <h3>Limit by Date</h3>
-        <div class="row">
-        <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date From</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date To</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
-      </div>
-    </div>
-    <div class="col-md-6">
-    <br/>
-    <button type="submit" class="btn btn-primary pull-right">Submit Search</button>
-    </div>
-      </div>
-    </div><!-- /tabpanel everything but journals-->
-  </div>
-
-</div>
+ -->
 
 
- 
+
+<div class="panel panel-default collapse" id="journal_search_options">
+          <div class="panel-body">
+
+            <h3>Limit by Author </h3>
+            <div class="three_column">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Lewis
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Clark
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Ordway
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Gass
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Whitehouse
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Floyd
+                </label>
+              </div>
+
+            </div><!-- three column -->
+            <h3>Limit by Date</h3>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group form-inline">
+                  <label for="map_search_terms">Date From</label><br/>
+                  <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
+                  <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
+                  <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group form-inline">
+                  <label for="map_search_terms">Date To</label><br/>
+                  <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
+                  <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
+                  <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
+                </div>
+              </div>
+              <div class="col-md-6">
+               
+              </div>
+            </div>
+          </div></div>
+
+
+
+
+
+
+
+
+<button type="submit" class="btn btn-primary pull-right">Submit Search</button>
 
 
 
@@ -214,6 +165,5 @@
 
 
 
-  
-</form>
+  </form>
 

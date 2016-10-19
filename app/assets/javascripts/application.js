@@ -16,3 +16,12 @@
 // require turbolinks
 // require jquery.turbolinks
 //= require_tree .
+
+
+$( document ).ready(function() {
+  $('.not_journal').click(function(){
+    $('#journal_search_options.in')
+    .collapse('hide');
+  });
+});
+
