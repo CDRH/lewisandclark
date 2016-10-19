@@ -80,13 +80,13 @@ $solr.set_default_facet_params({
   })
 ```
 
-For example, if you have a dataset with both people and documents, but you want to search only for documents most of the time, you might add something like this:
+For example, if you have a dataset with both people and journal entries, but you want to search only for journal entries most of the time, you might add something like this:
 
 ```
-:fq => "category:documents"
+:fq => "category:entries"
 # that is equivalent to the following line
 :fqfield => "category",
-:fqtext => "documents"
+:fqtext => "entries"
 ```
 
 This is a good time to change the default facets, too.  Rather than doing that through the $solr object, because facets are used all over the place, open up `app/models/facets.rb`.  Go ahead and modify the list to match __single valued__ solr fields.  I'm working on the multivalued one for the future, but just trust me for now that you don't want to go there yet.
@@ -104,13 +104,13 @@ module Facets
 end
 ```
 
-When an individual document is displayed, some metadata appears at the top and a pre-generated HTML snippet is grabbed, assuming that the solrification of your TEI went well.  You can change the metadata showing up at the top in `app/views/documents/show.html.erb`.  The "metadata" method makes a very basic list of links to a search page.  You may want to comment them out or rewrite the "metadata" method in `app/helpers/document_helper.rb` if you don't like that behavior.
+When an individual item is displayed, some metadata appears at the top and a pre-generated HTML snippet is grabbed, assuming that the solrification of your TEI went well.  You can change the metadata showing up at the top in `app/views/items/show.html.erb`.  The "metadata" method makes a very basic list of links to a search page.  You may want to comment them out or rewrite the "metadata" method in `app/helpers/item_helper.rb` if you don't like that behavior.
 
 ```
-# displays the document title, if it exists, and does not link (false as final param)
-<%= metadata("Title", "title", @doc["title"], false) %>
+# displays the item title, if it exists, and does not link (false as final param)
+<%= metadata("Title", "title", @item["title"], false) %>
 # display the date, if it exists, and it will generate a link
-<%= metadata("Date", "dateDisplay", @doc["dateDisplay"]) %>
+<%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
 ```
 
 You will need to restart the rails server in order to see changes that you make to the solr default parameters.  `Ctrl+C` then `rails s` to restart.
