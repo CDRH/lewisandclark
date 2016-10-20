@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   get 'texts' => 'static#texts', as: :texts
   get 'journals' => 'static#journals', as: :journals
   get 'advanced_search' => 'static#advanced_search', as: :advanced_search
-  get 'journals_index' => 'static#journals_index', as: :journals_index
-  get 'journals_date' => 'static#journals_date', as: :journals_date
-  get 'journals_toc' => 'static#journals_toc', as: :journals_toc
-  get 'journals_about' => 'static#journals_about', as: :journals_about
+  get 'journals_date' => 'static#journals_date', as: :j_date
+  get 'journals_toc' => 'static#journals_toc', as: :j_toc
+  get 'journals_about' => 'static#journals_about', as: :j_about
 
   # items
   get 'browse' => 'items#browse', as: :browse
+  get 'journals_index' => 'items#index', as: :j_index
+  get 'journals_index/nations' => 'items#index_nations', as: :j_index_nations
+  get 'journals_index/people' => 'items#index_people', as: :j_index_people
+  get 'journals_index/places' => 'items#index_places', as: :j_index_places
   get 'search' => 'items#search', as: :search
   get 'item/:id' => 'items#show', as: :item,  :constraints => { :id => /[^\/]+/ }
 

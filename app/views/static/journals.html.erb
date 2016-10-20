@@ -6,15 +6,15 @@
   <div class="col-md-3">
 
     <div class="list-group">
-      <%= link_to journals_toc_path, {:class=>"list-group-item active list-group-item-primary"} do %>
+      <%= link_to j_toc_path, {:class=>"list-group-item active list-group-item-primary"} do %>
       <h4 class="list-group-item-heading">Table of Contents</h4>
       <p class="list-group-item-text">Explore the Journals</p>
       <% end %>
-      <%= link_to journals_index_path, {:class=>"list-group-item active list-group-item-info"} do %>
+      <%= link_to j_index_path, {:class=>"list-group-item active list-group-item-info"} do %>
       <h4 class="list-group-item-heading">Browse by Index</h4>
       <p class="list-group-item-text">Normalized Name Entities</p>
       <% end %>
-      <%= link_to journals_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
+      <%= link_to j_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
       <h4 class="list-group-item-heading">Browse by Date</h4>
       <p class="list-group-item-text">Calendar View</p>
       <% end %>
@@ -130,7 +130,7 @@
 <div class="col-md-3">
 
   <div class="list-group">
-    <%= link_to journals_about_path, {:class=>"list-group-item active list-group-item-info"} do %>
+    <%= link_to j_about_path, {:class=>"list-group-item active list-group-item-info"} do %>
     <h4 class="list-group-item-heading">About the Journals</h4>
     <p class="list-group-item-text">Members, prefaces, introductions, etc. </p>
     <% end %>

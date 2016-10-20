@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   if solr_url
     $solr = RSolrCdrh::Query.new(solr_url, Facets.facet_list)
     $solr.set_default_query_params({
-      :sort => "score desc",
-      :hl => "true",
-      :rows => 50
+      "sort" => "score desc",
+      "hl" => "true",
+      "rows" => 50
       })
     $solr.set_default_facet_params({
       "facet.limit" => "20",

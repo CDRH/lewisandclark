@@ -30,4 +30,12 @@ module ItemsHelper
   def selected_class(selectedBool)
     return selectedBool ? "class='selected'" : ""
   end
+
+  def facet_sort_selected(button, sort_type)
+    # if the button matches the selected sort, made primary
+    # default to "alphabetical" if there is no sort selected
+    selected = button == sort_type
+    selected = true if button == "index" && sort_type.nil?
+    return selected ? "btn-primary" : "btn-default"
+  end
 end
