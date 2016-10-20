@@ -55,7 +55,8 @@ html {
   background-image: url("../images/river2.png");
   background-repeat: no-repeat;
   background-position: top;
-  background-color: #eeeeee; }
+  background-color: #eeeeee;
+  /* alternate #EFEDE8 */ }
 
 .navbar-default {
   background-color: rgba(0, 41, 86, 0.8);
@@ -227,10 +228,37 @@ p.list-group-item-text {
 column-count: 3;
 }
 
-.footer {margin: 4em 0;}
+.footer {margin: 4em 0 9em 0;
+text-align:center;}
+
+.footer img{
+  max-width:100%
+}
 
 .toc ul {
   padding: 0 0 0 1em;
   margin: 0;
 }
+
+.buy_books {
+  background: url("../images/river_part.png") right -30px no-repeat scroll #EFEDE8;
+  padding: 20px 30px;
+border:  solid 3px #fff;
+margin-bottom: 1em;
+}
+
+.buy_books:hover {
+  border-color: #305074;
+}
+
+.buy_books_link {
+  text-decoration: none !important;
+  color: #305074;
+}
+
+.lead {
+  font-size: 1.2em;
+}
+
+
 
