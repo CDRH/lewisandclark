@@ -14,6 +14,10 @@ h1 {
   
 }
 
+a.regularization {
+  white-space: nowrap;
+}
+
 h1 a {
   text-decoration:none !important;
   color:#000 !important;
@@ -183,6 +187,10 @@ body {
 
 .entry p {
   text-indent: 2em;
+}
+
+.tooltip {
+  text-indent: 0;
 }
 
 .right {
