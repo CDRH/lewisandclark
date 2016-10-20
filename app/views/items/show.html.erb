@@ -1,3 +1,20 @@
+<!-- Progress Marker -->
+<div class="entry_pagination">
+  <% if @item["subCategory"] == "Journal Entries" %>
+    <% if @item["lc_previous_s"] %>
+      <%= link_to "Previous", item_path(@item["lc_previous_s"]) %>
+    <% end %>
+    ----- (Canoe Goes Here) -----
+    <% if @item["lc_next_s"] %>
+      <%= link_to "Next", item_path(@item["lc_next_s"]) %>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- Text and Images -->
+<%= @res.mb_chars.html_safe if @res %>
+
+<!-- Metadata Box -->
 <div class="metadata">
   <ul>
     <%= metadata("Title", "title", @item["title"], false) %>
@@ -9,9 +26,9 @@
     <%= metadata("Subcategory", "subCategory", @item["subCategory"]) %>
     <%= metadata("Works", "works", @item["works"]) %>
     <%= metadata("Place(s)", "places", @item["places"]) %>
-    <li><strong>TEI XML: </strong><a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
+    <li>
+      <strong>TEI XML: </strong>
+      <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
+    </li>
   </ul>
 </div>
- 
-<!-- TEXT AND IMAGES -->
-<%= @res.mb_chars.html_safe if @res %>
