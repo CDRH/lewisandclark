@@ -210,7 +210,7 @@ a.list-group-item {
 }
 
 a:hover.list-group-item{
-  background-color: #334B6D !important;
+  background-color: $brand-success !important;
   
 }
 
@@ -261,4 +261,48 @@ margin-bottom: 1em;
 }
 
 
+
+
+
+/* Temporary until we finalize colors */
+
+.color-gray-darker {
+  background-color: $gray-darker;
+}
+
+.color-gray-dark {
+  background-color: $gray-dark;
+}
+
+.color-gray {
+  background-color: $gray;
+}
+
+.color-gray-light {
+  background-color: $gray-light;
+}
+
+.color-gray-lighter {
+  background-color: $gray-lighter;
+}
+
+.color-brand-primary {
+  background-color: $brand-primary;
+}
+
+.color-brand-success {
+  background-color: $brand-success;
+}
+
+.color-brand-info {
+  background-color: $brand-info;
+}
+
+.color-brand-warming {
+  background-color: $brand-warning;
+}
+
+.color-brand-danger {
+  background-color: $brand-danger;
+}
 
