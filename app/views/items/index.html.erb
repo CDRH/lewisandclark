@@ -32,13 +32,13 @@ Sort by:
   <% @facets.each do |key, value| %>
     <li>
       <% name_type = key.split("||") %>
-      <%= link_to search_path({ @field => key }) do %>
+      <%= link_to search_path({ @field => key, "qfield" => "lc_searchtype_s", "qtext" => "journal_entry" }) do %>
         <span class="index_term"><%= name_type[0] %></span>
       <% end %>
-        <span class="count badge"><%= value %></span>
-        <% if name_type[1] %>
-          <span class="index_type">(<%= name_type[1].titleize %>)</span>
-        <% end %>
+      <span class="count badge"><%= value %></span>
+      <% if name_type[1] %>
+        <span class="index_type">(<%= name_type[1].titleize %>)</span>
+      <% end %>
     </li>
   <% end %>
 </ul>

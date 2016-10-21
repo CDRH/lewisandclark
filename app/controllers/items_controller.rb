@@ -84,6 +84,8 @@ class ItemsController < ApplicationController
     options["facet.sort"] = params["sort"]
     options["facet.field"] = field
     options["facet.limit"] = "-1"
+    options["qfield"] = "lc_searchtype_s"
+    options["qtext"] = "journal_entry"
     facet_res = $solr.get_facets(options, field)
     @facets = facet_res[field]
     @field = field
