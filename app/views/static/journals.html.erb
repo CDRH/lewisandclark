@@ -1,160 +1,106 @@
-
-
 <h4>Journals</h4>
 
 <div class="row">
   <div class="col-md-3">
-
     <div class="list-group">
       <%= link_to j_toc_path, {:class=>"list-group-item active list-group-item-primary"} do %>
-      <h4 class="list-group-item-heading">Table of Contents</h4>
-      <p class="list-group-item-text">Explore the Journals</p>
+        <h4 class="list-group-item-heading">Table of Contents</h4>
+        <p class="list-group-item-text">Explore the Journals</p>
       <% end %>
       <%= link_to j_index_path, {:class=>"list-group-item active list-group-item-info"} do %>
-      <h4 class="list-group-item-heading">Browse by Index</h4>
-      <p class="list-group-item-text">Normalized Name Entities</p>
+        <h4 class="list-group-item-heading">Browse by Index</h4>
+        <p class="list-group-item-text">Normalized Name Entities</p>
       <% end %>
       <%= link_to j_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
-      <h4 class="list-group-item-heading">Browse by Date</h4>
-      <p class="list-group-item-text">Calendar View</p>
+        <h4 class="list-group-item-heading">Browse by Date</h4>
+        <p class="list-group-item-text">Calendar View</p>
       <% end %>
       <%= link_to map_path, {:class=>"list-group-item active list-group-item-info"} do %>
-      <h4 class="list-group-item-heading">Browse by Map</h4>
-      <p class="list-group-item-text">(Forthcoming)</p>
+        <h4 class="list-group-item-heading">Browse by Map</h4>
+        <p class="list-group-item-text">(Forthcoming)</p>
       <% end %>
-
     </div>
-
   </div>
+
   <div class="col-md-6">
-
-   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Search the Journals</h3>
-    </div>
-    <div class="panel-body">
-      <p>Use the simple search below, or try the <a href="advanced_search.html">Advanced Search</a></p>
-      <form>
-        <div class="form-group">
-          <label for="map_search_terms">Search Term</label>
-          <input type="text" class="form-control" id="map_search_terms" placeholder="">
-        </div>
-
-
-<!-- <a class="btn btn-primary btn-xs" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Show more search options
-</a>
-
-<div class="collapse" id="collapseExample"> -->
-
-  <h5>Search only selected authors</h5>
-  
-  <div class="row">
-    <div class="col-md-6">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Lewis
-        </label>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Search the Journals</h3>
       </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Clark
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Ordway
-        </label>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Gass
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Whitehouse
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Floyd
-        </label>
-      </div>
-    </div>
-  </div>
-  
+      <div class="panel-body">
+        <p>Use the simple search below, or try the <a href="advanced_search.html">Advanced Search</a></p>
+        <%= form_tag(search_path, method: "get") do %>
+          <div class="form-group">
+            <%= hidden_field_tag "subCategory", "Journal Entries" %>
+            <%= hidden_field_tag "qfield", "text" %>
+            <%= label_tag "map_search_terms", "Search Term" %>
+            <%= text_field_tag "qtext", params["qtext"], id: "map_search_terms", class: "form-control" %>
+          </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date From</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
-      </div>
-    </div>
+          <h5>Search only selected authors</h5>
 
-    <div class="col-md-6">
-      <div class="form-group form-inline">
-        <label for="map_search_terms">Date To</label><br/>
-        <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-        <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="checkbox">
+                <label><input type="checkbox"> Lewis</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox"> Clark</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox"> Ordway</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checkbox">
+                <label><input type="checkbox"> Gass</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox"> Whitehouse</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox"> Floyd</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group form-inline">
+                <label for="map_search_terms">Date From</label><br/>
+                <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
+                <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
+                <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group form-inline">
+                <label for="map_search_terms">Date To</label><br/>
+                <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
+                <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
+                <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
+              </div>
+            </div>
+          </div>
+          <br/>
+          <%= submit_tag "Search", class: "btn btn-primary pull-right" %>
+        <% end %>
       </div>
     </div>
   </div>
-  <br/>
 
-
-
-
-
-  <!-- </div> --><!-- /collapse -->
-
-
-
-  <a href="map_search_results.html" type="submit" class="btn btn-primary pull-right">Search</a>
-</form>
-
-
-
-
-</div>
-</div>
-
-</div>
-
-<div class="col-md-3">
-
-  <div class="list-group">
-    <%= link_to j_about_path, {:class=>"list-group-item active list-group-item-info"} do %>
-    <h4 class="list-group-item-heading">About the Journals</h4>
-    <p class="list-group-item-text">Members, prefaces, introductions, etc. </p>
-    <% end %>
-
-
-  </div>
-
-  <!-- <div class="list-group">
-    <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="list-group-item active list-group-item-primary">
-      <h4 class="list-group-item-heading">Buy the Print Editions</h4>
-      <p class="list-group-item-text">Print editions of <em>The Journals of the Lewis & Clark Expedition</em> are available through the University of Nebraska Press</p>
+  <div class="col-md-3">
+    <div class="list-group">
+      <%= link_to j_about_path, {:class=>"list-group-item active list-group-item-info"} do %>
+      <h4 class="list-group-item-heading">About the Journals</h4>
+      <p class="list-group-item-text">Members, prefaces, introductions, etc. </p>
+      <% end %>
+    </div>
+    <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="buy_books_link">
+      <div class="buy_books">
+        <h4>Buy the Print Editions</h4>
+        <p>Print editions of The Journals of the Lewis &amp; Clark Expedition are available through the University of Nebraska Press</p>
+      </div>
     </a>
-
-
-  </div> -->
-
-  <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="buy_books_link"><div class="buy_books">
-<h4>Buy the Print Editions</h4>
-<p>Print editions of The Journals of the Lewis &amp; Clark Expedition are available through the University of Nebraska Press</p>
-</div></a>
-
-
-
-
-</div>
+  </div>
 </div><!-- /row -->
-

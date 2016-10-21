@@ -10,7 +10,6 @@
   <%= favicon_link_tag %>
 
   <!-- Fonts -->
-
   <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900" rel="stylesheet">
   
   <!-- Stylesheets -->
@@ -32,11 +31,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          
           <div class="site_title">
             <h1>
             <%= link_to home_path do %>
-            <span class="cap">J</span>ournals <span class="sml">of the</span><br/> <span class="cap">L</span>ewis &amp; <span class="cap">C</span>lark <span class="cap">E</span>xpedition
+              <span class="cap">J</span>ournals <span class="sml">of the</span><br/> <span class="cap">L</span>ewis &amp; <span class="cap">C</span>lark <span class="cap">E</span>xpedition
             <% end %>
             </h1>
           </div><!-- /site_title -->
@@ -57,8 +55,6 @@
       </div><!-- /row -->
     </div><!-- /container -->
 
-
-
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -68,7 +64,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -85,30 +80,25 @@
         </div><!--/.nav-collapse -->
       </div><!-- /container -->
     </nav>
+  </div><!-- /header -->
 
+  <div class="container page_content" id="wrapper">
+    <%= yield %>
+  </div>
 
-
-
-
-</div><!-- /header -->
-
-<div class="container page_content" id="wrapper">
-  <%= yield %>
-</div>
-
-<div class="footer">
-  <div class="container">
-    <div class="footer_info">
-      <p>Created by the <a href="http://cdrh.unl.edu">Center for Digital Research in the Humanities</a> <br/>in partnership with the <a href="http://www.nebraskapress.unl.edu">University of Nebraska Press</a><br/>
-      and funding from the <a href="https://www.neh.gov/">National Endowment for the Humanities</a>.</p>
-      <div class="footer_logo">
-        <a href="http://www.unl.edu"><%= image_tag 'unl_logos.png' %></a><br/><br/>
-        <a href="http://www.nebraskapress.unl.edu"><%= image_tag 'nebraska-press.png' %></a><br/><br/>
-        <a href="http://www.neh.gov"><%= image_tag 'neh_logo.png' %></a>
-      </div>
-    </div><!-- /footer_info -->
-  </div> <!-- /container -->
-</div><!-- /footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="footer_info">
+        <p>Created by the <a href="http://cdrh.unl.edu">Center for Digital Research in the Humanities</a> <br/>in partnership with the <a href="http://www.nebraskapress.unl.edu">University of Nebraska Press</a><br/>
+        and funding from the <a href="https://www.neh.gov/">National Endowment for the Humanities</a>.</p>
+        <div class="footer_logo">
+          <a href="http://www.unl.edu"><%= image_tag 'unl_logos.png' %></a><br/><br/>
+          <a href="http://www.nebraskapress.unl.edu"><%= image_tag 'nebraska-press.png' %></a><br/><br/>
+          <a href="http://www.neh.gov"><%= image_tag 'neh_logo.png' %></a>
+        </div>
+      </div><!-- /footer_info -->
+    </div> <!-- /container -->
+  </div><!-- /footer -->
 </body>
 
 </html>
