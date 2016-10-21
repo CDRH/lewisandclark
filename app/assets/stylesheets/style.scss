@@ -306,3 +306,15 @@ margin-bottom: 1em;
   background-color: $brand-danger;
 }
 
+
+@media (max-width: 768px) {
+  .site_title h1 a {
+    font-size: .7em !important;
+    line-height: 0;
+  }
+  .header .home_search .pull-right {
+    
+    width: 100%;
+  }
+}
+
