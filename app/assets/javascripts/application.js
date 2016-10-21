@@ -15,17 +15,6 @@
 // commented out turbolinks
 // require turbolinks
 // require jquery.turbolinks
+//= require bootstrap.min.js
 //= require_tree .
-
-
-$( document ).ready(function() {
-  $('.not_journal').click(function(){
-    $('#journal_search_options.in')
-    .collapse('hide');
-  });
-});
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
 
