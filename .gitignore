@@ -30,3 +30,4 @@ config/database.yml
 
 # Ignore htaccess
 .htaccess
+.DS_Store
