@@ -4,8 +4,9 @@ namespace :calendar do
   def get_journals
     # pull the date information from rosie
     solr_url = CONFIG['solr_url']
+    fields = ["id", "lc_dateNotBefore_s", "lc_dateNotAfter_s", "creators"]
     if solr_url
-      $solr = RSolrCdrh::Query.new(solr_url, ["id", "date", "creators"])
+      $solr = RSolrCdrh::Query.new(solr_url, )
       res = $solr.query({
         "qfield" => "lc_searchtype_s",
         "qtext" => "journal_file",
@@ -20,16 +21,19 @@ namespace :calendar do
     js_obj = "dates = ["
     journals.each do |item|
       id = item["id"]
-      date = item["date"]
-      y, m, d = date.split("-")
-      if date != ""
+      creators = item["creators"] ? item["creators"].join("; ") : "No creators"
+      date1 = item["lc_dateNotBefore_s"]
+      date2 = item["lc_dateNotAfter_s"]
+      if date1 != "" && date2 != ""
+        y1, m1, d1 = date1.split("-")
+        y2, m2, d2 = date2.split("-")
         item_data = %{ 
         {
           id: "#{id}",
           name: "#{id}",
-          location: "Some place",
-          startDate: new Date(#{y}, #{m}, #{d}),
-          endDate: new Date(#{y}, #{m}, #{d}),
+          location: "#{creators}",
+          startDate: new Date(#{y1}, #{m1}, #{d1}),
+          endDate: new Date(#{y2}, #{m2}, #{d2}),
         },
         }
         js_obj += item_data
@@ -42,7 +46,7 @@ namespace :calendar do
   end
 
   def write_to_file date_info
-    File.open("dates.js", "w") do |file|
+    File.open("app/assets/javascripts/calendar/dates.js", "w") do |file|
       file.write(date_info)
     end
   end
