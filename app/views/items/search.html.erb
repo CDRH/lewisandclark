@@ -19,16 +19,11 @@
       </div>
       <br/>
       <div class="collapse" id="search_help">
-      <div class="well">
-         <p >Advanced searching: you can exclude with a "-", use boolean operators like AND & OR, group items with (parentheses), and search for a phrase with "quotation marks."</p>
+        <div class="well">
+           <p >Advanced searching: you can exclude with a "-", use boolean operators like AND & OR, group items with (parentheses), and search for a phrase with "quotation marks."</p>
+        </div>
       </div>
-    </div>
-     
     <% end %>
-
-
-
-
 
     <!-- clear facets -->
     <% if any_facets_selected? %>
@@ -36,7 +31,6 @@
         <%= link_to search_path({:qfield => params[:qfield], :qtext => params[:qtext]}),  {}, {class: "btn btn_default"} do %>
           Clear all filters 
           <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-          
         <% end %>
       </div>
     <% end %>
@@ -72,15 +66,20 @@
               <%= link_to doc["title"], item_path(doc["id"]) %>
               <ul>
                 <li><strong>Date</strong>: <%= doc["dateDisplay"] %></li>
-                <li><strong>Creator</strong>: <%= doc["creator"] %></li>
+                <li><strong>Creators</strong>: <%= doc["creators"].join("; ") if doc["creators"] %></li>
                 <li><strong>Source</strong>: <%= doc["source"] %></li>
               </ul>
+              <!-- highlighting -->
+              <div class="col-md-8 search_results_text">
+                <% if doc["highlights"] %>
+                  <ul class="highlighting">
+                    <% doc["highlights"].each do |hl| %>
+                      <li><%= hl.html_safe %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </div>
             </div>
-            <%# enable this to see highlighting results from query %>
-            <!-- <div class="col-md-8 search_results_text">
-              <%# text = doc['highlight'] ? doc['highlight'].html_safe : doc['text'][0] %>
-              <%# text %>
-            </div> -->
           </div>
         </div>
       <% end %>
