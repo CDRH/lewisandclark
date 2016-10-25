@@ -104,6 +104,10 @@ class ItemsController < ApplicationController
 
   def create_search_options(aParams)
     options = aParams.clone
+    # make sure that empty search terms go through okay
+    if !options[:qtext].nil? && options[:qtext].empty?
+      options[:qtext] = "*"
+    end
     fq = []
     for key in Facets.facet_list do
       if options[key]
@@ -111,7 +115,7 @@ class ItemsController < ApplicationController
       end
     end
     options[:fq] = fq
-    if options[:q] && !options[:sort]
+    if (options[:q] || options[:qtext]) && !options[:sort]
       # if there is a query, then make sure score is the default sort
       options[:sort] = "score desc"
     end
