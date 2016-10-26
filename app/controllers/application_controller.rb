@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     $solr.set_default_query_params({
       "sort" => "score desc",
       "hl" => "true",
+      "hl.fragsize" => "100",
       "rows" => 50
       })
     $solr.set_default_facet_params({
