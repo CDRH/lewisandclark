@@ -14,21 +14,23 @@
 <!-- Text and Images -->
 <%= @res.mb_chars.html_safe if @res %>
 
-<!-- Metadata Box -->
-<div class="metadata">
-  <ul>
-    <%= metadata("Title", "title", @item["title"], false) %>
-    <%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
-    <%= metadata("Author(s)", "creators", @item["creators"]) %>
-    <%= metadata("Recipient(s)", "recipients", @item["recipients"]) %>
-    <%= metadata("Format", "format", @item["format"]) %>
-    <%= metadata("Category", "category", @item["category"]) %>
-    <%= metadata("Subcategory", "subCategory", @item["subCategory"]) %>
-    <%= metadata("Works", "works", @item["works"]) %>
-    <%= metadata("Place(s)", "places", @item["places"]) %>
-    <li>
-      <strong>TEI XML: </strong>
-      <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
-    </li>
-  </ul>
-</div>
+  <% if @item["category"] == "Journals" %>
+  <!-- Metadata Box (only displays for journals) -->
+  <div class="metadata">
+    <ul>
+      <%= metadata("Title", "title", @item["title"], false) %>
+      <%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
+      <%= metadata("Author(s)", "creators", @item["creators"]) %>
+      <%= metadata("Recipient(s)", "recipients", @item["recipients"]) %>
+      <%= metadata("Format", "format", @item["format"]) %>
+      <%= metadata("Category", "category", @item["category"]) %>
+      <%= metadata("Subcategory", "subCategory", @item["subCategory"]) %>
+      <%= metadata("Works", "works", @item["works"]) %>
+      <%= metadata("Place(s)", "places", @item["places"]) %>
+      <li>
+        <strong>TEI XML: </strong>
+        <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
+      </li>
+    </ul>
+  </div>
+<% end %>
