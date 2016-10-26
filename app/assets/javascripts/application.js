@@ -16,5 +16,6 @@
 // require turbolinks
 // require jquery.turbolinks
 //= require bootstrap.min.js
-//= require_tree .
+//= require_tree
+//= ekko-lightbox.min
 

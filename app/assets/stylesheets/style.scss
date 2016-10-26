@@ -318,3 +318,89 @@ margin-bottom: 1em;
   }
 }
 
+.metadata {
+  border: solid 2px #aaa;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+
+
+
+.tei_list_head {
+  margin-top: 1.2em;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.contents ul,
+.mapList ul,
+.illusList ul,
+.chapter ul {
+  margin: 0;
+  padding: 0;
+}
+
+.contents ul li,
+.mapList ul li,
+.illusList ul li,
+.chapter li {
+  list-style: none;
+}
+
+.tei_figure {
+  
+  margin: 1em 0;
+  padding: 1em;
+  font-size: .9em;
+}
+
+@media (min-width: 768px) {
+  .tei_figure {
+    max-width: 50%;
+  }
+}
+
+.tei_figure img {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.tei_figure p {
+  margin: .2em 0;
+  line-height: 1.2em;
+}
+
+h3.figure_head {
+  font-size: 1.2em;
+  font-weight: 100;
+}
+
+h2.title_main {
+  font-size: 1.4em;
+}
+
+h2.title_main .title_sub {
+  
+  font-size: 1.4em;
+  display: block;
+}
+
+.title_author {
+  font-size: 1.4em;
+  display: block;
+  margin-bottom: .3em;
+}
+
+.book_bibl {
+  font-size: .9em;
+}
+
+.sources .tei_bibl {
+  padding-left: 1.5em ;
+    text-indent: -1.5em ;
+  margin-bottom: .7em;
+}
+
+
+
