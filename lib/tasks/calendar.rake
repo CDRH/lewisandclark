@@ -27,6 +27,9 @@ namespace :calendar do
       if date1 != "" && date2 != ""
         y1, m1, d1 = date1.split("-")
         y2, m2, d2 = date2.split("-")
+        # javascript sucks at dates, so help it out
+        m1 = m1.to_i - 1
+        m2 = m2.to_i - 1
         item_data = %{ 
         {
           id: "#{id}",
