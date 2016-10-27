@@ -186,7 +186,7 @@ body {
   padding-bottom: .5em;
 }
 
-.entry p {
+.entry p, .tei_div p {
   text-indent: 2em;
 }
 
@@ -337,7 +337,7 @@ margin-bottom: 1em;
 .mapList ul,
 .illusList ul,
 .chapter ul {
-  margin: 0;
+  margin: .5em 0 1em 0;
   padding: 0;
 }
 
@@ -396,11 +396,57 @@ h2.title_main .title_sub {
   font-size: .9em;
 }
 
-.sources .tei_bibl {
+.sources .tei_bibl,
+.bibliography .tei_bibl,
+.bib .tei_bibl {
   padding-left: 1.5em ;
     text-indent: -1.5em ;
   margin-bottom: .7em;
 }
 
+.ref_link {
+  text-decoration:none;
+  }
 
+
+
+
+.book_pagination {
+  margin: 1em 0;
+  
+}
+
+.book_pagination .previous_link:after,
+.book_pagination .toc_link:after,
+.book_pagination .entire_text_link:after {
+  content: " | ";
+}
+
+
+
+.tei_title {
+  font-style: italic;
+}
+
+.footnote {
+  
+  margin-bottom: .5em;
+}
+
+.right {
+  display:block;
+  text-align:right;
+}
+
+.tei_bibl .note {
+  display: inline;
+}
+
+.tei_div {
+  margin-bottom:1em;
+}
+
+.notes .entry p, .notes .tei_div p {
+  text-indent: 0;
+}
 
