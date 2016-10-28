@@ -450,3 +450,18 @@ h2.title_main .title_sub {
   text-indent: 0;
 }
 
+.bold {
+  font-weight:800;
+}
+
+table.dictionary td {
+    padding-left: 1.5em !important;
+    text-indent: -1.5em ;
+}
+
+.bibliography p {
+  text-indent:0;
+}
+
+.table tr,.table td {border:none;}
+
