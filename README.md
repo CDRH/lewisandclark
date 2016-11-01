@@ -22,6 +22,7 @@ cd your_project_name
 cp config/database.example.yml config/database.yml
 cp config/secrets.example.yml config/secrets.yml
 cp config/solr.example.yml config/solr.yml
+cp app/assets/javascripts/config.example.js app/assets/javascripts/config.js
 ```
 
 Run `rake secret`, copy the output, then past it into `config/secrets.yml` after the "development" line.  Now, open `config/solr.yml` and put in the path to your solr core.  It should look something like this:
@@ -30,6 +31,8 @@ Run `rake secret`, copy the output, then past it into `config/secrets.yml` after
 development:
   solr_url: http://server.unl.edu:port/solr/solr_core
 ```
+
+In the config.js file, you'll just need to uncomment and change the url to reflect your current environment.  You can technically leave it an empty string if your project is not using sub-uris, but you may as well fill it in.
 
 You may also want to change the name of the application in `config/application.rb` away from ApiTemplate to your new project's name.  This might be a good time to change the name in `.ruby-gemset` if you are using a ruby version manager like rvm.  If not, don't worry about the gemset. You'll also want to make sure that you change your session name.
 

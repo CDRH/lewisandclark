@@ -27,6 +27,7 @@ config/secrets.yml
 # Ignore configuration files
 config/solr.yml
 config/database.yml
+config.js
 
 # Ignore htaccess
 .htaccess
