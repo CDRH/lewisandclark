@@ -22,18 +22,27 @@ var popup = function(e) {
 // note: popover requires bootstrap to be loaded
 $(document).ready(function() {
   $('#calendar').calendar({
+    // configuration
     maxDate: new Date("1807"),
     minDate: new Date("1803"),
     startYear: "1803",
+
+    // events
+    clickDay: function(e) {
+      var events = e.events;
+      if (events.length > 0) {
+        var link = "/item/" + events[0].id;
+        window.location.href = link;
+      }
+    },
     mouseOnDay: function(e) { popup(e); },
     mouseOutDay: function(e) {
       if(e.events.length > 0) {
         $(e.element).popover('hide');
       }
     },
-    // dayContextMenu: function(e) {
-    //   $(e.element).popover('hide');
-    // },
+
+    // data
     dataSource: dates
   });
 });
