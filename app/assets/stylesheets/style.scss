@@ -497,3 +497,38 @@ hr {
   clear: both;
   margin-top: 20px;
 }
+
+
+
+.tei_figure .label {
+  display: none;
+}
+
+.tei_figure .caption {
+  font-size: 1.2em;
+  margin: .8em 0 .5em 0;
+  display: block;
+}
+
+.tei_figure .resp {
+  font-weight: 800;
+  margin-top: .5em;
+  display: block;
+}
+
+.tei_figure .tei_name {
+  
+}
+
+.tei_figure .orgName {
+  display: block;
+  margin-top: .5em;
+  border-top: solid #dfdfdf 1px;
+  padding-top: .5em;
+
+}
+
+.tei_figure .note {
+  display: block;
+  margin-top: .5em;
+} 
