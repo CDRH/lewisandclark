@@ -4,12 +4,13 @@
     <% if @item["lc_previous_s"] %>
       <%= link_to "Previous", item_path(@item["lc_previous_s"]) %>
     <% end %>
-    ----- (Canoe Goes Here) -----
+    <progress value=<%= @item['lc_timeline_place_s'] %> max="1100"></progress>
     <% if @item["lc_next_s"] %>
       <%= link_to "Next", item_path(@item["lc_next_s"]) %>
     <% end %>
   <% end %>
 </div>
+
 
 <!-- Text and Images -->
 <%= @res.mb_chars.html_safe if @res %>
