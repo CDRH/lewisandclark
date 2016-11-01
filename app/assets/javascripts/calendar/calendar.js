@@ -31,7 +31,7 @@ $(document).ready(function() {
     clickDay: function(e) {
       var events = e.events;
       if (events.length > 0) {
-        var link = "/item/" + events[0].id;
+        var link = SITE_PATH + "/item/" + events[0].id;
         window.location.href = link;
       }
     },
