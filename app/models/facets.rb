@@ -7,12 +7,12 @@ module Facets
       "creator",
       "creators",
       "lc_index_combined_ss",
-      "lc_native_nation_ss",
       "people",
+      "lc_native_nation_ss",
       "places",
       "lc_state_ss",
-      "format",
       "source",
+      "publisher",
       "rightsHolder",
     ]
   end

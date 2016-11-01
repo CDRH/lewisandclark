@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//
 // commented out turbolinks
 // require turbolinks
 // require jquery.turbolinks
@@ -22,4 +23,6 @@
 //= require bootstrap-year-calendar.min.js
 //= require calendar/dates
 //= require calendar/calendar
+//
 //= require_tree .
+//= ekko-lightbox.min

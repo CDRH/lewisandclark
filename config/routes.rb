@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'map' => 'static#map', as: :map
   get 'multimedia' => 'static#multimedia', as: :multimedia
   get 'images' => 'static#images', as: :images
+  get 'images_maps' => 'static#images_maps', as: :images_maps
+  get 'images_people_places' => 'static#images_people_places', as: :images_people_places
+  get 'images_plants_animals' => 'static#images_plants_animals', as: :images_plants_animals
   get 'texts' => 'static#texts', as: :texts
   get 'journals' => 'static#journals', as: :journals
   get 'advanced_search' => 'static#advanced_search', as: :advanced_search
