@@ -10,12 +10,21 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require config
+//
 //= require jquery
 //= require jquery_ujs
+//
 // commented out turbolinks
 // require turbolinks
 // require jquery.turbolinks
-//= require bootstrap.min.js
-//= require_tree
+//
+//= require bootstrap.min
+//
+// set up the calendar loading order
+//= require bootstrap-year-calendar.min.js
+//= require calendar/dates
+//= require calendar/calendar
+//
+//= require_tree .
 //= ekko-lightbox.min
-

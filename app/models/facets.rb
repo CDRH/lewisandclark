@@ -4,6 +4,8 @@ module Facets
       "category",
       "subCategory",
       "lc_searchtype_s",
+      "creator",
+      "creators",
       "lc_index_combined_ss",
       "people",
       "lc_native_nation_ss",
