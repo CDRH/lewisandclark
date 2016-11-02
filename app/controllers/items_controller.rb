@@ -108,6 +108,8 @@ class ItemsController < ApplicationController
     if !options[:qtext].nil? && options[:qtext].empty?
       options[:qtext] = "*"
     end
+
+    # filter queries (facets)
     fq = []
     for key in Facets.facet_list do
       if options[key]
@@ -115,6 +117,15 @@ class ItemsController < ApplicationController
       end
     end
     options[:fq] = fq
+
+    # date search
+    date_from = format_date(options["date_from"], ["1803", "01", "01"])
+    date_to = format_date(options["date_to"], ["1806", "12", "31"])
+    options.delete("date_from")
+    options.delete("date_to")
+    options[:fq] << "lc_dateNotAfter_s:[#{date_from} TO #{date_to}]"
+
+    # sort
     if (options[:q] || options[:qtext]) && !options[:sort]
       # if there is a query, then make sure score is the default sort
       options[:sort] = "score desc"
@@ -122,4 +133,11 @@ class ItemsController < ApplicationController
     return options
   end
 
+  def format_date(date_params, default_date)
+    y, m, d = date_params
+    y = default_date[0] if y.nil? || y.empty?
+    m = default_date[1] if m.nil? || m.empty?
+    d = default_date[2] if d.nil? || d.empty?
+    return "#{y}-#{m}-#{d}"
+  end
 end

@@ -75,18 +75,27 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group form-inline">
-                <label for="map_search_terms">Date From</label><br/>
-                <input type="text" class="form-control" id="map_search_terms" placeholder="1803" maxlength="4" size="4">
-                <input type="text" class="form-control" id="map_search_terms" placeholder="08" maxlength="2" size="2">
-                <input type="text" class="form-control" id="map_search_terms" placeholder="30" maxlength="2" size="2">
+                <% dfrom = params["date_from"] ? params["d_from"] : [] %>
+                <%= label_tag "date_from", "Date From" %><br/>
+                <%= text_field_tag "date_from[]", dfrom[0], id: "date_from",
+                    class: "form-control", placeholder: "1803", maxlength: "4", size: "4" %>
+                <%= text_field_tag "date_from[]", dfrom[1],
+                    class: "form-control", placeholder: "08", maxlength: "2", size: "2" %>
+                <%= text_field_tag "date_from[]", dfrom[2],
+                    class: "form-control", placeholder: "30", maxlength: "2", size: "2" %>
               </div>
             </div>
+
             <div class="col-md-6">
               <div class="form-group form-inline">
-                <label for="map_search_terms">Date To</label><br/>
-                <input type="text" class="form-control" id="map_search_terms" placeholder="1806" maxlength="4" size="4">
-                <input type="text" class="form-control" id="map_search_terms" placeholder="09" maxlength="2" size="2">
-                <input type="text" class="form-control" id="map_search_terms" placeholder="01" maxlength="2" size="2">
+                <% dto = params["date_to"] ? params["date_to"] : [] %>
+                <%= label_tag "date_to", "Date To" %><br/>
+                <%= text_field_tag "date_to[]", dto[0], id: "date_to",
+                    class: "form-control", placeholder: "1806", maxlength: "4", size: "4" %>
+                <%= text_field_tag "date_to[]", dto[1],
+                    class: "form-control", placeholder: "09", maxlength: "2", size: "2" %>
+                <%= text_field_tag "date_to[]", dto[2],
+                    class: "form-control", placeholder: "01", maxlength: "2", size: "2" %>
               </div>
             </div>
           </div>
