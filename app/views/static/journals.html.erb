@@ -75,7 +75,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group form-inline">
-                <% dfrom = params["date_from"] ? params["d_from"] : [] %>
+                <% dfrom = params["date_from"] ? params["date_from"] : [] %>
                 <%= label_tag "date_from", "Date From" %><br/>
                 <%= text_field_tag "date_from[]", dfrom[0], id: "date_from",
                     class: "form-control", placeholder: "1803", maxlength: "4", size: "4" %>

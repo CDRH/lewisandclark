@@ -135,9 +135,9 @@ class ItemsController < ApplicationController
 
   def format_date(date_params, default_date)
     y, m, d = date_params
-    y = default_date[0] if y.nil? || y.empty?
-    m = default_date[1] if m.nil? || m.empty?
-    d = default_date[2] if d.nil? || d.empty?
+    y = default_date[0] if y.blank?
+    m = default_date[1] if m.blank?
+    d = default_date[2] if d.blank?
     return "#{y}-#{m}-#{d}"
   end
 end
