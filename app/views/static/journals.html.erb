@@ -1,7 +1,4 @@
-
-</div></div>
-<!-- <h2>Journals</h2> -->
-
+<!-- does not need specific row and col offset -->
 <div class="row">
   <div class="col-md-3">
     <div class="list-group">
@@ -9,7 +6,7 @@
         <h4 class="list-group-item-heading">Table of Contents</h4>
         <p class="list-group-item-text">Explore the Journals</p>
       <% end %>
-      <%= link_to j_index_path, {:class=>"list-group-item active list-group-item-info"} do %>
+      <%= link_to index_path, {:class=>"list-group-item active list-group-item-info"} do %>
         <h4 class="list-group-item-heading">Browse by Index</h4>
         <p class="list-group-item-text">Normalized Name Entities</p>
       <% end %>
@@ -121,5 +118,3 @@
     </a>
   </div>
 </div><!-- /row -->
-
-<div><div>

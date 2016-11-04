@@ -1,37 +1,41 @@
-<!-- Progress Marker -->
-<div class="entry_pagination">
-  <% if @item["subCategory"] == "Journal Entries" %>
-    <% if @item["lc_previous_s"] %>
-      <%= link_to "Previous", item_path(@item["lc_previous_s"]) %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <!-- Progress Marker -->
+    <div class="entry_pagination">
+      <% if @item["subCategory"] == "Journal Entries" %>
+        <% if @item["lc_previous_s"] %>
+          <%= link_to "Previous", item_path(@item["lc_previous_s"]) %>
+        <% end %>
+        <progress value=<%= @item['lc_timeline_place_s'] %> max="1100"></progress>
+        <% if @item["lc_next_s"] %>
+          <%= link_to "Next", item_path(@item["lc_next_s"]) %>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <!-- Text and Images -->
+    <%= @res.mb_chars.html_safe if @res %>
+
+      <% if @item["category"] == "Journals" %>
+      <!-- Metadata Box (only displays for journals) -->
+      <div class="metadata">
+        <ul>
+          <%= metadata("Title", "title", @item["title"], false) %>
+          <%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
+          <%= metadata("Author(s)", "creators", @item["creators"]) %>
+          <%= metadata("Recipient(s)", "recipients", @item["recipients"]) %>
+          <%= metadata("Format", "format", @item["format"]) %>
+          <%= metadata("Category", "category", @item["category"]) %>
+          <%= metadata("Subcategory", "subCategory", @item["subCategory"]) %>
+          <%= metadata("Works", "works", @item["works"]) %>
+          <%= metadata("Place(s)", "places", @item["places"]) %>
+          <li>
+            <strong>TEI XML: </strong>
+            <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
+          </li>
+        </ul>
+      </div>
     <% end %>
-    <progress value=<%= @item['lc_timeline_place_s'] %> max="1100"></progress>
-    <% if @item["lc_next_s"] %>
-      <%= link_to "Next", item_path(@item["lc_next_s"]) %>
-    <% end %>
-  <% end %>
-</div>
-
-
-<!-- Text and Images -->
-<%= @res.mb_chars.html_safe if @res %>
-
-  <% if @item["category"] == "Journals" %>
-  <!-- Metadata Box (only displays for journals) -->
-  <div class="metadata">
-    <ul>
-      <%= metadata("Title", "title", @item["title"], false) %>
-      <%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
-      <%= metadata("Author(s)", "creators", @item["creators"]) %>
-      <%= metadata("Recipient(s)", "recipients", @item["recipients"]) %>
-      <%= metadata("Format", "format", @item["format"]) %>
-      <%= metadata("Category", "category", @item["category"]) %>
-      <%= metadata("Subcategory", "subCategory", @item["subCategory"]) %>
-      <%= metadata("Works", "works", @item["works"]) %>
-      <%= metadata("Place(s)", "places", @item["places"]) %>
-      <li>
-        <strong>TEI XML: </strong>
-        <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
-      </li>
-    </ul>
   </div>
-<% end %>
+</div>
