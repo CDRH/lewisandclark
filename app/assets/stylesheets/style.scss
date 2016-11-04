@@ -533,3 +533,87 @@ hr {
   display: block;
   margin-top: .5em;
 } 
+
+
+
+
+/* Progress Bar */
+
+
+div.progress {
+  border: solid 1px #aaa;
+  height: .5em;
+  background-color: #ced8db;
+}
+
+.first_date, .last_date {
+  font-size: .7em;
+  margin-top: -2em;
+}
+
+.first_date {
+  float: left;
+}
+
+.last_date {
+  float: right;
+}
+.progress_description {
+  text-align: center;
+  display: block;
+  font-size: .9em;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+.prev_next_buttons .btn {
+  margin-top: .5em;
+
+}
+
+/* Search results */
+
+.searchResults {
+  border-bottom: solid 1px #aaa;
+  padding: 10px 0;
+}
+
+.search_results_info {
+  
+  border-right: 1px dotted #333;
+  text-align: right;
+}
+
+.search_results_info ul,
+.search_results_title ul {
+  margin: 0;
+  padding: 0;
+}
+
+.search_results_info ul li,
+.search_results_title ul li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  line-height: 1.2em;
+}
+
+.searchResults .title {
+  font-size: 1.4em;
+  line-height: 1.2;
+  margin-bottom: .5em;
+}
+
+.highlighting li:before,
+.highlighting li:after
+ {
+  content: "…";
+}
+
+.highlighting em {
+  display: inline-block;
+  font-weight: 700;
+
+}
