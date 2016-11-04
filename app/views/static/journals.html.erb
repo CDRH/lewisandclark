@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-3">
     <div class="list-group">
-      <%= link_to j_toc_path, {:class=>"list-group-item active list-group-item-primary"} do %>
+      <%= link_to contents_path, {:class=>"list-group-item active list-group-item-primary"} do %>
         <h4 class="list-group-item-heading">Table of Contents</h4>
         <p class="list-group-item-text">Explore the Journals</p>
       <% end %>
@@ -10,7 +10,7 @@
         <h4 class="list-group-item-heading">Browse by Index</h4>
         <p class="list-group-item-text">Normalized Name Entities</p>
       <% end %>
-      <%= link_to j_date_path, {:class=>"list-group-item active list-group-item-primary"} do %>
+      <%= link_to calendar_path, {:class=>"list-group-item active list-group-item-primary"} do %>
         <h4 class="list-group-item-heading">Browse by Date</h4>
         <p class="list-group-item-text">Calendar View</p>
       <% end %>

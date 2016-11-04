@@ -3,10 +3,18 @@
     <h2>Images & Maps</h2>
 
     <ul class="nav nav-tabs">
-      <li role="presentation"><a href="images">Journals</a></li>
-      <li role="presentation" class="active"><a href="images_maps">Maps</a></li>
-      <li role="presentation"><a href="images_people_places">People & Places</a></li>
-      <li role="presentation"><a href="images_plants_animals">Plants & Animals</a></li>
+      <li role="presentation">
+        <%= link_to "Journals", images_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to "Maps", images_maps_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "People & Places", images_people_places_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "Plants & Animals", images_plants_animals_path %>
+      </li>
     </ul>
 
     <br/>
