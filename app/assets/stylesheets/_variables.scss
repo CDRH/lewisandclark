@@ -43,8 +43,8 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif:       Garamond, Baskerville, Baskerville Old Face, Hoefler Text, Times New Roman, serif !default;
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, 'Apple Symbols','Menlo','Arial Unicode MS' sans-serif !default; //'Apple Symbols','Menlo','Arial Unicode MS' are added for unicode support
+$font-family-serif:       Garamond, Baskerville, Baskerville Old Face, Hoefler Text, Times New Roman, 'Apple Symbols','Menlo','Arial Unicode MS', serif !default; //'Apple Symbols','Menlo','Arial Unicode MS' are added for unicode support
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-serif !default;

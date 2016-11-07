@@ -351,10 +351,11 @@ margin-bottom: 1em;
 .tei_figure {
   
   margin: 1em 0;
-  padding: 1em;
+  /* padding: 1em; */
   font-size: .9em;
 }
 
+/*
 @media (min-width: 768px) {
   .tei_figure {
     max-width: 50%;
@@ -365,10 +366,13 @@ margin-bottom: 1em;
   max-width: 300px;
   max-height: 300px;
 }
+*/
 
 .tei_figure p {
   margin: .2em 0;
   line-height: 1.2em;
+    text-indent:0;
+  margin-bottom: .5em;
 }
 
 h3.figure_head {
