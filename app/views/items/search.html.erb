@@ -1,29 +1,30 @@
-<h2>Search</h2>
-
 <!-- search form -->
+<div class="row searchbox">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+          <%= form_tag(search_path, :method => "get", :class => "input-group") do %>
+            <%= hidden_field_tag(:qfield, "text") %>
+            <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
+
+            <%= render partial: "facet_hidden_fields" %>
+
+            <%# TODO add this back in? #>
+            <%# if params[:qtext] %>
+              <%# link_to "x", clear_search, :class => "btn btn-warning clear_main_search_text" %>
+            <%# end %>
+
+            <span class="input-group-btn">
+              <%= submit_tag("Search", :class => "btn btn-primary") %>
+            </span>
+          <% end %>
+        <%= render partial: "search_help" %>
+      </div>
+    </div> <!-- /search panel -->
+  </div>
+</div> <!-- /row /searchbox -->
 <div class="row">
   <div class="col-md-3">
-    <%= form_tag(search_path, :method => "get", :class => "") do %>
-      <div class="form-group">
-        <%= hidden_field_tag(:qfield, "text") %>
-        <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search", :class => "form-control main_search_text") %>
-        <%# add facets to hidden fields %>
-        <% Facets.facet_list.each do |facet| %>
-          <%= hidden_field_tag(facet, params[facet]) if params[facet] %>
-        <% end %>
-        <% if params[:qtext] %>
-          <%= link_to "x", clear_search, :class => "brn btn-warning clear_main_search_text" %>
-        <% end %>
-        <button type="button" class="btn btn-link pull-left"  data-toggle="collapse" data-target="#search_help" aria-expanded="false" aria-controls="search_help">Search Options</button>
-        <%= submit_tag("Search", :class => "btn btn-info submit_main_search_text pull-right") %>
-      </div>
-      <br/>
-      <div class="collapse" id="search_help">
-        <div class="well">
-           <p >Advanced searching: you can exclude with a "-", use boolean operators like AND & OR, group items with (parentheses), and search for a phrase with "quotation marks."</p>
-        </div>
-      </div>
-    <% end %>
 
     <!-- clear facets -->
     <% if any_facets_selected? %>

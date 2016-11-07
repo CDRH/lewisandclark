@@ -1,0 +1,4 @@
+<%# add facets to hidden fields %>
+<% Facets.facet_list.each do |facet| %>
+  <%= hidden_field_tag(facet, params[facet]) if params[facet] %>
+<% end %>
