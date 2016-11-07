@@ -87,7 +87,9 @@ a {
 body {
   background-color: transparent; }
 
-/* Map Browse */
+/* =======================
+	Map Browse 
+	===================== */
 .map_browse_checklist {
   max-height: 400px;
   overflow: scroll; }
@@ -134,17 +136,30 @@ body {
   transition: padding-left 0.5s; }
   
   
+  /* =======================
+	 / Map Browse 
+	===================== */
+  
   
 .entry .table > thead > tr > th,
 .entry .table > thead > tr > td,
 .entry .table > tbody > tr > th,
 .entry .table > tbody > tr > td,
 .entry .table > tfoot > tr > th,
-.entry .table > tfoot > tr > td {
+.entry .table > tfoot > tr > td,
+
+.footnote .table > thead > tr > th,
+.footnote .table > thead > tr > td,
+.footnote .table > tbody > tr > th,
+.footnote .table > tbody > tr > td,
+.footnote .table > tfoot > tr > th,
+.footnote .table > tfoot > tr > td {
   border: none;
+  font-size: .9em;
 }
 
-.entry table.table {
+.entry table.table,
+.footnote table.table {
   width: auto;
   margin: 0 auto;
 }
@@ -167,7 +182,7 @@ body {
 }
 
 .double.underline {
-  border-bottom: double #000 3px;
+  border-bottom: 3px double black;
 }
 
 .tei_table_head {
@@ -430,7 +445,7 @@ h2.title_main .title_sub {
 
 .footnote {
   
-  margin-bottom: .5em;
+  margin-bottom: 1em;
 }
 
 .right {
@@ -616,4 +631,170 @@ div.progress {
   display: inline-block;
   font-weight: 700;
 
+}
+
+
+
+/* Journal Stylings */
+
+@media (min-width: 768px) {
+  .entry_date {
+	 text-align:left;
+	 
+	 float: right; 
+	 margin-top:.8em;
+	 
+  }
+  
+  .entry_author {float: left;
+  width: 55%;
+  }
+
+
+  
+ }
+ 
+
+  
+  
+
+.clear_return {clear: both; height:1em !important;}
+
+.center {margin: auto;}
+
+
+ul.simple {
+	margin: 1em 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.center {
+	display: table;
+	margin: auto;
+	text-align: center
+}
+
+div.p {
+	
+	margin-bottom: 1em;
+}
+
+
+
+.entry .tei_figure .orgName {
+  border-top: none;
+}
+
+.entry .tei_bibl span,
+.entry .tei_bibl div {
+	display: inline;
+}
+
+
+
+.tei_figure {
+
+	display: block;
+	padding:.5em 0
+}
+
+
+
+
+
+table {
+	line-height: 1em;
+}
+
+table tr td {
+	padding: 0;
+	margin: 0;
+}
+
+.cell_bracket {
+	/*background-color: red;*/
+	font-weight: 100;
+}
+
+.rowspan_2.cell_bracket .cell_contents {
+	font-size: 2.7em}
+
+.rowspan_3.cell_bracket .cell_contents {
+	font-size: 4em}
+
+.rowspan_4.cell_bracket .cell_contents {
+	font-size: 5em;	
+}
+
+.rowspan_5.cell_bracket .cell_contents {
+	font-size: 6em;	
+}
+
+.rowspan_6.cell_bracket .cell_contents {
+	font-size: 7em;	
+}
+
+.rowspan_7.cell_bracket .cell_contents {
+	font-size: 8em;	
+}
+
+.rowspan_8.cell_bracket .cell_contents {
+	font-size: 9em;	
+}
+
+.rowspan_9.cell_bracket .cell_contents {
+	font-size: 10em;	
+}
+
+.rowspan_10.cell_bracket .cell_contents {
+	font-size: 11em;	
+}
+
+.rowspan_11.cell_bracket .cell_contents {
+	font-size: 12em;	
+}
+
+.rowspan_12.cell_bracket .cell_contents {
+	font-size: 13em;	
+}
+
+.rowspan_13.cell_bracket .cell_contents {
+	font-size: 14em;	
+}
+
+
+
+td.table_valign_middle {
+  vertical-align:middle !important;
+}
+
+td {
+  line-height: 1.05em !important;
+  padding-right: .5em !important;
+}
+
+.tei_tr {
+  /* Can't get this to work with padding or margin, come back to later. look at 
+  http://rosie.unl.edu/lewisandclark/item/lc.jrn.1804-01-21-1 as an example */
+  border-bottom: .7em solid transparent;
+}
+
+.table .table {
+  background-color: transparent;
+}
+
+.table_halign_center {
+  text-align: center;
+}
+
+table.table {
+  margin-top: 2em !important;
+}
+
+
+
+.tei_figure p {
+  
+  text-indent: 0;
 }
