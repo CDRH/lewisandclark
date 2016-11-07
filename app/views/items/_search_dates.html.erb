@@ -1,0 +1,36 @@
+<!-- TODO the date fields need a form with hidden fields and a submit button -->
+<div class="panel panel-default">
+  <div class="panel-heading" data-toggle="collapse" data-target="#dates">
+    <h3 class="panel-title">Limit by Dates</h3>
+  </div>
+  <div class="panel-body collapse in" id="dates">
+    <p>Note: If only one date field is filled, the search will display that day's results</p>
+    <!-- date from -->
+    <div class="form-group form-inline">
+      <% dfrom = params["date_from"] ? params["date_from"] : [] %>
+      <%= label_tag "date_from", "Date From" %><br/>
+      <%= text_field_tag "date_from[]", dfrom[0], id: "date_from",
+          class: "form-control", placeholder: "1803", maxlength: "4", size: "4" %>
+      <%= text_field_tag "date_from[]", dfrom[1],
+          class: "form-control", placeholder: "08", maxlength: "2", size: "2" %>
+      <%= text_field_tag "date_from[]", dfrom[2],
+          class: "form-control", placeholder: "30", maxlength: "2", size: "2" %>
+    </div>
+    <!-- date to -->
+    <div class="form-group form-inline">
+      <% dto = params["date_to"] ? params["date_to"] : [] %>
+      <%= label_tag "date_to", "Date To" %><br/>
+      <%= text_field_tag "date_to[]", dto[0], id: "date_to",
+          class: "form-control", placeholder: "1806", maxlength: "4", size: "4" %>
+      <%= text_field_tag "date_to[]", dto[1],
+          class: "form-control", placeholder: "09", maxlength: "2", size: "2" %>
+      <%= text_field_tag "date_to[]", dto[2],
+          class: "form-control", placeholder: "01", maxlength: "2", size: "2" %>
+    </div>
+    <%= render partial: "facet_hidden_fields" %>
+    <%= hidden_field_tag(:qfield, "text") %>
+    <%= hidden_field_tag(:qtext, params["qtext"]) %>
+
+    <!-- TODO form will need to end AFTER these facets and search term appear above -->
+  </div>
+</div>

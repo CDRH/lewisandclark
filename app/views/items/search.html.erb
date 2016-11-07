@@ -1,51 +1,54 @@
 <!-- search form -->
-<div class="row searchbox">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-          <%= form_tag(search_path, :method => "get", :class => "input-group") do %>
-            <%= hidden_field_tag(:qfield, "text") %>
-            <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
+<%= render partial: "search_partials/searchbox" %>
 
-            <%= render partial: "facet_hidden_fields" %>
-
-            <%# TODO add this back in? #>
-            <%# if params[:qtext] %>
-              <%# link_to "x", clear_search, :class => "btn btn-warning clear_main_search_text" %>
-            <%# end %>
-
-            <span class="input-group-btn">
-              <%= submit_tag("Search", :class => "btn btn-primary") %>
-            </span>
-          <% end %>
-        <%= render partial: "search_help" %>
-      </div>
-    </div> <!-- /search panel -->
-  </div>
-</div> <!-- /row /searchbox -->
-<div class="row">
+<div class="row search_form">
   <div class="col-md-3">
 
     <!-- clear facets -->
-    <% if any_facets_selected? %>
-      <div class="clear-filters-container">
-        <%= link_to search_path({:qfield => params[:qfield], :qtext => params[:qtext]}),  {}, {class: "btn btn_default"} do %>
-          Clear all filters 
-          <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: "search_partials/facets_clear" %>
 
-    <!-- facets -->
-    <%= render partial: "facets", locals: {facets: @facets} %>
+    <!-- dates -->
+    <%= render partial: "search_partials/date_limit" %>
+
+    <!-- facet lists -->
+    <%= render partial: "search_partials/facets", locals: {facets: @facets} %>
   </div> <!-- col-md-3 -->
 
   <div class="col-md-9">
+    <%= render partial: "search_partials/author_year" %>
+  </div>
+
+
+<!-- SEARCH RESULTS UNDER HERE -->
+
+
+  <div class="col-md-9">
+
+  <div class="col-md-9">
+    <!-- TODO is that aria-label correct? -->
+    <div class="btn-group" role="group" aria-label=". . .">
+      <span type="button" class="btn btn-default btn-sm">
+        <span class="filter-value" title="Journal Entries">Water</span>
+      </span>
+      <a type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="btn-group" role="group" aria-label="...">
+      <span type="button" class="btn btn-default btn-sm">
+        <span class="filter-name">Part of Website</span>
+        <span class="filter-value" title="Journal Entries">Journal Entries</span>
+      </span>
+      <a type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+    </div>
+
     <!-- sorting and pagination -->
     <div class="row search_controls">
       <div class="col-md-3 search_limit">
         <% if (@items[:num_found] > 1) %>
-          <%= render partial: "sort", 
+          <%= render partial: "search_partials/sort",
             locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
             } %>
         <% end %>
@@ -61,26 +64,23 @@
 
     <% if @items[:num_found] > 0 %>
       <% @items[:docs].each do |doc| %>
-        <div class="searchResults">
-          <div class="row">
-            <div class="col-md-12 search_results_info">
-              <%= link_to doc["title"], item_path(doc["id"]) %>
-              <ul>
-                <li><strong>Date</strong>: <%= doc["dateDisplay"] %></li>
-                <li><strong>Creators</strong>: <%= doc["creators"].join("; ") if doc["creators"] %></li>
-                <li><strong>Source</strong>: <%= doc["source"] %></li>
-              </ul>
-              <!-- highlighting -->
-              <div class="col-md-8 search_results_text">
-                <% if doc["highlights"] %>
-                  <ul class="highlighting">
-                    <% doc["highlights"].each do |hl| %>
-                      <li><%= hl.html_safe %></li>
-                    <% end %>
-                  </ul>
+        <div class="row searchResults">
+          <div class="col-md-9 col-md-push-3 search_results_title">
+            <%= link_to doc["title"], item_path(doc["id"]) %>
+            <% if doc["highlights"] %>
+              <ul class="highlighting">
+                <% doc["highlights"].each do |hl| %>
+                  <li><%= hl.html_safe %></li>
                 <% end %>
-              </div>
-            </div>
+              </ul>
+            <% end %>
+          </div> <!-- /col-md-9 -->
+          <div class="col-md-3 col-md-pull-9 search_results_info">
+            <ul>
+              <li><%= doc["dateDisplay"] %></li>
+              <li><%= doc["category"].titleize %></li>
+              <li><%= doc["creators"].join("; ") %></li>
+            </ul>
           </div>
         </div>
       <% end %>

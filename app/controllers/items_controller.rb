@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
   def search_and_facet
     # if no search terms, don't display search
     # if none filled in, display all results with asterisks
+    @search_bool = user_search?
     params.delete("facet.field")  # why is this happening oh man
     options = create_search_options(params)
     @items = $solr.query(options)
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def create_search_options(aParams)
-    options = aParams.clone
+    options = ActionController::Parameters.new(aParams)
     # make sure that empty search terms go through okay
     if !options[:qtext].nil? && options[:qtext].empty?
       options[:qtext] = "*"
@@ -83,5 +84,12 @@ class ItemsController < ApplicationController
     m = default_date[1] if m.blank?
     d = default_date[2] if d.blank?
     return "#{y}-#{m}-#{d}"
+  end
+
+  def user_search?
+    # TODO needs pagination, etc
+    # uses the view helper function "any_facets_selected?"
+    has_facets = view_context.any_facets_selected?
+    return has_facets || !params["qtext"].blank?
   end
 end

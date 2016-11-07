@@ -2,10 +2,10 @@
   <% @facets.each do |type, list| %>
     <% if list.length > 0 %>
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" data-toggle="collapse" data-target="#<%=type %>">
           <h3 class="panel-title"><%= type %></h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body collapse" id=<%= type %>>
           <ul class="list-unstyled">
             <% list.each do |label, num| %>
               <% selected = facet_selected?(type, label) %>
