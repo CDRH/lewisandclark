@@ -1,0 +1,25 @@
+<% unless params["qtext"].blank? %>
+  <div class="btn-group" role="group" aria-label="clear search text">
+    <span type="button" class="btn btn-default btn-sm">
+      <span class="filter-value" title="Query Term"><%= params["qtext"] %></span>
+    </span>
+    <%= link_to clear_search, class: "btn btn-default btn-sm", type: "button" do %>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <% end %>
+  </div>
+<% end %>
+<% if @facets %>
+  <% @facets.each do |type, list| %>
+    <% unless params[type].blank? %>
+      <div class="btn-group" role="group" aria-label="remove facet <%= type %>">
+        <span type="button" class="btn btn-default btn-sm">
+          <span class="filter-name"><%= type.titleize %></span>
+          <span class="filter-value" title=<%= type %>><%= params[type] %></span>
+        </span>
+        <%= link_to search_path(remove_facet(type)), class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

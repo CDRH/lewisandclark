@@ -19,30 +19,13 @@
   </div>
 
 
-<!-- SEARCH RESULTS UNDER HERE -->
+  <!-- SEARCH RESULTS UNDER HERE -->
 
 
   <div class="col-md-9">
 
   <div class="col-md-9">
-    <!-- TODO is that aria-label correct? -->
-    <div class="btn-group" role="group" aria-label=". . .">
-      <span type="button" class="btn btn-default btn-sm">
-        <span class="filter-value" title="Journal Entries">Water</span>
-      </span>
-      <a type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      </a>
-    </div>
-    <div class="btn-group" role="group" aria-label="...">
-      <span type="button" class="btn btn-default btn-sm">
-        <span class="filter-name">Part of Website</span>
-        <span class="filter-value" title="Journal Entries">Journal Entries</span>
-      </span>
-      <a type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      </a>
-    </div>
+    <%= render partial: "search_partials/result_summary_boxes" %>
 
     <!-- sorting and pagination -->
     <div class="row search_controls">
@@ -59,7 +42,7 @@
     </div>
 
     <!-- search results section -->
-    <h4>Your search for <%= params[:qtext] %> returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
+    <h4>Your search returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
 
 
     <% if @items[:num_found] > 0 %>
@@ -75,6 +58,7 @@
               </ul>
             <% end %>
           </div> <!-- /col-md-9 -->
+          <!-- information about item -->
           <div class="col-md-3 col-md-pull-9 search_results_info">
             <ul>
               <li><%= doc["dateDisplay"] %></li>
