@@ -2,19 +2,21 @@
     and match them with the incoming solr facet results %>
 <% if @facets %>
   <% Facets.facet_info.each do |facet_name, info| %>
-    <% if @facets.has_key?(facet_name) && info["display"] %>
+    <%# only display subCategory if category selected %>
+    <% subCat_display = (facet_name == "subCategory" && !params["category"].blank?) || facet_name != "subCategory" %>
+    <% if @facets.has_key?(facet_name) && info["display"] && subCat_display %>
       <% facet_res = @facets[facet_name] %>
       <div class="panel panel-default">
 
         <!-- panel heading -->
-        <div class="panel-heading" data-toggle="collapse" data-target="#<%= facet_name %>">
+        <div class="panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>">
           <h3 class="panel-title"><%= info["label"] %></h3>
         </div>
 
         <!-- panel body -->
         <%# if requested parameter, then do not collapse facet %>
         <% start_open = params[facet_name].blank? ? "" : "in" %>
-        <div class="panel-body collapse <%= start_open %>" id=<%= facet_name %>>
+        <div class="panel-body collapse <%= start_open %>" id="fc-<%= facet_name %>">
           <ul class="list-unstyled">
             <% facet_res.each do |key, value| %>
               <% selected = facet_selected?(facet_name, key) %>
