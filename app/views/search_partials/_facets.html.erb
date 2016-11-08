@@ -1,28 +1,41 @@
+<%# iterate through all of the configured facets
+    and match them with the incoming solr facet results %>
 <% if @facets %>
-  <% @facets.each do |type, list| %>
-    <% if list.length > 0 %>
+  <% Facets.facet_info.each do |facet_name, info| %>
+    <% if @facets.has_key?(facet_name) && info["display"] %>
+      <% facet_res = @facets[facet_name] %>
       <div class="panel panel-default">
-        <div class="panel-heading" data-toggle="collapse" data-target="#<%=type %>">
-          <h3 class="panel-title"><%= type %></h3>
+
+        <!-- panel heading -->
+        <div class="panel-heading" data-toggle="collapse" data-target="#<%= facet_name %>">
+          <h3 class="panel-title"><%= info["label"] %></h3>
         </div>
-        <div class="panel-body collapse" id=<%= type %>>
+
+        <!-- panel body -->
+        <%# if requested parameter, then do not collapse facet %>
+        <% start_open = params[facet_name].blank? ? "" : "in" %>
+        <div class="panel-body collapse <%= start_open %>" id=<%= facet_name %>>
           <ul class="list-unstyled">
-            <% list.each do |label, num| %>
-              <% selected = facet_selected?(type, label) %>
-              <% display = label.length > 0 ? label : "No Label" %>
+            <% facet_res.each do |key, value| %>
+              <% selected = facet_selected?(facet_name, key) %>
+              <% label = key.length > 0 ? key : "No Label" %>
+
+              <!-- list item -->
               <li <%= selected_class(selected) %>>
-                <%= link_to display, search_path(facet_link(type, label)) %>
-                <span class="badge"><%= num %></span>
+                <%= link_to label, search_path(facet_link(facet_name, key)) %>
+                <span class="badge"><%= value %></span>
                 <% if selected %>
-                  <%= link_to search_path(remove_facet(type)) do %>
+                  <%= link_to search_path(remove_facet(facet_name)) do %>
                     <button class="btn btn-warning btn-xs">x</button>
                   <% end %>
                 <% end %>
               </li>
+
             <% end %>
           </ul>
-        </div>
-      </div>
+        </div> <!-- /panel-body -->
+
+      </div> <!-- /panel panel-default -->
     <% end %>
   <% end %>
 <% end %>
