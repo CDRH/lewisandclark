@@ -12,11 +12,11 @@
         no_qs:  1
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?lc\.(advisoryboard|citations|editorial\.procedures|editorial\.symbols|faq|links|onlineeditorialprocedures|overview|privacy|projectteam|sitemap|sources|sponsors|technicalsummary)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(advisoryboard|citations|faq|links|onlineeditorialprocedures|overview|privacy|projectteam|sponsors|technicalsummary)\.xml$/
     to:         /item/lc.about.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?lc\.images_.+$/
+    from:       !ruby/regexp /^\/item\/lc\.images_.+$/
     to:         /images_people_places
 -
     method:     r301
@@ -40,33 +40,37 @@
     to:         /item/lc.about.sources.xml
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?img_(?:clark|lewis)\.xml$/
+    from:       !ruby/regexp /^\/item\/img_(?:clark|lewis)\.xml$/
     to:         /images_people_places
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?img_(?:lc\.)?(.+)\.xml$/
+    from:       !ruby/regexp /^\/item\/img_(?:lc\.)?(.+)\.xml$/
     to:         /item/lc.img.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?(18.+)\.xml$/
+    from:       !ruby/regexp /^\/item\/(18.+)\.xml$/
     to:         /item/lc.jrn.$1
     options:
-        not:    /^\/(item\/)?18.*kloefkorn/
+        not:    /^\/item\/18.*kloefkorn/
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?((?:introduction|preface|v).+)\.xml$/
+    from:       !ruby/regexp /^\/item\/((?:introduction|preface|v).+)\.xml$/
     to:         /item/lc.jrn.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?(18.+kloefkorn.*)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(editorial\.procedures|editorial\.symbols|sources)\.xml$/
+    to:         /item/lc.jrn.$1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/item\/(18.+kloefkorn.*)\.xml$/
     to:         /item/lc.mult.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?lc\.(kloefkorn|video.+|white)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(kloefkorn|video.+|white)\.xml$/
     to:         /item/lc.mult.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?(white.+)\.xml$/
+    from:       !ruby/regexp /^\/item\/(white.+)\.xml$/
     to:         /item/lc.mult.$1
 -
     method:     r301
@@ -86,6 +90,10 @@
     to:         /multimedia#video
 -
     method:     r301
+    from:       /item/lc.sitemap.xml
+    to:         /
+-
+    method:     r301
     from:       /item/lc.texts.xml
     to:         /texts
 -
@@ -94,6 +102,10 @@
     to:         /journals/contents
 -
     method:     r301
-    from:       !ruby/regexp /^\/(?:item\/)?lc\.(allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield)\.xml$/
+    from:       !ruby/regexp /^\/(lewisandclark\/)?search.php$/
+    to:         /search
+-
+    method:     r301
+    from:       !ruby/regexp /^\/item\/lc\.(allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield)\.xml$/
     to:         /item/lc.sup.$1
 
