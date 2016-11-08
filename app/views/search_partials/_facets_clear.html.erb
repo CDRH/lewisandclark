@@ -1,8 +1,6 @@
-<% if any_facets_selected? %>
-  <div class="clear-filters-container">
-    <%= link_to search_path({:qfield => params[:qfield], :qtext => params[:qtext]}),  {}, {class: "btn btn_default"} do %>
-      Clear all filters 
-      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-    <% end %>
-  </div>
-<% end %>
+<div class="clear-filters-container">
+  <%= link_to search_path({:qfield => params[:qfield], :qtext => params[:qtext]}),  {}, {class: "btn btn_default"} do %>
+    Clear all filters
+    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+  <% end %>
+</div>

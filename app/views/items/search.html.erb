@@ -5,7 +5,9 @@
   <div class="col-md-3">
 
     <!-- clear facets -->
-    <%= render partial: "search_partials/facets_clear" %>
+    <% if any_facets_selected? %>
+      <%= render partial: "search_partials/facets_clear" %>
+    <% end %>
 
     <!-- dates -->
     <%= render partial: "search_partials/date_limit" %>
@@ -15,63 +17,64 @@
   </div> <!-- col-md-3 -->
 
   <div class="col-md-9">
-    <%= render partial: "search_partials/author_year" %>
+    <% unless @search_bool %>
+      <%= render partial: "search_partials/author_year" %>
+    <% end %>
   </div>
 
 
   <!-- SEARCH RESULTS UNDER HERE -->
 
+  <% if @search_bool %>
+    <div class="col-md-9">
+      <%= render partial: "search_partials/result_summary_boxes" %>
 
-  <div class="col-md-9">
-
-  <div class="col-md-9">
-    <%= render partial: "search_partials/result_summary_boxes" %>
-
-    <!-- sorting and pagination -->
-    <div class="row search_controls">
-      <div class="col-md-3 search_limit">
-        <% if (@items[:num_found] > 1) %>
-          <%= render partial: "search_partials/sort",
-            locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
-            } %>
-        <% end %>
+      <!-- sorting and pagination -->
+      <div class="row search_controls">
+        <div class="col-md-3 search_limit">
+          <% if (@items[:num_found] > 1) %>
+            <%= render partial: "search_partials/sort",
+              locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
+              } %>
+          <% end %>
+        </div>
+        <div class="col-md-9 pagination_container">
+          <%= paginator(@total_pages) %>
+        </div>
       </div>
+
+      <!-- search results section -->
+      <h4>Your search returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
+
+
+      <% if @items[:num_found] > 0 %>
+        <% @items[:docs].each do |doc| %>
+          <div class="row searchResults">
+            <div class="col-md-9 col-md-push-3 search_results_title">
+              <%= link_to doc["title"], item_path(doc["id"]) %>
+              <% if doc["highlights"] %>
+                <ul class="highlighting">
+                  <% doc["highlights"].each do |hl| %>
+                    <li><%= hl.html_safe %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div> <!-- /col-md-9 -->
+            <!-- information about item -->
+            <div class="col-md-3 col-md-pull-9 search_results_info">
+              <ul>
+                <li><%= doc["dateDisplay"] %></li>
+                <li><%= doc["category"].titleize %></li>
+                <li><%= doc["creators"].join("; ") %></li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
       <div class="col-md-9 pagination_container">
         <%= paginator(@total_pages) %>
       </div>
     </div>
-
-    <!-- search results section -->
-    <h4>Your search returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
-
-
-    <% if @items[:num_found] > 0 %>
-      <% @items[:docs].each do |doc| %>
-        <div class="row searchResults">
-          <div class="col-md-9 col-md-push-3 search_results_title">
-            <%= link_to doc["title"], item_path(doc["id"]) %>
-            <% if doc["highlights"] %>
-              <ul class="highlighting">
-                <% doc["highlights"].each do |hl| %>
-                  <li><%= hl.html_safe %></li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div> <!-- /col-md-9 -->
-          <!-- information about item -->
-          <div class="col-md-3 col-md-pull-9 search_results_info">
-            <ul>
-              <li><%= doc["dateDisplay"] %></li>
-              <li><%= doc["category"].titleize %></li>
-              <li><%= doc["creators"].join("; ") %></li>
-            </ul>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
-    <div class="col-md-9 pagination_container">
-      <%= paginator(@total_pages) %>
-    </div>
-  </div>
+  <% end %>  <%# end search results, sorting, and pagination %>
 </div>
