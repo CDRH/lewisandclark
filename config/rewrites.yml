@@ -1,0 +1,99 @@
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+)&_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl$/
+    to:         /item/$1
+    options:
+        no_qs:  1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl&_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+)$/
+    to:         /item/$1
+    options:
+        no_qs:  1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?lc\.(advisoryboard|citations|editorial\.procedures|editorial\.symbols|faq|links|onlineeditorialprocedures|overview|privacy|projectteam|sitemap|sources|sponsors|technicalsummary)\.xml$/
+    to:         /item/lc.about.$1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?lc\.images_.+$/
+    to:         /images_people_places
+-
+    method:     r301
+    from:       /item/lc.img.corpus.01.xml
+    to:         /images
+-
+    method:     r301
+    from:       /item/lc.img.corpus.02.xml
+    to:         /images_maps
+-
+    method:     r301
+    from:       /item/lc.img.corpus.03.xml
+    to:         /images_people_places
+-
+    method:     r301
+    from:       /item/lc.img.corpus.04.xml
+    to:         /images_plants_animals
+-
+    method:     r301
+    from:       /item/sources.xml
+    to:         /item/lc.about.sources.xml
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?img_(?:clark|lewis)\.xml$/
+    to:         /images_people_places
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?img_(?:lc\.)?(.+)\.xml$/
+    to:         /item/lc.img.$1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?(18.+)\.xml$/
+    to:         /item/lc.jrn.$1
+    options:
+        not:    /^\/(item\/)?18.*kloefkorn/
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?((?:introduction|preface|v).+)\.xml$/
+    to:         /item/lc.jrn.$1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?(18.+kloefkorn.*)\.xml$/
+    to:         /item/lc.mult.$1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?lc\.(kloefkorn|video.+|white)\.xml$/
+    to:         /item/lc.mult.$1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?(white.+)\.xml$/
+    to:         /item/lc.mult.$1
+-
+    method:     r301
+    from:       /item/lc.aboutproject.xml
+    to:         /about
+-
+    method:     r301
+    from:       !ruby/regexp /^\/namesindex/?$/
+    to:         /journals/index
+-
+    method:     r301
+    from:       !ruby/regexp /^\/item\/lc\.(?:audio|multimedia)\.xml$/
+    to:         /multimedia
+-
+    method:     r301
+    from:       /item/lc.video.xml
+    to:         /multimedia#video
+-
+    method:     r301
+    from:       /item/lc.texts.xml
+    to:         /texts
+-
+    method:     r301
+    from:       /item/lc.toc.xml
+    to:         /journals/contents
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(?:item\/)?lc\.(allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield)\.xml$/
+    to:         /item/lc.sup.$1
+
