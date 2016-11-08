@@ -65,7 +65,9 @@
               <ul>
                 <li><%= doc["dateDisplay"] %></li>
                 <li><%= doc["category"].titleize %></li>
-                <li><%= doc["creators"].join("; ") %></li>
+                <% if doc["creators"] %>
+                  <li><%= doc["creators"].join("; ") %></li>
+                <% end %>
               </ul>
             </div>
           </div>

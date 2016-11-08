@@ -68,7 +68,9 @@ class ItemsController < ApplicationController
     date_to = format_date(options["date_to"], ["1806", "12", "31"])
     options.delete("date_from")
     options.delete("date_to")
-    options[:fq] << "lc_dateNotAfter_s:[#{date_from} TO #{date_to}]"
+    if !options["date_from"].blank? || !options["date_to"].blank?
+      options[:fq] << "lc_dateNotAfter_s:[#{date_from} TO #{date_to}]"
+    end
 
     # sort
     if (options[:q] || options[:qtext]) && !options[:sort]
