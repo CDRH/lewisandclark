@@ -2,7 +2,7 @@
 # because its YAML loading seems broken at present
 
 # Matching YAML file format for Rack::Rewrite with feature subset
-    # Method may only be "rewrite" or "r30[1,2,3,7]" syntax
+    # Method may only be "rewrite" or "r30[1,2,3,7,8]" syntax
 # URL rewrites and redirects with regexes work, but no procs or sending files
 # Addition - May specify to drop the query string with options['no_qs']
 
@@ -100,7 +100,7 @@ module CDRH
                         to += '?'+ qs
                     end
 
-                    if method =~ /r30[1237]/
+                    if method =~ /r30[12378]/
                         status = method[1..-1]
 
                         headers['Location'] = to

@@ -29,4 +29,8 @@
     to:         /blackhole
     options:
         not:    !ruby/regexp '/^\/warp\/[7-9]$/i'
+-
+    method:     r308
+    from:       /oldpostpath
+    to:         /newpostpath
 
