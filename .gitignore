@@ -29,6 +29,9 @@ config/solr.yml
 config/database.yml
 config.js
 
+# Ignore precompiled assets
+public/assets
+
 # Ignore htaccess
 .htaccess
 .DS_Store
