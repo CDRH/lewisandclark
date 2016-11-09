@@ -3,8 +3,8 @@
 <% if @facets %>
   <% Facets.facet_info.each do |facet_name, info| %>
     <%# only display subCategory if category selected %>
-    <% subCat_display = (facet_name == "subCategory" && !params["category"].blank?) || facet_name != "subCategory" %>
-    <% if @facets.has_key?(facet_name) && info["display"] && subCat_display %>
+    <% should_display = facet_name != "subCategory" || !params["category"].blank? %>
+    <% if should_display && @facets.has_key?(facet_name) && info["display"] %>
       <% facet_res = @facets[facet_name] %>
       <div class="panel panel-default">
 
