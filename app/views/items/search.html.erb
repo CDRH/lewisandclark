@@ -51,7 +51,11 @@
         <% @items[:docs].each do |doc| %>
           <div class="row searchResults">
             <div class="col-md-9 col-md-push-3 search_results_title">
-              <%= link_to doc["title"], item_path(doc["id"]) %>
+              <% if doc["lc_searchtype_s"] == "journal_entry" %>
+                <%= link_to doc["title"], item_path(doc["lc_filename_s"], anchor: doc["id"]) %>
+              <% else %>
+                <%= link_to doc["title"], item_path(doc["id"]) %>
+              <% end %>
               <% if doc["highlights"] %>
                 <ul class="highlighting">
                   <% doc["highlights"].each do |hl| %>
