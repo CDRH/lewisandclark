@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
     end
     # if lc_searchtype_s "journal file" specifically selected (unlikely),
     # then allow through, otherwise always omit from search
-    if options["lc_searchtype_s"] != "journal file"
+    if options["lc_searchtype_s"] != "journal_file"
       fq << 'lc_searchtype_s:(NOT "journal_file")'
     end
     options[:fq] = fq
