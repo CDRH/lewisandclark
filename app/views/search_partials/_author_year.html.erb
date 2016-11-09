@@ -1,0 +1,82 @@
+<div class="search_initial_display">
+  <h4>Journal Entry Author</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to search_path({:creators => "Lewis, Meriwether"}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">Captain Meriwether Lewis</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to search_path({:creators => "Clark, William"}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">Second Lieutenant William Clark</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to search_path({:creators => "Ordway, John"}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">Sergeant John Ordway</div>
+        </div>
+      <% end %>
+    </div>
+  </div> <!-- author /row -->
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to search_path({:creators => "Gass, Patrick"}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">Sergeant Patrick Gass</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to search_path({:creators => "Whitehouse, Joseph"}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">Private Joseph Whitehouse</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to search_path({:creators => "Floyd, Charles"}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">Sergeant Charles Floyd</div>
+        </div>
+      <% end %>
+    </div>
+  </div> <!-- author /row -->
+
+  <h4>Year</h4>
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to search_path({:date_from => ["1803"], :date_to => ["1803"]}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">1803</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to search_path({:date_from => ["1804"], :date_to => ["1804"]}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">1804</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to search_path({:date_from => ["1805"], :date_to => ["1805"]}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">1805</div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to search_path({:date_from => ["1806"], :date_to => ["1806"]}) do %>
+        <div class="panel panel-default">
+          <div class="panel-body">1806</div>
+        </div>
+      <% end %>
+    </div>
+  </div> <!-- year /row -->
+
+</div> <!-- /search_initial_display -->

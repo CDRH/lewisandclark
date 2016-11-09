@@ -1,92 +1,82 @@
-<h2>Search</h2>
-
 <!-- search form -->
-<div class="row">
+<%= render partial: "search_partials/searchbox" %>
+
+<div class="row search_form">
   <div class="col-md-3">
-    <%= form_tag(search_path, :method => "get", :class => "") do %>
-      <div class="form-group">
-        <%= hidden_field_tag(:qfield, "text") %>
-        <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search", :class => "form-control main_search_text") %>
-        <%# add facets to hidden fields %>
-        <% Facets.facet_list.each do |facet| %>
-          <%= hidden_field_tag(facet, params[facet]) if params[facet] %>
-        <% end %>
-        <% if params[:qtext] %>
-          <%= link_to "x", clear_search, :class => "brn btn-warning clear_main_search_text" %>
-        <% end %>
-        <button type="button" class="btn btn-link pull-left"  data-toggle="collapse" data-target="#search_help" aria-expanded="false" aria-controls="search_help">Search Options</button>
-        <%= submit_tag("Search", :class => "btn btn-info submit_main_search_text pull-right") %>
-      </div>
-      <br/>
-      <div class="collapse" id="search_help">
-        <div class="well">
-           <p >Advanced searching: you can exclude with a "-", use boolean operators like AND & OR, group items with (parentheses), and search for a phrase with "quotation marks."</p>
-        </div>
-      </div>
-    <% end %>
 
     <!-- clear facets -->
     <% if any_facets_selected? %>
-      <div class="clear-filters-container">
-        <%= link_to search_path({:qfield => params[:qfield], :qtext => params[:qtext]}),  {}, {class: "btn btn_default"} do %>
-          Clear all filters 
-          <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-        <% end %>
-      </div>
+      <%= render partial: "search_partials/facets_clear" %>
     <% end %>
 
-    <!-- facets -->
-    <%= render partial: "facets", locals: {facets: @facets} %>
+    <!-- dates -->
+    <%= render partial: "search_partials/date_limit" %>
+
+    <!-- facet lists -->
+    <%= render partial: "search_partials/facets", locals: {facets: @facets} %>
   </div> <!-- col-md-3 -->
 
   <div class="col-md-9">
-    <!-- sorting and pagination -->
-    <div class="row search_controls">
-      <div class="col-md-3 search_limit">
-        <% if (@items[:num_found] > 1) %>
-          <%= render partial: "sort", 
-            locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
-            } %>
-        <% end %>
+    <% unless @search_bool %>
+      <%= render partial: "search_partials/author_year" %>
+    <% end %>
+  </div>
+
+
+  <!-- SEARCH RESULTS UNDER HERE -->
+
+  <% if @search_bool %>
+    <div class="col-md-9">
+      <%= render partial: "search_partials/result_summary_boxes" %>
+
+      <!-- sorting and pagination -->
+      <div class="row search_controls">
+        <div class="col-md-3 search_limit">
+          <% if (@items[:num_found] > 1) %>
+            <%= render partial: "search_partials/sort",
+              locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
+              } %>
+          <% end %>
+        </div>
+        <div class="col-md-9 pagination_container">
+          <%= paginator(@total_pages) %>
+        </div>
       </div>
+
+      <!-- search results section -->
+      <h4>Your search returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
+
+
+      <% if @items[:num_found] > 0 %>
+        <% @items[:docs].each do |doc| %>
+          <div class="row searchResults">
+            <div class="col-md-9 col-md-push-3 search_results_title">
+              <%= link_to doc["title"], item_path(doc["id"]) %>
+              <% if doc["highlights"] %>
+                <ul class="highlighting">
+                  <% doc["highlights"].each do |hl| %>
+                    <li><%= hl.html_safe %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div> <!-- /col-md-9 -->
+            <!-- information about item -->
+            <div class="col-md-3 col-md-pull-9 search_results_info">
+              <ul>
+                <li><%= doc["dateDisplay"] %></li>
+                <li><%= doc["category"].titleize %></li>
+                <% if doc["creators"] %>
+                  <li><%= doc["creators"].join("; ") %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
       <div class="col-md-9 pagination_container">
         <%= paginator(@total_pages) %>
       </div>
     </div>
-
-    <!-- search results section -->
-    <h4>Your search for <%= params[:qtext] %> returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %></h4>
-
-
-    <% if @items[:num_found] > 0 %>
-      <% @items[:docs].each do |doc| %>
-        <div class="searchResults">
-          <div class="row">
-            <div class="col-md-12 search_results_info">
-              <%= link_to doc["title"], item_path(doc["id"]) %>
-              <ul>
-                <li><strong>Date</strong>: <%= doc["dateDisplay"] %></li>
-                <li><strong>Creators</strong>: <%= doc["creators"].join("; ") if doc["creators"] %></li>
-                <li><strong>Source</strong>: <%= doc["source"] %></li>
-              </ul>
-              <!-- highlighting -->
-              <div class="col-md-8 search_results_text">
-                <% if doc["highlights"] %>
-                  <ul class="highlighting">
-                    <% doc["highlights"].each do |hl| %>
-                      <li><%= hl.html_safe %></li>
-                    <% end %>
-                  </ul>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
-    <div class="col-md-9 pagination_container">
-      <%= paginator(@total_pages) %>
-    </div>
-  </div>
+  <% end %>  <%# end search results, sorting, and pagination %>
 </div>

@@ -1,0 +1,43 @@
+<%# iterate through all of the configured facets
+    and match them with the incoming solr facet results %>
+<% if @facets %>
+  <% Facets.facet_info.each do |facet_name, info| %>
+    <%# only display subCategory if category selected %>
+    <% should_display = facet_name != "subCategory" || !params["category"].blank? %>
+    <% if should_display && @facets.has_key?(facet_name) && info["display"] %>
+      <% facet_res = @facets[facet_name] %>
+      <div class="panel panel-default">
+
+        <!-- panel heading -->
+        <div class="panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>">
+          <h3 class="panel-title"><%= info["label"] %></h3>
+        </div>
+
+        <!-- panel body -->
+        <%# if requested parameter, then do not collapse facet %>
+        <% start_open = params[facet_name].blank? ? "" : "in" %>
+        <div class="panel-body collapse <%= start_open %>" id="fc-<%= facet_name %>">
+          <ul class="list-unstyled">
+            <% facet_res.each do |key, value| %>
+              <% selected = facet_selected?(facet_name, key) %>
+              <% label = key.length > 0 ? key : "No Label" %>
+
+              <!-- list item -->
+              <li <%= selected_class(selected) %>>
+                <%= link_to label, search_path(facet_link(facet_name, key)) %>
+                <span class="badge"><%= value %></span>
+                <% if selected %>
+                  <%= link_to search_path(remove_facet(facet_name)) do %>
+                    <button class="btn btn-warning btn-xs">x</button>
+                  <% end %>
+                <% end %>
+              </li>
+
+            <% end %>
+          </ul>
+        </div> <!-- /panel-body -->
+
+      </div> <!-- /panel panel-default -->
+    <% end %>
+  <% end %>
+<% end %>
