@@ -106,6 +106,12 @@
     to:         /search
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.(allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.((?:allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield).*)\.xml$/
     to:         /item/lc.sup.$1
+
+# Remove trailing slashes
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(.+)\/+$/
+    to:         /$1
 
