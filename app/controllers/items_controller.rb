@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     @facets = $solr.get_facets({
       "facet.sort" => "index",
       "facet.limit" => "-1",
+      "fq" => ['lc_searchtype_s:(NOT "journal_file")']
       }, facets)
   end
 
@@ -59,6 +60,11 @@ class ItemsController < ApplicationController
       if options[key]
         fq << "#{key.to_s}:\"#{options[key]}\""
       end
+    end
+    # if lc_searchtype_s "journal file" specifically selected (unlikely),
+    # then allow through, otherwise always omit from search
+    if options["lc_searchtype_s"] != "journal file"
+      fq << 'lc_searchtype_s:(NOT "journal_file")'
     end
     options[:fq] = fq
 
