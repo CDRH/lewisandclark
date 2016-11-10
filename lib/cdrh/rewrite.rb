@@ -99,34 +99,39 @@ module CDRH
                     # Rewrite variables
                     method = rewrite['method']
                     to = compute_to(rewrite['from'], path_qs, to)
-                    if !qs.empty? && !options['no_qs']
-                        to += '?'+ qs
+                    to_qs = (!qs.empty? && !options['no_qs']) \
+                        ? to +'?'+ qs \
+                        : to
+
+                    if request.path_info === '/' && to === request.path[0..-2]
+                        puts "CDRH::Rewrite - Skipping rule that loops redirects to site root\n  From: #{from}\n  To: #{to_qs}"
+                        next
                     end
 
                     if method =~ /r30[12378]/
                         status = method[1..-1]
 
-                        headers['Location'] = to
+                        headers['Location'] = to_qs
                         headers['Content-Type'] = Rack::Mime.mime_type(File.extname(to), fallback='text/html')
 
-                        body.push %Q{Redirecting to <a href="#{to}">#{to}</a>}
+                        body.push %Q{Redirecting to <a href="#{to_qs}">#{to_qs}</a>}
 
-                        puts "CDRH::Rewrite - Redirecting #{path_qs} to #{to}"
+                        puts "CDRH::Rewrite - Redirecting #{path_qs} to #{to_qs}"
 
                         return [status, headers, body]
                     elsif method == "rewrite"
-                        env['REQUEST_URI'] = to
-                        if q_index = to.index('?')
-                            env['PATH_INFO'] = to[0..q_index-1]
+                        env['REQUEST_URI'] = to_qs
+                        if q_index = to_qs.index('?')
+                            env['PATH_INFO'] = to_qs[0..q_index-1]
                             env['QUERY_STRING'] = (!options['no_qs']) \
-                                ? to[q_index+1..-1] \
+                                ? to_qs[q_index+1..-1] \
                                 : ''
                         else
-                            env['PATH_INFO'] = to
+                            env['PATH_INFO'] = to_qs
                             env['QUERY_STRING'] = ''
                         end
 
-                        puts "CDRH::Rewrite - Rewriting #{path_qs} to #{to}"
+                        puts "CDRH::Rewrite - Rewriting #{path_qs} to #{to_qs}"
 
                         # Recheck rules after rewrite
                         return route_request(env)
