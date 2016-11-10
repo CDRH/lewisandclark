@@ -1,3 +1,4 @@
+# XSL
 -
     method:     r301
     from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+)&_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl$/
@@ -10,48 +11,28 @@
     to:         /item/$1
     options:
         no_qs:  1
+
+# About
 -
     method:     r301
     from:       !ruby/regexp /^\/item\/lc\.(advisoryboard|citations|faq|links|onlineeditorialprocedures|overview|privacy|projectteam|sponsors|technicalsummary)\.xml$/
     to:         /item/lc.about.$1
--
-    method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.images_.+$/
-    to:         /images_people_places
--
-    method:     r301
-    from:       /item/lc.img.corpus.01.xml
-    to:         /images
--
-    method:     r301
-    from:       /item/lc.img.corpus.02.xml
-    to:         /images_maps
--
-    method:     r301
-    from:       /item/lc.img.corpus.03.xml
-    to:         /images_people_places
--
-    method:     r301
-    from:       /item/lc.img.corpus.04.xml
-    to:         /images_plants_animals
--
-    method:     r301
-    from:       /item/sources.xml
-    to:         /item/lc.about.sources.xml
--
-    method:     r301
-    from:       !ruby/regexp /^\/item\/img_(?:clark|lewis)\.xml$/
-    to:         /images_people_places
+
+# Image
 -
     method:     r301
     from:       !ruby/regexp /^\/item\/img_(?:lc\.)?(.+)\.xml$/
     to:         /item/lc.img.$1
+
+# Journal Entry
 -
     method:     r301
     from:       !ruby/regexp /^\/item\/(18.+)\.xml$/
     to:         /item/lc.jrn.$1
     options:
         not:    /^\/item\/18.*kloefkorn/
+
+# Journal Extras
 -
     method:     r301
     from:       !ruby/regexp /^\/item\/((?:introduction|preface|v).+)\.xml$/
@@ -60,6 +41,8 @@
     method:     r301
     from:       !ruby/regexp /^\/item\/lc\.(editorial\.procedures|editorial\.symbols|sources)\.xml$/
     to:         /item/lc.jrn.$1
+
+# Multimedia
 -
     method:     r301
     from:       !ruby/regexp /^\/item\/(18.+kloefkorn.*)\.xml$/
@@ -72,10 +55,36 @@
     method:     r301
     from:       !ruby/regexp /^\/item\/(white.+)\.xml$/
     to:         /item/lc.mult.$1
+
+# Navigation
 -
     method:     r301
     from:       /item/lc.aboutproject.xml
     to:         /about
+-
+    method:     r301
+    from:       !ruby/regexp /^\/item\/lc\.images_.+$/
+    to:         /images/people_places
+-
+    method:     r301
+    from:       /item/lc.img.corpus.01.xml
+    to:         /images
+-
+    method:     r301
+    from:       /item/lc.img.corpus.02.xml
+    to:         /images/maps
+-
+    method:     r301
+    from:       /item/lc.img.corpus.03.xml
+    to:         /images/people_places
+-
+    method:     r301
+    from:       /item/lc.img.corpus.04.xml
+    to:         /images/plants_animals
+-
+    method:     r301
+    from:       !ruby/regexp /^\/item\/img_(?:clark|lewis)\.xml$/
+    to:         /images/people_places
 -
     method:     r301
     from:       !ruby/regexp /^\/namesindex/?$/
@@ -104,6 +113,8 @@
     method:     r301
     from:       !ruby/regexp /^\/(lewisandclark\/)?search.php$/
     to:         /search
+
+# Supplementary
 -
     method:     r301
     from:       !ruby/regexp /^\/item\/lc\.((?:allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield).*)\.xml$/
