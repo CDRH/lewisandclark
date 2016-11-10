@@ -26,5 +26,7 @@
 //= require calendar/dates
 //= require calendar/calendar
 //
-//= require_tree .
+// map included separately
+//
+// require_tree .
 //= ekko-lightbox.min
