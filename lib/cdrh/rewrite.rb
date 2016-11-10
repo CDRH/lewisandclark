@@ -48,12 +48,16 @@ module CDRH
             end
         end
 
-        def compute_to(from, path_qs, to)
-            if from.is_a?(Regexp) && from.match(path_qs)
+        def compute_to(from, request, path_qs, to)
+            if from.is_a?(Regexp) && (from.match(request.path) || from.match(path_qs))
+                matched_path = from.match(request.path) \
+                    ? from.match(request.path) \
+                    : from.match(path_qs)
+
                 computed_to = to.dup
-                computed_to.gsub!("$&", from.match(path_qs).to_s)
-                (from.match(path_qs).size - 1).downto(1) do |num|
-                    computed_to.gsub!("$#{num}", from.match(path_qs)[num].to_s)
+                computed_to.gsub!("$&", matched_path.to_s)
+                (matched_path.size - 1).downto(1) do |num|
+                    computed_to.gsub!("$#{num}", matched_path[num].to_s)
                 end
 
                 return computed_to
@@ -98,7 +102,7 @@ module CDRH
 
                     # Rewrite variables
                     method = rewrite['method']
-                    to = compute_to(rewrite['from'], path_qs, to)
+                    to = compute_to(rewrite['from'], request, path_qs, to)
                     to_qs = (!qs.empty? && !options['no_qs']) \
                         ? to +'?'+ qs \
                         : to
