@@ -1,12 +1,12 @@
 # XSL
 -
-    method:     r301
+    method:     rewrite
     from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+)&_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl$/
     to:         /item/$1
     options:
         no_qs:  1
 -
-    method:     r301
+    method:     rewrite
     from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl&_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+)$/
     to:         /item/$1
     options:

@@ -1,6 +1,11 @@
-# Tip: Requesting /herp?test=1 is a good test of ordered, chained redirections
-# and shows non-regexp "from" requires an exact match & doesn't prefix match
-# with third rule's "from" '/test' not matching redirected '/test/1'
+# Tip: Requesting /herp_alias?test=1 is good test of ordered, chained redirects
+# and shows non-regexp "from" requires an exact match
+# by not prefix matching fourth rule's "from" value '/test'
+# against redirected '/test/1'
+-
+    method:     rewrite
+    from:       /herp_alias
+    to:         /herp
 -
     method:     r301
     from:       /herp
@@ -19,10 +24,6 @@
     method:     r303
     from:       /test
     to:         /testyourmight
--
-    method:     rewrite
-    from:       /about_alias
-    to:         /about
 -
     method:     r307
     from:       !ruby/regexp '/^\/warp\/[1-9]$/i'

@@ -4,7 +4,10 @@
 # Matching YAML file format for Rack::Rewrite with feature subset
     # Method may only be "rewrite" or "r30[1,2,3,7,8]" syntax
 # URL rewrites and redirects with regexes work, but no procs or sending files
-# Addition - May specify to drop the query string with options['no_qs']
+
+# Additions
+# - May specify to drop the query string with options['no_qs']
+# - Rewrites are checked again before returned to prevent multiple redirects
 
 require 'yaml'
 
@@ -59,18 +62,18 @@ module CDRH
             end
         end
 
-        def match_options_not?(from_not, r, path_qs)
+        def match_options_not?(from_not, request, path_qs)
             from_not.is_a?(Regexp) \
-            && (r.path.match(from_not) || path_qs.match(from_not)) \
-            || (r.path === from_not || path_qs === from_not) \
+            && (request.path.match(from_not) || path_qs.match(from_not)) \
+            || (request.path === from_not || path_qs === from_not) \
                 ? true \
                 : false
         end
 
         def route_request(env)
-            r = Rack::Request.new(env)
-            path_qs = r.path || ''
-            qs = r.query_string || ''
+            request = Rack::Request.new(env)
+            path_qs = request.path || ''
+            qs = request.query_string || ''
             if not qs.empty?
                 path_qs += '?'+ qs
             end
@@ -80,15 +83,15 @@ module CDRH
                     ? rewrite['options'] \
                     : {}
 
-                next if options['host'] && !r.host.match(options['host'])
+                next if options['host'] && !request.host.match(options['host'])
                 next if options['method'] && !env['REQUEST_METHOD'].match(options['method'])
-                next if options['scheme'] && !r.scheme.match(options['scheme'])
+                next if options['scheme'] && !request.scheme.match(options['scheme'])
 
                 from = rewrite['from']
                 to = rewrite['to']
                 from_not = options['not'] || ''
 
-                if rule_matches?(from, r, path_qs, from_not)
+                if rule_matches?(from, request, path_qs, from_not)
                     # Response variables
                     body = []
                     headers = {}
@@ -125,7 +128,8 @@ module CDRH
 
                         puts "CDRH::Rewrite - Rewriting #{path_qs} to #{to}"
 
-                        return nil
+                        # Recheck rules after rewrite
+                        return route_request(env)
                     end
                 end
             end
@@ -133,13 +137,13 @@ module CDRH
             return nil
         end # /route_request
 
-        def rule_matches?(from, r, path_qs, from_not)
+        def rule_matches?(from, request, path_qs, from_not)
             from.is_a?(Regexp) \
-            &&  ((r.path.match(from) || path_qs.match(from)) \
-                && !match_options_not?(from_not, r, path_qs) \
+            &&  ((request.path.match(from) || path_qs.match(from)) \
+                && !match_options_not?(from_not, request, path_qs) \
             ) \
-            || ((r.path === from || path_qs === from) \
-                && !match_options_not?(from_not, r, path_qs) \
+            || ((request.path === from || path_qs === from) \
+                && !match_options_not?(from_not, request, path_qs) \
             ) \
                 ? true \
                 : false
