@@ -38,23 +38,6 @@
             <% end %>
             </h1>
           </div><!-- /site_title -->
-          
-        </div><!-- /column -->
-        <div class="col-md-4">
-          <div class="home_search">
-            <%= form_tag search_path, method: "get", class: "form-inline pull-right" do %>
-              <div class="form-group">
-                <%= hidden_field_tag "subCategory", "Journal Entries" %>
-                <%= hidden_field_tag "qfield", "text" %>
-                <%= text_field_tag "qtext", params["qtext"], id: "main_site_search",
-                    placeholder: "Search Terms", class: "form-control" %>
-                <%= submit_tag "Search", class: "btn btn-default" do %>
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                  <span class="sr-only">Search</span>
-                <% end %>
-              </div>
-            <% end %>
-          </div><!-- /home_search -->
         </div><!-- /column -->
       </div><!-- /row -->
     </div><!-- /container -->
@@ -76,6 +59,7 @@
             <li><%= link_to "Books & Articles", texts_path %></li>
             <li><%= link_to "Images & Maps", images_path %></li>
             <li><%= link_to "Audio & Video", multimedia_path %></li>
+            <li><%= link_to "Search", search_path %></li>
             <!-- <li><#= link_to "Interactive Map", map_path %></li> -->
           </ul>
           <ul class="nav navbar-nav navbar-right">

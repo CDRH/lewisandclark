@@ -13,8 +13,14 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @page_type = "search"
-    search_and_facet
+    @search_bool = true
+    options = {
+        :qtext => "*",
+        :page => params['page'] || 1
+    }
+    @items = $solr.query(options)
+    @total_pages = @items[:pages]
+    @facets = $solr.get_facets(options)
   end
 
   def show

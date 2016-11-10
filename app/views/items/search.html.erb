@@ -1,44 +1,11 @@
-<!-- search form -->
-<%= render partial: "search_partials/searchbox" %>
-
 <div class="row search_form">
-  <div class="col-md-3">
-
-    <!-- clear facets -->
-    <% if any_facets_selected? %>
-      <%= render partial: "search_partials/facets_clear" %>
-    <% end %>
-
-    <!-- dates -->
-    <%= render partial: "search_partials/date_limit" %>
-
-    <!-- facet lists -->
-    <%= render partial: "search_partials/facets", locals: {facets: @facets} %>
-  </div> <!-- col-md-3 -->
-
-  <div class="col-md-9">
-    <% unless @search_bool %>
-      <%= render partial: "search_partials/author_year" %>
-    <% end %>
-  </div>
-
-
   <!-- SEARCH RESULTS UNDER HERE -->
 
   <% if @search_bool %>
     <div class="col-md-9">
-      <%= render partial: "search_partials/result_summary_boxes" %>
-
       <!-- sorting and pagination -->
       <div class="row search_controls">
-        <div class="col-md-3 search_limit">
-          <% if (@items[:num_found] > 1) %>
-            <%= render partial: "search_partials/sort",
-              locals: { sort_by: params[:sort], page_type: @page_type, query: params[:qtext]
-              } %>
-          <% end %>
-        </div>
-        <div class="col-md-9 pagination_container">
+        <div class="col-md-12 pagination_container">
           <%= paginator(@total_pages) %>
         </div>
       </div>

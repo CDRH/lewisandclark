@@ -24,13 +24,7 @@
 
               <!-- list item -->
               <li <%= selected_class(selected) %>>
-                <%= link_to label, search_path(facet_link(facet_name, key)) %>
-                <span class="badge"><%= value %></span>
-                <% if selected %>
-                  <%= link_to search_path(remove_facet(facet_name)) do %>
-                    <button class="btn btn-warning btn-xs">x</button>
-                  <% end %>
-                <% end %>
+                Removed
               </li>
 
             <% end %>

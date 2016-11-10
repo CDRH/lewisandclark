@@ -7,10 +7,9 @@ Sort by: <br />
 <% if query %>
   <%# if query exists, then score should be the default and should be displayed %>
   <% score_selected = true if !sort_by %>
-  <%= link_to "Relevancy", search_path(sort("score desc")), :class => "btn btn-xs #{score_selected == true ? 'btn-info' : 'btn-default'}" %>
+  Removed
 <% else %>
   <% title_selected = true if !score_selected && !date_selected %>
 <% end %>
 
-<%= link_to "Title", search_path(sort("title asc")), :class => "btn btn-xs #{title_selected == true ? 'btn-info' : 'btn-default'}" %>
-<%= link_to "Date", search_path(sort("date asc")), :class => "btn btn-xs #{date_selected == true ? 'btn-info' : 'btn-default'}" %>
+Removed

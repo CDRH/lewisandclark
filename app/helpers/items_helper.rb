@@ -25,7 +25,7 @@ module ItemsHelper
       dataArray = data.map do |item|
         if link_bool
           search_params = { qfield: solr_ele, qtext: item }
-          link_to item, search_path(search_params)
+          link_to item
         else
           item
         end

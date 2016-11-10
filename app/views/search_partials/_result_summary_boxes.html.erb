@@ -11,19 +11,4 @@
 <% end %>
 
 <!-- selected facets -->
-<% if @facets %>
-  <% Facets.facet_info.each do |facet_name, info| %>
-    <% if !params[facet_name].blank? && info["display"] %>
-      <div class="btn-group" role="group" aria-label="remove facet <%= facet_name %>">
-        <span type="button" class="btn btn-default btn-sm">
-          <span class="filter-name"><%= info["label"] %></span>
-          :
-          <span class="filter-value" title=<%= facet_name %>><%= params[facet_name] %></span>
-        </span>
-        <%= link_to search_path(remove_facet(facet_name)), class: "btn btn-default btn-sm" do %>
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
+Removed
