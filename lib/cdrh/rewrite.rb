@@ -15,6 +15,7 @@ module CDRH
     class Rewrite
         # Variables
         @@rewrites = nil
+        @@uri_prefix = nil
 
         # Save rewrites as class variable to only load once at server start
         if @@rewrites.nil?
@@ -37,6 +38,20 @@ module CDRH
 
         protected
         def _call(env)
+            # Determine if URI prefix upon receiving first request
+            if @@uri_prefix.nil?
+                request = Rack::Request.new(env)
+
+                if request.path_info != request.path
+                    # Remove last occurrence of path_info
+                    # so removing / from /prefix/ is /prefix
+                    @@uri_prefix = request.path.sub(/(.*)(#{request.path_info})(.*)/, '\1\3')
+                    puts "CDRH::Rewrite - URI prefix set to '#{@@uri_prefix}'"
+                else
+                    @@uri_prefix = ''
+                end
+            end
+
             response = !@@rewrites.nil? \
                 ? route_request(env) \
                 : nil
@@ -49,9 +64,12 @@ module CDRH
         end
 
         def compute_to(from, request, path_qs, to)
-            if from.is_a?(Regexp) && (from.match(request.path) || from.match(path_qs))
-                matched_path = from.match(request.path) \
-                    ? from.match(request.path) \
+            # Prepend URI prefix if present
+            to = @@uri_prefix + to if !@@uri_prefix.blank?
+
+            if from.is_a?(Regexp) && (from.match(request.path_info) || from.match(path_qs))
+                matched_path = from.match(request.path_info) \
+                    ? from.match(request.path_info) \
                     : from.match(path_qs)
 
                 computed_to = to.dup
@@ -68,15 +86,15 @@ module CDRH
 
         def match_options_not?(from_not, request, path_qs)
             from_not.is_a?(Regexp) \
-            && (request.path.match(from_not) || path_qs.match(from_not)) \
-            || (request.path === from_not || path_qs === from_not) \
+            && (request.path_info.match(from_not) || path_qs.match(from_not)) \
+            || (request.path_info === from_not || path_qs === from_not) \
                 ? true \
                 : false
         end
 
         def route_request(env)
             request = Rack::Request.new(env)
-            path_qs = request.path || ''
+            path_qs = request.path_info || ''
             qs = request.query_string || ''
             if not qs.empty?
                 path_qs += '?'+ qs
@@ -148,10 +166,10 @@ module CDRH
 
         def rule_matches?(from, request, path_qs, from_not)
             from.is_a?(Regexp) \
-            &&  ((request.path.match(from) || path_qs.match(from)) \
+            &&  ((request.path_info.match(from) || path_qs.match(from)) \
                 && !match_options_not?(from_not, request, path_qs) \
             ) \
-            || ((request.path === from || path_qs === from) \
+            || ((request.path_info === from || path_qs === from) \
                 && !match_options_not?(from_not, request, path_qs) \
             ) \
                 ? true \
