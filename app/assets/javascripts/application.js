@@ -21,10 +21,5 @@
 //
 //= require bootstrap.min
 //
-// set up the calendar loading order
-//= require bootstrap-year-calendar.min.js
-//= require calendar/dates
-//= require calendar/calendar
-//
-//= require_tree .
+// require_tree .
 //= ekko-lightbox.min
