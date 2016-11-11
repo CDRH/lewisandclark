@@ -1,11 +1,28 @@
 <!-- javascripts -->
 <%= javascript_include_tag "leaflet", media: "all" %>
 <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+
+<script>
+  <% if @json.nil? %>
+    var locations = [];
+  <% else %>
+    var locations = <%= @json.html_safe %>;
+  <% end %>
+</script>
+
 <%= javascript_include_tag "map", media: "all" %>
 
 <!-- stylesheets -->
 <%= stylesheet_link_tag "leaflet", media: "all" %>
 
 <h2>Map</h2>
+
+<%= form_tag(map_path, :method => "get", :class => "input-group form-control") do %>
+  <%= hidden_field_tag(:qfield, "text") %>
+  <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
+  <span class="input-group-btn">
+    <%= submit_tag("Search", :class => "btn btn-primary") %>
+  </span>
+<% end %>
 
 <div id="map_container"></div>

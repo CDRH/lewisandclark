@@ -12,6 +12,46 @@ class ItemsController < ApplicationController
       }, facets)
   end
 
+  def map
+    @page_type = "map"
+    options = create_search_options(params)
+    res = $solr.query(options.merge({
+      :fl => "id, lc_geo_coordinates_p, title, lc_filename_s",
+      :rows => 4290,
+      :fq => ["lc_searchtype_s:journal_entry"]
+    }))
+    json = []
+    places = {}
+    # group all the incoming results by lat and long location
+    # (there can be multiple entries per location)
+    res[:docs].each do |item|
+      if item["lc_geo_coordinates_p"]
+        if places.has_key?(item["lc_geo_coordinates_p"])
+          places[item["lc_geo_coordinates_p"]] << item
+        else
+          places[item["lc_geo_coordinates_p"]] = []
+        end
+      end
+    end
+    # for each lat / long, stick all the entries in
+    places.each do |latlong, items|
+      lat, long = latlong.split(",")
+      point = {
+        "name" => latlong,
+        "latlong" => [lat, long],
+        "entries" => []
+      }
+      items.each do |item|
+        point["entries"] << {
+          "title" => item["title"],
+          "id" => "#{item['lc_filename_s']}##{item['id']}"
+        }
+      end
+      json << point
+    end
+    @json = json.to_json
+  end
+
   def search
     @page_type = "search"
     search_and_facet
