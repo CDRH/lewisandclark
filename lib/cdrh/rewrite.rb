@@ -125,8 +125,12 @@ module CDRH
                         ? to +'?'+ qs \
                         : to
 
-                    if request.path_info === '/' && to === request.path[0..-2]
-                        puts "CDRH::Rewrite - Skipping rule that loops redirects to site root\n  From: #{from}\n  To: #{to_qs}"
+                    if to === request.path
+                        puts "CDRH::Rewrite - Skipping rule that redirects to self in infinte loop"
+                        puts "  Request Path: #{request.path}"
+                        puts "  Rule From: #{from}"
+                        puts "  Rule To: #{rewrite['to']}"
+                        puts "    Evals: #{to}"
                         next
                     end
 
