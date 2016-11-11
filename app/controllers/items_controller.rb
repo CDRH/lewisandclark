@@ -25,11 +25,12 @@ class ItemsController < ApplicationController
     # group all the incoming results by lat and long location
     # (there can be multiple entries per location)
     res[:docs].each do |item|
-      if item["lc_geo_coordinates_p"]
-        if places.has_key?(item["lc_geo_coordinates_p"])
-          places[item["lc_geo_coordinates_p"]] << item
+      coords = item["lc_geo_coordinates_p"]
+      if coords
+        if places.has_key?(coords)
+          places[coords] << item
         else
-          places[item["lc_geo_coordinates_p"]] = []
+          places[coords] = [item]
         end
       end
     end
