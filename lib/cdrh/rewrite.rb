@@ -86,15 +86,24 @@ module CDRH
 
         def match_options_not?(from_not, request, path_qs)
             from_not.is_a?(Regexp) \
+<<<<<<< HEAD
             && (request.path_info.match(from_not) || path_qs.match(from_not)) \
             || (request.path_info === from_not || path_qs === from_not) \
+=======
+            && (request.path.match(from_not) || path_qs.match(from_not)) \
+            || (request.path === from_not || path_qs === from_not) \
+>>>>>>> 85a85de0a0025dec70a5c2cffd02079066501d1b
                 ? true \
                 : false
         end
 
         def route_request(env)
             request = Rack::Request.new(env)
+<<<<<<< HEAD
             path_qs = request.path_info || ''
+=======
+            path_qs = request.path || ''
+>>>>>>> 85a85de0a0025dec70a5c2cffd02079066501d1b
             qs = request.query_string || ''
             if not qs.empty?
                 path_qs += '?'+ qs
@@ -170,10 +179,17 @@ module CDRH
 
         def rule_matches?(from, request, path_qs, from_not)
             from.is_a?(Regexp) \
+<<<<<<< HEAD
             &&  ((request.path_info.match(from) || path_qs.match(from)) \
                 && !match_options_not?(from_not, request, path_qs) \
             ) \
             || ((request.path_info === from || path_qs === from) \
+=======
+            &&  ((request.path.match(from) || path_qs.match(from)) \
+                && !match_options_not?(from_not, request, path_qs) \
+            ) \
+            || ((request.path === from || path_qs === from) \
+>>>>>>> 85a85de0a0025dec70a5c2cffd02079066501d1b
                 && !match_options_not?(from_not, request, path_qs) \
             ) \
                 ? true \
