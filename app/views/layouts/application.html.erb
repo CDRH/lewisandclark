@@ -43,15 +43,22 @@
         <div class="col-md-4">
           <div class="home_search">
             <%= form_tag search_path, method: "get", class: "form-inline pull-right" do %>
+              <%= hidden_field_tag "qfield", "text" %>
               <div class="form-group">
-                <%= hidden_field_tag "subCategory", "Journal Entries" %>
-                <%= hidden_field_tag "qfield", "text" %>
-                <%= text_field_tag "qtext", params["qtext"], id: "main_site_search",
-                    placeholder: "Search Terms", class: "form-control" %>
-                <%= submit_tag "Search", class: "btn btn-default" do %>
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                  <span class="sr-only">Search</span>
-                <% end %>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <span class="sr-only">Search</span>
+                  </div>
+                  <%= text_field_tag "qtext", params["qtext"],
+                      id: "main_site_search", placeholder: "Search All Items",
+                      class: "form-control" %>
+                  <div class="input-group-btn">
+                    <%= submit_tag "Search", class: "btn btn-default" do %>
+                    <% end %>
+                  </div>
+                </div><!-- /input-group -->
+                <a href="search.html" class="btn btn-link pull-right"><small>Advanced Search</small></a>
               </div>
             <% end %>
           </div><!-- /home_search -->
