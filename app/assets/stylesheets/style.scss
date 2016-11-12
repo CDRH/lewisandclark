@@ -154,14 +154,14 @@ body {
 .footnote .table > tbody > tr > td,
 .footnote .table > tfoot > tr > th,
 .footnote .table > tfoot > tr > td {
-  border: none;
-  font-size: .9em;
+  border: none !important;
+  font-size: .9em !important;
 }
 
 .entry table.table,
 .footnote table.table {
-  width: auto;
-  margin: 0 auto;
+  width: auto !important;
+  margin: 0 auto !important;
 }
 
 .italic {
