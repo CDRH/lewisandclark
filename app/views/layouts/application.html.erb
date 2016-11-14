@@ -11,13 +11,13 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900" rel="stylesheet">
-  
+
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
   <!-- Scripts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
-  
+
   <!-- Fonts -->
   <%# fonts are being called from bootstrap scss variables file %>
   <script type="text/javascript">
@@ -38,19 +38,27 @@
             <% end %>
             </h1>
           </div><!-- /site_title -->
-          
+
         </div><!-- /column -->
         <div class="col-md-4">
           <div class="home_search">
             <%= form_tag search_path, method: "get", class: "form-inline pull-right" do %>
+              <%= hidden_field_tag "qfield", "text" %>
               <div class="form-group">
-                <%= hidden_field_tag "subCategory", "Journal Entries" %>
-                <%= hidden_field_tag "qfield", "text" %>
-                <%= text_field_tag "qtext", params["qtext"], id: "main_site_search",
-                    placeholder: "Search Terms", class: "form-control" %>
-                <%= submit_tag "Search", class: "btn btn-default" do %>
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                  <span class="sr-only">Search</span>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <span class="sr-only">Search</span>
+                  </div>
+                  <%= text_field_tag "qtext", params["qtext"],
+                      id: "main_site_search", placeholder: "Search All Items",
+                      class: "form-control" %>
+                  <div class="input-group-btn">
+                    <%= submit_tag "Search", class: "btn btn-default" %>
+                  </div>
+                </div><!-- /input-group -->
+                <%= link_to search_path, class: "btn btn-link pull-right" do %>
+                  <small>Advanced Search</small>
                 <% end %>
               </div>
             <% end %>

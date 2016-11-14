@@ -2,24 +2,26 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
-          <%= form_tag(search_path, :method => "get", :class => "input-group") do %>
-            <%= hidden_field_tag(:qfield, "text") %>
-            <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
+        <div class="row">
+          <div class="col-md-10">
+            <%= form_tag(search_path, :method => "get", :class => "input-group") do %>
+              <%= hidden_field_tag(:qfield, "text") %>
+              <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
 
-            <%= render partial: "search_partials/facet_hidden_fields" %>
+              <%= render partial: "search_partials/facet_hidden_fields" %>
 
-            <%# TODO add this back in? #>
-            <%# if params[:qtext] %>
-              <%# link_to "x", clear_search, :class => "btn btn-warning clear_main_search_text" %>
-            <%# end %>
-
-            <span class="input-group-btn">
-              <%= submit_tag("Search", :class => "btn btn-primary") %>
-            </span>
-          <% end %>
-        <%= render partial: "search_partials/help" %>
-        <%= link_to "Search All Items", search_path({ :all => true }) %>
-      </div>
-    </div> <!-- /search panel -->
-  </div>
+              <span class="input-group-btn">
+                <%= submit_tag("Search", :class => "btn btn-primary") %>
+              </span>
+            <% end %>
+            <%= render partial: "search_partials/help" %>
+            <%= link_to "Browse All Items", search_path({ :all => true }) %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "Reset Search", search_path({}), :class => "btn btn-danger clear_main_search_text" %>
+          </div>
+        </div> <!-- /row -->
+      </div> <!-- /panel-body -->
+    </div> <!-- /panel-default -->
+  </div> <!-- /col-md-12 -->
 </div> <!-- /row /searchbox -->

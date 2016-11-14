@@ -1,17 +1,5 @@
 class ItemsController < ApplicationController
 
-  def browse
-    @page_type = "browse"
-    facets = Facets.facet_list
-    # TODO handle this in the future better
-    # because some facets commented out in facets.rb
-    @facets = $solr.get_facets({
-      "facet.sort" => "index",
-      "facet.limit" => "-1",
-      "fq" => ['lc_searchtype_s:(NOT "journal_file")']
-      }, facets)
-  end
-
   def map
     @page_type = "map"
     options = create_search_options(params)
@@ -93,7 +81,9 @@ class ItemsController < ApplicationController
     options = ActionController::Parameters.new(aParams)
     # make sure that empty search terms go through okay
     if !options[:qtext].nil? && options[:qtext].empty?
-      options[:qtext] = "*"
+      options.delete("qfield")
+      options.delete("qtext")
+      @search_bool = true
     end
 
     # filter queries (facets)
@@ -143,4 +133,5 @@ class ItemsController < ApplicationController
     has_page = !params["page"].blank?
     return has_facets || has_query || has_sort || has_page
   end
+
 end
