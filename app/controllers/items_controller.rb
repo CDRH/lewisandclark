@@ -1,17 +1,5 @@
 class ItemsController < ApplicationController
 
-  def browse
-    @page_type = "browse"
-    facets = Facets.facet_list
-    # TODO handle this in the future better
-    # because some facets commented out in facets.rb
-    @facets = $solr.get_facets({
-      "facet.sort" => "index",
-      "facet.limit" => "-1",
-      "fq" => ['lc_searchtype_s:(NOT "journal_file")']
-      }, facets)
-  end
-
   def search
     @page_type = "search"
     search_and_facet
