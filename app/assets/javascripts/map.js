@@ -38,7 +38,7 @@ $(document).ready(function() {
 
   var makeLinks = function(loc_name, entries) {
     if (entries) {
-      var res = '<h4 class="map_entry">' + loc_name + "</h4>";
+      var res = "<h4>" + loc_name + "</h4>";
       res += '<ul class="map_entries">';
       var entry_len = entries.length;
       for (var i = 0; i < entry_len; i++) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
   };
 
   var singleLink = function(entry) {
-    return '<li class="map_entry_link">'
+    return "<li>"
            + '<a href="../item/'
            + entry["id"]+'">'
            + entry["title"] + "</a></li>";
