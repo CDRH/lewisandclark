@@ -87,7 +87,7 @@ module CDRH
         def match_options_not?(from_not, request, path_qs)
             from_not.is_a?(Regexp) \
             && (request.path_info.match(from_not) || path_qs.match(from_not)) \
-            || (request.path_info === from_not || path_qs === from_not) \
+            || (request.path_info == from_not || path_qs == from_not) \
                 ? true \
                 : false
         end
@@ -125,7 +125,7 @@ module CDRH
                         ? to +'?'+ qs \
                         : to
 
-                    if to === request.path
+                    if to == request.path
                         puts "CDRH::Rewrite - Skipping rule that redirects to self in infinte loop"
                         puts "  Request Path: #{request.path}"
                         puts "  Rule From: #{from}"
@@ -173,7 +173,7 @@ module CDRH
             &&  ((request.path_info.match(from) || path_qs.match(from)) \
                 && !match_options_not?(from_not, request, path_qs) \
             ) \
-            || ((request.path_info === from || path_qs === from) \
+            || ((request.path_info == from || path_qs == from) \
                 && !match_options_not?(from_not, request, path_qs) \
             ) \
                 ? true \
