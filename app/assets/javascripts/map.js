@@ -29,7 +29,7 @@ $(document).ready(function() {
   //   }
   // ];
 
-  var map = L.map('map_container')
+  var map = L.map("map_container")
              .setView(new L.LatLng(startLat, startLong), startZoom);
 
   // make base layer
@@ -38,11 +38,13 @@ $(document).ready(function() {
 
   var makeLinks = function(loc_name, entries) {
     if (entries) {
-      var res = "<h4 class='map_entry'>"+loc_name+"</h4>";
+      var res = '<h4 class="map_entry">' + loc_name + "</h4>";
+      res += '<ul class="map_entries">';
       var entry_len = entries.length;
       for (var i = 0; i < entry_len; i++) {
         res += singleLink(entries[i])
       }
+      res += "</ul>";
       return res;
     } else {
       return "No entries found for this location";
@@ -50,9 +52,10 @@ $(document).ready(function() {
   };
 
   var singleLink = function(entry) {
-    return "<li class='map_entry_link'>"
-           +"<a href='../item/"
-           +entry["id"]+"'>"+entry["title"]+"</a></li>";
+    return '<li class="map_entry_link">'
+           + '<a href="../item/'
+           + entry["id"]+'">'
+           + entry["title"] + "</a></li>";
   };
 
   locations.forEach(function(loc) {
@@ -61,10 +64,10 @@ $(document).ready(function() {
     marker.bindPopup(makeLinks(loc["name"], loc["entries"]));
     
     // add a mouseover that waits for you to click away before closing
-    marker.on('mouseover', function(e) {
+    marker.on("mouseover", function(e) {
       this.openPopup();
     });
-    marker.on('click', function(e) {
+    marker.on("click", function(e) {
       this.closePopup();
     });
   });

@@ -95,6 +95,11 @@ body {
   height: 400px;
 }
 
+.map_entries {
+  overflow: auto;
+  max-height: 200px;
+}
+
 .map_browse_checklist {
   max-height: 400px;
   overflow: scroll; }
