@@ -52,7 +52,9 @@ class ItemsController < ApplicationController
     options = ActionController::Parameters.new(aParams)
     # make sure that empty search terms go through okay
     if !options[:qtext].nil? && options[:qtext].empty?
-      options[:qtext] = "*"
+      options.delete("qfield")
+      options.delete("qtext")
+      @search_bool = true
     end
 
     # filter queries (facets)
