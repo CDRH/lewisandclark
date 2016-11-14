@@ -24,7 +24,11 @@ module ItemsHelper
       data = data.class == Array ? data : [data]
       dataArray = data.map do |item|
         if link_bool
-          search_params = { qfield: solr_ele, qtext: item }
+          if Facets.facet_list.include?(solr_ele)
+            search_params = { solr_ele => item }
+          else
+            search_params = { :qfield => solr_ele, :qtext => item}
+          end
           link_to item, search_path(search_params)
         else
           item
