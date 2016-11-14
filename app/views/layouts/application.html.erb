@@ -54,11 +54,12 @@
                       id: "main_site_search", placeholder: "Search All Items",
                       class: "form-control" %>
                   <div class="input-group-btn">
-                    <%= submit_tag "Search", class: "btn btn-default" do %>
-                    <% end %>
+                    <%= submit_tag "Search", class: "btn btn-default" %>
                   </div>
                 </div><!-- /input-group -->
-                <a href="search.html" class="btn btn-link pull-right"><small>Advanced Search</small></a>
+                <%= link_to search_path, class: "btn btn-link pull-right" do %>
+                  <small>Advanced Search</small>
+                <% end %>
               </div>
             <% end %>
           </div><!-- /home_search -->
