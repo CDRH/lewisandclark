@@ -1,10 +1,19 @@
 $(document).ready(function() {
   // map settings
+  var markerColor = "#36659c";
   var stamenType = "terrain";
   var startLat = 43;
   var startLong = -105;
   var startZoom = 5;
-  var markerColor = "#36659c";
+
+  var circleMarkers = {
+    color: markerColor,
+    fillColor: markerColor,
+    fillOpacity: .8,
+    opacity: 1,
+    radius: 3,
+    weight: 1
+  };
 
   // This is an example of the object constructed by rails
   // var locations = [
@@ -30,7 +39,8 @@ $(document).ready(function() {
   var makeLinks = function(loc_name, entries) {
     if (entries) {
       var res = "<h4 class='map_entry'>"+loc_name+"</h4>";
-      for (var i = 0; i < entries.length; i++) {
+      var entry_len = entries.length;
+      for (var i = 0; i < entry_len; i++) {
         res += singleLink(entries[i])
       }
       return res;
@@ -43,15 +53,6 @@ $(document).ready(function() {
     return "<li class='map_entry_link'>"
            +"<a href='../item/"
            +entry["id"]+"'>"+entry["title"]+"</a></li>";
-  };
-
-  var circleMarkers = {
-    radius: 3,
-    fillColor: markerColor,
-    color: markerColor,
-    weight: 1,
-    opacity: 1,
-    fillOpacity: .8
   };
 
   locations.forEach(function(loc) {
