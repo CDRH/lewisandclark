@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get 'journals/index/places' => 'indices#places', as: :index_places
 
   # items
-  get 'browse' => 'items#browse', as: :browse
   get 'search' => 'items#search', as: :search
   get 'item/:id' => 'items#show', as: :item,  :constraints => { :id => /[^\/]+/ }
 
