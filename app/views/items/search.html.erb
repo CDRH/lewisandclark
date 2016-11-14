@@ -48,7 +48,7 @@
         Your search returned <%= @items[:num_found] %> <%= result_text(@items[:num_found]) %> from
         <% if params["subCategory"] == "Journal Entries" %>
           journals
-          <%= link_to "Browse All Items", search_path(remove_facet("subCategory")), class: "btn btn-xs btn-info" %>
+          <%= link_to "Search All Items", search_path(remove_facet("subCategory")), class: "btn btn-xs btn-info" %>
         <% else %>
           all items
           <%= link_to "Search Only Journals", search_path(facet_link("subCategory", "Journal Entries")), class: "btn btn-xs btn-info" %>
