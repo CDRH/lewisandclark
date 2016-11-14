@@ -1,5 +1,46 @@
 class ItemsController < ApplicationController
 
+  def map
+    @page_type = "map"
+    options = create_search_options(params)
+    res = $solr.query(options.merge({
+      :fl => "id, lc_geo_coordinates_p, title, lc_filename_s",
+      :rows => ENTRIES["total_num"].to_i,
+      :fq => ["lc_searchtype_s:journal_entry"]
+    }))
+    json = []
+    places = {}
+    # group all the incoming results by lat and long location
+    # (there can be multiple entries per location)
+    res[:docs].each do |item|
+      coords = item["lc_geo_coordinates_p"]
+      if coords
+        if places.has_key?(coords)
+          places[coords] << item
+        else
+          places[coords] = [item]
+        end
+      end
+    end
+    # for each lat / long, stick all the entries in
+    places.each do |latlong, items|
+      lat, long = latlong.split(",")
+      point = {
+        "name" => latlong,
+        "latlong" => [lat, long],
+        "entries" => []
+      }
+      items.each do |item|
+        point["entries"] << {
+          "title" => item["title"],
+          "id" => "#{item['lc_filename_s']}##{item['id']}"
+        }
+      end
+      json << point
+    end
+    @json = json.to_json
+  end
+
   def search
     @page_type = "search"
     search_and_facet
@@ -92,4 +133,5 @@ class ItemsController < ApplicationController
     has_page = !params["page"].blank?
     return has_facets || has_query || has_sort || has_page
   end
+
 end

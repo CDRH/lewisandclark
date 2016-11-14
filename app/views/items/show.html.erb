@@ -6,7 +6,7 @@
         <% if @item["lc_previous_s"] %>
           <%= link_to "Previous", item_path(@item["lc_previous_s"]) %>
         <% end %>
-        <progress value=<%= @item['lc_timeline_place_s'] %> max="1100"></progress>
+        <progress value=<%= @item['lc_timeline_place_s'] %> max=<%= ENTRIES["days"] %>></progress>
         <% if @item["lc_next_s"] %>
           <%= link_to "Next", item_path(@item["lc_next_s"]) %>
         <% end %>

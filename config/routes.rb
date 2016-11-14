@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'journals/about' => 'static#journals_about', as: :j_about
   get 'journals/calendar' => 'static#calendar', as: :calendar
   get 'journals/contents' => 'static#contents', as: :contents
-  get 'map' => 'static#map', as: :map
   get 'multimedia' => 'static#multimedia', as: :multimedia
   get 'texts' => 'static#texts', as: :texts
 
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
   # items
   get 'search' => 'items#search', as: :search
   get 'item/:id' => 'items#show', as: :item,  :constraints => { :id => /[^\/]+/ }
+  get 'map' => 'items#map', as: :map
 
   # errors
   match '/404', to: 'errors#not_found', via: :all
