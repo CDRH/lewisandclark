@@ -28,7 +28,9 @@
                 <span class="badge"><%= value %></span>
                 <% if selected %>
                   <%= link_to search_path(remove_facet(facet_name)) do %>
-                    <button class="btn btn-warning btn-xs">x</button>
+                    <button class="btn btn-default btn-xs" aria-label="Clear <%= info['label'] %> Filter" title="Clear <%= info['label'] %> Filter">
+                      <span class="pull-right glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
                   <% end %>
                 <% end %>
               </li>
