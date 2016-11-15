@@ -502,7 +502,7 @@ table.dictionary td {
     text-indent: -1.5em ;
 }
 
-.bibliography p, .links p, .audio p {
+.bibliography p, .links p {
   text-indent:0;
 }
 
@@ -831,5 +831,10 @@ table.table {
 
 .superscript {
   font-size: .9em;
-  vertical-align: super
+  vertical-align: super;
+}
+
+.audio p {
+  
+  text-indent: 0;
 }

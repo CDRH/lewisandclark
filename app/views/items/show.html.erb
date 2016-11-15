@@ -25,6 +25,9 @@
 
 <% end %> <!-- /if entry -->
 
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
 <!-- Text and Images -->
 <%= @res.mb_chars.html_safe if @res %>
   <% if @item["category"] == "Journals" %>
@@ -40,4 +43,6 @@
       </ul>
     </div>
   <% end %>
-</div>
+
+</div><!-- /col -->
+</div><!-- /row -->
