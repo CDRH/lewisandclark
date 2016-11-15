@@ -4,13 +4,14 @@
   <% Facets.facet_info.each do |facet_name, info| %>
     <%# only display subCategory if category selected %>
     <% should_display = facet_name != "subCategory" || !params["category"].blank? %>
-    <% if should_display && @facets.has_key?(facet_name) && info["display"] %>
+    <% if should_display && @facets.has_key?(facet_name) && info["display"] && @facets[facet_name].length > 0 %>
       <% facet_res = @facets[facet_name] %>
       <div class="panel panel-default">
 
         <!-- panel heading -->
-        <div class="panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>">
-          <h3 class="panel-title"><%= info["label"] %></h3>
+        <div class="clearfix panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>" aria-label="Show <%= info['label'] %> Filters" role="Option">
+          <h3 class="pull-left panel-title"><%= info["label"] %></h3>
+          <span class="pull-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </div>
 
         <!-- panel body -->
@@ -28,7 +29,9 @@
                 <span class="badge"><%= value %></span>
                 <% if selected %>
                   <%= link_to search_path(remove_facet(facet_name)) do %>
-                    <button class="btn btn-warning btn-xs">x</button>
+                    <button class="btn btn-default btn-xs" aria-label="Clear <%= info['label'] %> Filter" title="Clear <%= info['label'] %> Filter">
+                      <span class="pull-right glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
                   <% end %>
                 <% end %>
               </li>

@@ -19,4 +19,6 @@ Rails.application.config.assets.precompile += %w(
   leaflet.js
   map.js
   leaflet.scss
+
+  search.js
 )

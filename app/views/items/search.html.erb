@@ -1,13 +1,19 @@
+<%= javascript_include_tag "search", media: "all" %>
+
 <!-- search form -->
 <%= render partial: "search_partials/searchbox" %>
 
 <div class="row search_form">
   <div class="col-md-3">
 
-    <!-- clear facets -->
-    <% if any_facets_selected? %>
-      <%= render partial: "search_partials/facets_clear" %>
-    <% end %>
+    <div class="clearfix">
+      <h4 class="pull-left">Filter by:</h4>
+
+      <!-- clear facets -->
+      <% if any_facets_selected? %>
+        <%= render partial: "search_partials/facets_clear" %>
+      <% end %>
+    </div>
 
     <!-- dates -->
     <%= render partial: "search_partials/date_limit" %>
@@ -17,16 +23,9 @@
   </div> <!-- col-md-3 -->
 
   <div class="col-md-9">
-    <% unless @search_bool %>
+    <% if !@search_bool %>
       <%= render partial: "search_partials/author_year" %>
-    <% end %>
-  </div>
-
-
-  <!-- SEARCH RESULTS UNDER HERE -->
-
-  <% if @search_bool %>
-    <div class="col-md-9">
+    <% else %>
       <%= render partial: "search_partials/result_summary_boxes" %>
 
       <!-- sorting and pagination -->
@@ -91,6 +90,6 @@
       <div class="col-md-9 pagination_container">
         <%= paginator(@total_pages) %>
       </div>
-    </div>
-  <% end %>  <%# end search results, sorting, and pagination %>
+    <% end %>  <%# end search results, sorting, and pagination %>
+  </div><!-- col-md-9 -->
 </div>
