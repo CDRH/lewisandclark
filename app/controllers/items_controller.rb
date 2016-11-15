@@ -78,7 +78,10 @@ class ItemsController < ApplicationController
   end
 
   def create_search_options(aParams)
-    options = ActionController::Parameters.new(aParams)
+    options = ActionController::Parameters.new()
+    aParams.each do |key,value|
+        options[key] = value
+    end
     # make sure that empty search terms go through okay
     if !options[:qtext].nil? && options[:qtext].empty?
       options.delete("qfield")
