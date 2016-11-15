@@ -9,8 +9,9 @@
       <div class="panel panel-default">
 
         <!-- panel heading -->
-        <div class="panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>">
-          <h3 class="panel-title"><%= info["label"] %></h3>
+        <div class="clearfix panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>" aria-label="Show <%= info['label'] %> Filters" role="Option">
+          <h3 class="pull-left panel-title"><%= info["label"] %></h3>
+          <span class="pull-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </div>
 
         <!-- panel body -->
