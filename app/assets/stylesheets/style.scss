@@ -812,3 +812,10 @@ table.table {
   
   text-indent: 0;
 }
+
+/* Text display */
+
+.superscript {
+  font-size: .9em;
+  vertical-align: super
+}
