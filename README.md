@@ -183,6 +183,13 @@ Images are the most straightforward of all!  Just drag files into `app/assets/im
 <%= image_tag "authors/whitman.jpg" %>
 ```
 
+Generate Calendar Dates
+----------------
+If you wish to make changes to the calendar, you can run a rake task to update the `dates.js` file using solr results.
+
+`rake calendar:create`
+
+
 Add New Pages
 ----------------
 
