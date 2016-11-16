@@ -1,10 +1,13 @@
+<% date_selected = date_selection?(params["date_from"], params["date_to"]) %>
+<% class_in = date_selected ? "in" : "" %>
+<% class_glyphicon = date_selected ? "glyphicon-chevron-down" : "glyphicon-chevron-right" %>
+
 <div class="panel panel-default">
   <div class="clearfix panel-heading" data-toggle="collapse" data-target="#dates" aria-label="Show Date Filters" role="Option">
     <h3 class="pull-left panel-title">Date</h3>
-    <span class="pull-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="pull-right glyphicon <%= class_glyphicon %>" aria-hidden="true"></span>
   </div>
-  <% date_collapse = date_selection?(params["date_from"], params["date_to"]) ? "in" : "" %>
-  <div class="panel-body collapse <%= date_collapse %>" id="dates">
+  <div class="panel-body collapse <%= class_in %>" id="dates">
     <%= form_tag(search_path, :method => "get") do %>
       <!-- date from -->
       <div class="form-group form-inline">
