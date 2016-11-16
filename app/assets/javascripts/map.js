@@ -54,7 +54,9 @@ $(document).ready(function() {
   var singleLink = function(entry) {
     return "<li>"
            + '<a href="'
-           + window.location.href
+           + location.protocol
+           + '//'
+           + location.host + location.pathname
            + '/../item/'
            + entry["id"]+'">'
            + entry["title"] + "</a></li>";
