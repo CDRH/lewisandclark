@@ -111,11 +111,13 @@ class ItemsController < ApplicationController
     options.delete("date_from")
     options.delete("date_to")
 
-    # sort
-    if (options[:q] || options[:qtext]) && !options[:sort]
-      # if there is a query, then make sure score is the default sort
-      options[:sort] = "score desc"
+    # Sorting
+    # If there is no query or chosen sort, sort by date
+    if !(options[:q] || options[:qtext]) && !options[:sort]
+      options[:sort] = "date asc"
+      params[:sort] = "date asc"
     end
+
     return options
   end
 
