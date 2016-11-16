@@ -53,7 +53,9 @@ $(document).ready(function() {
 
   var singleLink = function(entry) {
     return "<li>"
-           + '<a href="../item/'
+           + '<a href="'
+           + window.location.href
+           + '/../item/'
            + entry["id"]+'">'
            + entry["title"] + "</a></li>";
   };
