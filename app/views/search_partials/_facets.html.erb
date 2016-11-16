@@ -6,18 +6,21 @@
     <% should_display = facet_name != "subCategory" || !params["category"].blank? %>
     <% if should_display && @facets.has_key?(facet_name) && info["display"] && @facets[facet_name].length > 0 %>
       <% facet_res = @facets[facet_name] %>
+      <% start_open = !params[facet_name].blank? %>
+      <% class_in =  start_open ? "in" : "" %>
+      <% class_glyphicon = start_open ? "glyphicon-chevron-down" : "glyphicon-chevron-right" %>
+
       <div class="panel panel-default">
 
         <!-- panel heading -->
         <div class="clearfix panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>" aria-label="Show <%= info['label'] %> Filters" role="Option">
           <h3 class="pull-left panel-title"><%= info["label"] %></h3>
-          <span class="pull-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="pull-right glyphicon <%= class_glyphicon %>" aria-hidden="true"></span>
         </div>
 
         <!-- panel body -->
         <%# if requested parameter, then do not collapse facet %>
-        <% start_open = params[facet_name].blank? ? "" : "in" %>
-        <div class="panel-body collapse <%= start_open %>" id="fc-<%= facet_name %>">
+        <div class="panel-body collapse <%= class_in %>" id="fc-<%= facet_name %>">
           <ul class="list-unstyled">
             <% facet_res.each do |key, value| %>
               <% selected = facet_selected?(facet_name, key) %>
