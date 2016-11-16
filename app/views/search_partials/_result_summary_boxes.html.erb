@@ -22,7 +22,7 @@
         <div class="input-group-addon" title="Date Selection">
           Date : <%= params["date_from"].join("-") %> to <%= params["date_to"].join("-") %>
         </div>
-        <div class="input-group-btn" aria-label="Clear Date Text" title="Clear Date Text">
+        <div class="input-group-btn" aria-label="Clear Date Filter" title="Clear Date Filter">
           <%= link_to search_path(clear_dates_params), class: "btn btn-default btn-sm", role: "button" do %>
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           <% end %>
