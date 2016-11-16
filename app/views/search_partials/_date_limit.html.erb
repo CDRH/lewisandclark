@@ -1,37 +1,47 @@
-<!-- TODO the date fields need a form with hidden fields and a submit button -->
 <div class="panel panel-default">
   <div class="clearfix panel-heading" data-toggle="collapse" data-target="#dates" aria-label="Show Date Filters" role="Option">
     <h3 class="pull-left panel-title">Date</h3>
     <span class="pull-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
   </div>
-  <div class="panel-body collapse" id="dates">
-    <p>Note: If only one date field is filled, the search will display that day's results</p>
-    <!-- date from -->
-    <div class="form-group form-inline">
-      <% dfrom = params["date_from"] ? params["date_from"] : [] %>
-      <%= label_tag "date_from", "Date From" %><br/>
-      <%= text_field_tag "date_from[]", dfrom[0], id: "date_from",
-          class: "form-control", placeholder: "1803", maxlength: "4", size: "4" %>
-      <%= text_field_tag "date_from[]", dfrom[1],
-          class: "form-control", placeholder: "08", maxlength: "2", size: "2" %>
-      <%= text_field_tag "date_from[]", dfrom[2],
-          class: "form-control", placeholder: "30", maxlength: "2", size: "2" %>
-    </div>
-    <!-- date to -->
-    <div class="form-group form-inline">
-      <% dto = params["date_to"] ? params["date_to"] : [] %>
-      <%= label_tag "date_to", "Date To" %><br/>
-      <%= text_field_tag "date_to[]", dto[0], id: "date_to",
-          class: "form-control", placeholder: "1806", maxlength: "4", size: "4" %>
-      <%= text_field_tag "date_to[]", dto[1],
-          class: "form-control", placeholder: "09", maxlength: "2", size: "2" %>
-      <%= text_field_tag "date_to[]", dto[2],
-          class: "form-control", placeholder: "01", maxlength: "2", size: "2" %>
-    </div>
-    <%= render partial: "search_partials/facet_hidden_fields" %>
-    <%= hidden_field_tag(:qfield, "text") %>
-    <%= hidden_field_tag(:qtext, params["qtext"]) %>
+  <% date_collapse = date_selection?(params["date_from"], params["date_to"]) ? "in" : "" %>
+  <div class="panel-body collapse <%= date_collapse %>" id="dates">
 
-    <!-- TODO form will need to end AFTER these facets and search term appear above -->
+    <div class="collapse" id="date_help">
+      <div class="well">To search an exact date, fill in either Date From or Date To. Filling in an incomplete date will result in a ranged search.</div>
+    </div>
+
+    <!-- date from -->
+    <%= form_tag(search_path, :method => "get") do %>
+      <div class="form-group form-inline">
+        <button type="button" class="btn btn-link glyphicon glyphicon-question-sign pull-right"
+          data-toggle="collapse" data-target="#date_help"
+          aria-expanded="false" aria-controls="date_help">
+        </button>
+        <% dfrom = params["date_from"] ? params["date_from"] : [] %>
+        <%= label_tag "date_from", "Date From" %><br/>
+        <%= text_field_tag "date_from[]", dfrom[0], id: "date_from",
+            class: "form-control", placeholder: "1803", maxlength: "4", size: "4" %>
+        <%= text_field_tag "date_from[]", dfrom[1],
+            class: "form-control", placeholder: "08", maxlength: "2", size: "2" %>
+        <%= text_field_tag "date_from[]", dfrom[2],
+            class: "form-control", placeholder: "30", maxlength: "2", size: "2" %>
+      </div>
+      <!-- date to -->
+      <div class="form-group form-inline">
+        <% dto = params["date_to"] ? params["date_to"] : [] %>
+        <%= label_tag "date_to", "Date To" %><br/>
+        <%= text_field_tag "date_to[]", dto[0], id: "date_to",
+            class: "form-control", placeholder: "1806", maxlength: "4", size: "4" %>
+        <%= text_field_tag "date_to[]", dto[1],
+            class: "form-control", placeholder: "09", maxlength: "2", size: "2" %>
+        <%= text_field_tag "date_to[]", dto[2],
+            class: "form-control", placeholder: "01", maxlength: "2", size: "2" %>
+      </div>
+      <%= render partial: "search_partials/facet_hidden_fields" %>
+      <%= hidden_field_tag(:qfield, "text") %>
+      <%= hidden_field_tag(:qtext, params["qtext"]) %>
+
+      <%= submit_tag("Filter", :class => "btn btn-primary") %>
+    <% end %>
   </div>
 </div>

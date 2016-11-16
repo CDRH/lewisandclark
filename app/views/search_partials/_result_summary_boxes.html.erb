@@ -1,6 +1,6 @@
 <div class="clearfix">
   <!-- text search -->
-  <% unless params["qtext"].blank? %>
+  <% if !params["qtext"].blank? %>
     <div class="pull-left form-inline buffer-bottom buffer-right-sm">
       <div class="input-group">
         <div class="input-group-addon" title="Search Text">
@@ -8,6 +8,22 @@
         </div>
         <div class="input-group-btn" aria-label="Clear Search Text" title="Clear Search Text">
           <%= link_to clear_search, class: "btn btn-default btn-sm", role: "button" do %>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- date search -->
+  <% if date_selection?(params["date_from"], params["date_to"]) %>
+    <div class="pull-left form-inline buffer-bottom buffer-right-sm">
+      <div class="input-group">
+        <div class="input-group-addon" title="Date Selection">
+          Date : <%= params["date_from"].join("-") %> to <%= params["date_to"].join("-") %>
+        </div>
+        <div class="input-group-btn" aria-label="Clear Date Text" title="Clear Date Text">
+          <%= link_to search_path(clear_dates_params), class: "btn btn-default btn-sm", role: "button" do %>
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           <% end %>
         </div>

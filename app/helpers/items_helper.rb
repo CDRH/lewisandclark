@@ -10,6 +10,27 @@ module ItemsHelper
     return selected
   end
 
+  def clear_dates_params
+    # duplicate parameters, remove date fields, and return
+    options = {}
+    params.each do |key,value|
+      options[key] = value
+    end
+    options.delete("date_from")
+    options.delete("date_to")
+    return options
+  end
+
+  def date_selection?(from, to)
+    sel = false
+    [from, to].each do |date|
+      if !date.blank? && !date.reject(&:empty?).blank?
+        sel = true
+      end
+    end
+    return sel
+  end
+
   def facet_sort_selected(button, sort_type)
     # if the button matches the selected sort, made primary
     # default to "alphabetical" if there is no sort selected
