@@ -79,9 +79,10 @@ class ItemsController < ApplicationController
 
   def create_search_options(aParams)
     options = ActionController::Parameters.new()
-    aParams.each do |key,value|
-        options[key] = value
+    aParams.each do |key, value|
+      options[key] = value
     end
+
     # make sure that empty search terms go through okay
     if !options[:qtext].nil? && options[:qtext].empty?
       options.delete("qfield")
@@ -104,28 +105,55 @@ class ItemsController < ApplicationController
     options[:fq] = fq
 
     # date search
-    date_from = format_date(options["date_from"], ["1803", "01", "01"])
-    date_to = format_date(options["date_to"], ["1806", "12", "31"])
+    if !options["date_from"].blank? || !options["date_to"].blank?
+      @from, @to = date_set(options["date_from"], options["date_to"])
+      options[:fq] << "lc_dateNotAfter_s:[#{@from} TO #{@to}]"
+    end
     options.delete("date_from")
     options.delete("date_to")
-    if !options["date_from"].blank? || !options["date_to"].blank?
-      options[:fq] << "lc_dateNotAfter_s:[#{date_from} TO #{date_to}]"
+
+    # Sorting
+    # If there is no query or chosen sort, sort by date
+    if !(options[:q] || options[:qtext]) && !options[:sort]
+      options[:sort] = "date asc"
+      params[:sort] = "date asc"
     end
 
-    # sort
-    if (options[:q] || options[:qtext]) && !options[:sort]
-      # if there is a query, then make sure score is the default sort
-      options[:sort] = "score desc"
-    end
     return options
   end
 
-  def format_date(date_params, default_date)
-    y, m, d = date_params
+  def date_default(date_params, default_date)
+    y, m, d = date_params.map { |x| x.gsub(/\s+/, "") }
     y = default_date[0] if y.blank?
     m = default_date[1] if m.blank?
     d = default_date[2] if d.blank?
+
+    # solr can't handle months and days without zero padding (01)
+    m = "0#{m}" if m.length == 1
+    d = "0#{d}" if d.length == 1
+
     return "#{y}-#{m}-#{d}"
+  end
+
+  # if a date is blank, use the other date in its place
+  def date_overwrite(original, overwrite)
+    return original.reject(&:empty?).blank? ? overwrite : original
+  end
+
+  def date_set(date_from, date_to)
+    # if the first parameter is empty, then default to using the second date instead
+    date_from = date_overwrite(date_from, date_to)
+    date_to = date_overwrite(date_to, date_from)
+
+    # after date potentially duplicated above, use defaults to cover missing months, dates, etc
+    date_from = date_default(date_from, ["1803", "01", "01"])
+    date_to = date_default(date_to, ["1806", "12", "31"])
+
+    # Set parameters so form populated with calculated dates
+    params[:date_from] = date_from.split("-")
+    params[:date_to] = date_to.split("-")
+
+    return [date_from, date_to]
   end
 
   def user_search?

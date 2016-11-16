@@ -6,6 +6,7 @@
           <div class="col-md-10">
             <%= form_tag(search_path, :method => "get", :class => "input-group") do %>
               <%= hidden_field_tag(:qfield, "text") %>
+              <%= render partial: "search_partials/date_hidden_fields" %>
               <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
 
               <%= render partial: "search_partials/facet_hidden_fields" %>

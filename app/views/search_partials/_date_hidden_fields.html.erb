@@ -1,0 +1,10 @@
+<% if !params["date_from"].blank? %>
+  <% params["date_from"].each do |d| %>
+    <%= hidden_field_tag("date_from[]", d) %>
+  <% end %>
+<% end %>
+<% if !params["date_to"].blank? %>
+  <% params["date_to"].each do |d| %>
+    <%= hidden_field_tag("date_to[]", d) %>
+  <% end %>
+<% end %>

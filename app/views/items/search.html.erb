@@ -10,7 +10,7 @@
       <h4 class="pull-left">Filter by:</h4>
 
       <!-- clear facets -->
-      <% if any_facets_selected? %>
+      <% if any_facets_selected? || date_selection?(params["date_from"], params["date_to"]) %>
         <%= render partial: "search_partials/facets_clear" %>
       <% end %>
     </div>

@@ -64,6 +64,10 @@
             </div>
           </div>
 
+          <div class="collapse" id="date_help">
+            <div class="well">To search an exact date, fill in either Date From or Date To. Filling in an incomplete date will result in a ranged search.</div>
+          </div>
+
           <div class="row">
             <div class="col-md-6">
               <div class="form-group form-inline">
@@ -78,7 +82,7 @@
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="form-group form-inline">
                 <% dto = params["date_to"] ? params["date_to"] : [] %>
                 <%= label_tag "date_to", "Date To" %><br/>
@@ -90,6 +94,15 @@
                     class: "form-control", placeholder: "01", maxlength: "2", size: "2" %>
               </div>
             </div>
+
+            <div class="col-md-1">
+              <button type="button"
+                class="btn btn-link glyphicon glyphicon-question-sign pull-right"
+                data-toggle="collapse" data-target="#date_help"
+                aria-expanded="false" aria-controls="date_help">
+              </button>
+            </div>
+
           </div>
           <br/>
           <%= submit_tag "Search", class: "btn btn-primary pull-right" %>
