@@ -79,9 +79,10 @@ class ItemsController < ApplicationController
 
   def create_search_options(aParams)
     options = ActionController::Parameters.new()
-    aParams.each do |key,value|
+    aParams.each do |key, value|
       options[key] = value
     end
+
     # make sure that empty search terms go through okay
     if !options[:qtext].nil? && options[:qtext].empty?
       options.delete("qfield")
@@ -126,9 +127,11 @@ class ItemsController < ApplicationController
     y = default_date[0] if y.blank?
     m = default_date[1] if m.blank?
     d = default_date[2] if d.blank?
+
     # solr can't handle months and days without zero padding (01)
-    m = m.length == 1 ? "0#{m}" : m
-    d = d.length == 1 ? "0#{d}" : d
+    m = "0#{m}" if m.length == 1
+    d = "0#{d}" if d.length == 1
+
     return "#{y}-#{m}-#{d}"
   end
 

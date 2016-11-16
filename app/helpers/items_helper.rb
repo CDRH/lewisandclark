@@ -13,7 +13,7 @@ module ItemsHelper
   def clear_dates_params
     # duplicate parameters, remove date fields, and return
     options = {}
-    params.each do |key,value|
+    params.each do |key, value|
       options[key] = value
     end
     options.delete("date_from")
@@ -22,13 +22,13 @@ module ItemsHelper
   end
 
   def date_selection?(from, to)
-    sel = false
     [from, to].each do |date|
       if !date.blank? && !date.reject(&:empty?).blank?
-        sel = true
+        return true
       end
     end
-    return sel
+
+    return false
   end
 
   def clear_search_text(aParams=params)
