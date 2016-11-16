@@ -105,8 +105,8 @@ class ItemsController < ApplicationController
 
     # date search
     if !options["date_from"].blank? || !options["date_to"].blank?
-      from, to = date_set(options["date_from"], options["date_to"])
-      options[:fq] << "lc_dateNotAfter_s:[#{from} TO #{to}]"
+      @from, @to = date_set(options["date_from"], options["date_to"])
+      options[:fq] << "lc_dateNotAfter_s:[#{@from} TO #{@to}]"
     end
     options.delete("date_from")
     options.delete("date_to")
@@ -135,13 +135,19 @@ class ItemsController < ApplicationController
     return original.reject(&:empty?).blank? ? overwrite : original
   end
 
-  # if the first parameter is empty, then default to using the second date instead
   def date_set(date_from, date_to)
+    # if the first parameter is empty, then default to using the second date instead
     date_from = date_overwrite(date_from, date_to)
     date_to = date_overwrite(date_to, date_from)
+
     # after date potentially duplicated above, use defaults to cover missing months, dates, etc
     date_from = date_default(date_from, ["1803", "01", "01"])
     date_to = date_default(date_to, ["1806", "12", "31"])
+
+    # Set parameters so form populated with calculated dates
+    params[:date_from] = date_from.split("-")
+    params[:date_to] = date_to.split("-")
+
     return [date_from, date_to]
   end
 

@@ -31,6 +31,20 @@ module ItemsHelper
     return sel
   end
 
+  def clear_search_text(aParams=params)
+    cleared_params = ActionController::Parameters.new()
+    cleared_params.permit!
+    aParams.each do |key, value|
+      cleared_params[key] = value
+    end
+
+    cleared_params[:qfield] = "text"
+    cleared_params[:qtext] = ""
+    cleared_params.delete("q")
+
+    return cleared_params
+  end
+
   def facet_sort_selected(button, sort_type)
     # if the button matches the selected sort, made primary
     # default to "alphabetical" if there is no sort selected

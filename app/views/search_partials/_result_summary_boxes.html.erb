@@ -7,7 +7,7 @@
           Search : <%= params["qtext"] %>
         </div>
         <div class="input-group-btn" aria-label="Clear Search Text" title="Clear Search Text">
-          <%= link_to clear_search, class: "btn btn-default btn-sm", role: "button" do %>
+          <%= link_to clear_search_text, class: "btn btn-default btn-sm", role: "button" do %>
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           <% end %>
         </div>
@@ -20,7 +20,7 @@
     <div class="pull-left form-inline buffer-bottom buffer-right-sm">
       <div class="input-group">
         <div class="input-group-addon" title="Date Selection">
-          Date : <%= params["date_from"].join("-") %> to <%= params["date_to"].join("-") %>
+          Date : <%= @from %> to <%= @to %>
         </div>
         <div class="input-group-btn" aria-label="Clear Date Filter" title="Clear Date Filter">
           <%= link_to search_path(clear_dates_params), class: "btn btn-default btn-sm", role: "button" do %>
