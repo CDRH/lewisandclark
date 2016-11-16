@@ -8,7 +8,7 @@
       <% end %>
       <%= link_to index_path, {:class=>"list-group-item active list-group-item-info"} do %>
         <h4 class="list-group-item-heading">Browse by Index</h4>
-        <p class="list-group-item-text">Normalized Name Entities</p>
+        <p class="list-group-item-text">Normalized Names</p>
       <% end %>
       <%= link_to calendar_path, {:class=>"list-group-item active list-group-item-primary"} do %>
         <h4 class="list-group-item-heading">Browse by Date</h4>
@@ -31,7 +31,7 @@
             <%= text_field_tag "qtext", params["qtext"], id: "map_search_terms", class: "form-control" %>
           </div>
 
-          <h5>Search only selected authors</h5>
+          <h5>Search Only Selected Author</h5>
 
           <div class="row">
             <div class="col-md-6">
@@ -102,7 +102,7 @@
     <div class="list-group">
       <%= link_to j_about_path, {:class=>"list-group-item active list-group-item-info"} do %>
       <h4 class="list-group-item-heading">About the Journals</h4>
-      <p class="list-group-item-text">Members, prefaces, introductions, etc. </p>
+      <p class="list-group-item-text">Read introductory materials; Find out about the history of the journals; Learn more about the members of the expedition</p>
       <% end %>
     </div>
     <a href="http://www.nebraskapress.unl.edu/Catalog/ProductSearch.aspx?filter=&search=&cid=0&sort=Name&itemsperpage=10&view=List&currentpage=&pf=&sf=&sj=283" class="buy_books_link">
