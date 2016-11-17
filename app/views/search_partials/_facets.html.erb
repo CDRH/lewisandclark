@@ -41,6 +41,17 @@
 
             <% end %>
           </ul>
+
+          <% if %w(lc_native_nation_ss people places).include?(facet_name) %>
+            <% case facet_name %>
+            <% when "lc_native_nation_ss" %>
+              <%= link_to "See all Native Nations", index_nations_path, class: "btn btn-info btn-xs" %>
+            <% when "people" %>
+              <%= link_to "See all People", index_people_path, class: "btn btn-info btn-xs" %>
+            <% when "places" %>
+              <%= link_to "See all Places", index_places_path, class: "btn btn-info btn-xs" %>
+            <% end %>
+          <% end %>
         </div> <!-- /panel-body -->
 
       </div> <!-- /panel panel-default -->
