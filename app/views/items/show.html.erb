@@ -1,3 +1,6 @@
+<%= javascript_include_tag "ekko-lightbox.min", media: "all" %>
+<%= javascript_include_tag "item", media: "all" %>
+
 <!-- Progress Marker -->
 <% if @item["subCategory"] == "Journal Entries" %>
   <div class="row">
@@ -27,22 +30,20 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-
-<!-- Text and Images -->
-<%= @res.mb_chars.html_safe if @res %>
-  <% if @item["category"] == "Journals" %>
-    <!-- Metadata Box (only displays for journals) -->
-    <div class="metadata">
-      <ul>
-        <%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
-        <%= metadata("Author(s)", "creators", @item["creators"]) %>
-        <li>
-          <strong>TEI XML: </strong>
-          <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
-        </li>
-      </ul>
-    </div>
-  <% end %>
-
-</div><!-- /col -->
+    <!-- Text and Images -->
+    <%= @res.mb_chars.html_safe if @res %>
+    <% if @item["category"] == "Journals" %>
+      <!-- Metadata Box (only displays for journals) -->
+      <div class="metadata">
+        <ul>
+          <%= metadata("Date", "dateDisplay", @item["dateDisplay"]) %>
+          <%= metadata("Author(s)", "creators", @item["creators"]) %>
+          <li>
+            <strong>TEI XML: </strong>
+            <a href="<%= @item['uriXML'] %>"><%= @item["id"] %>.xml</a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div><!-- /col-md-10 -->
 </div><!-- /row -->
