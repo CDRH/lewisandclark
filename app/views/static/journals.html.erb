@@ -104,39 +104,7 @@
               </button>
 
               <div class="collapse" id="date_help">
-                <table class="table table-condensed table-striped">
-                  <caption class="text-center">Dates in both fields not required</caption>
-                  <thead>
-                    <th>Entering in only one field</th>
-                    <th class="text-right">Searches</th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Year,&nbsp;Month, &amp;&nbsp;Day</td>
-                      <td class="text-right">Single day</td>
-                    </tr>
-                    <tr>
-                      <td>Year &amp; Month</td>
-                      <td class="text-right">Whole month</td>
-                    </tr>
-                    <tr>
-                      <td>Year</td>
-                      <td class="text-right">Whole year</td>
-                    </tr>
-                    <tr>
-                      <td>Month &amp; Day</td>
-                      <td class="text-right">1803-#-# to 1806-#-#</td>
-                    </tr>
-                    <tr>
-                      <td>Month</td>
-                      <td class="text-right">1803-#-1 to 1806-#-31</td>
-                    </tr>
-                    <tr>
-                      <td>Day</td>
-                      <td class="text-right">1803-01-# to 1806-12-#</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <%= render partial: "search_partials/date_filter_help" %>
               </div>
             </div>
           </div>
