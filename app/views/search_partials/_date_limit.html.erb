@@ -24,11 +24,11 @@
         </div>
 
         <%= text_field_tag "date_from[]", dfrom[0], id: "date_from",
-            class: "form-control", placeholder: "1803", maxlength: "4", size: "4", title: "From Year" %>
+            class: "form-control", placeholder: "1803", maxlength: "4", size: "4", aria_label: "From Year", title: "From Year" %>
         <%= text_field_tag "date_from[]", dfrom[1],
-            class: "form-control", placeholder: "08", maxlength: "2", size: "2", title: "From Month" %>
+            class: "form-control", placeholder: "08", maxlength: "2", size: "2", aria_label: "From Month", title: "From Month" %>
         <%= text_field_tag "date_from[]", dfrom[2],
-            class: "form-control", placeholder: "30", maxlength: "2", size: "2", title: "From Day" %>
+            class: "form-control", placeholder: "30", maxlength: "2", size: "2", aria_label: "From Day", title: "From Day" %>
       </div>
 
       <!-- date to -->
@@ -36,11 +36,11 @@
         <% dto = params["date_to"] ? params["date_to"] : [] %>
         <%= label_tag "date_to", "Date To" %><br/>
         <%= text_field_tag "date_to[]", dto[0], id: "date_to",
-            class: "form-control", placeholder: "1806", maxlength: "4", size: "4", title: "To Year" %>
+            class: "form-control", placeholder: "1806", maxlength: "4", size: "4", aria_label: "To Year", title: "To Year" %>
         <%= text_field_tag "date_to[]", dto[1],
-            class: "form-control", placeholder: "09", maxlength: "2", size: "2", title: "To Month" %>
+            class: "form-control", placeholder: "09", maxlength: "2", size: "2", aria_label: "To Month", title: "To Month" %>
         <%= text_field_tag "date_to[]", dto[2],
-            class: "form-control", placeholder: "01", maxlength: "2", size: "2", title: "To Day" %>
+            class: "form-control", placeholder: "01", maxlength: "2", size: "2", aria_label: "To Day", title: "To Day" %>
       </div>
       <%= render partial: "search_partials/facet_hidden_fields" %>
       <%= hidden_field_tag(:qfield, "text") %>
@@ -51,44 +51,14 @@
 
         <button type="button" class="btn btn-link glyphicon glyphicon-question-sign pull-right"
           data-toggle="collapse" data-target="#date_help"
-          aria-expanded="false" aria-controls="date_help">
+          aria-expanded="false" aria-controls="date_help"
+          aria-label="Date Filter Help" title="Date Filter Help">
         </button>
       </div>
     <% end %>
 
     <div id="date_help" class="collapse">
-      <table class="table table-condensed table-striped">
-        <thead>
-          <th>Entering in only one field</th>
-          <th class="text-right">Searches</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Year,&nbsp;Month, &amp;&nbsp;Day</td>
-            <td class="text-right">Single day</td>
-          </tr>
-          <tr>
-            <td>Year &amp; Month</td>
-            <td class="text-right">Whole month</td>
-          </tr>
-          <tr>
-            <td>Year</td>
-            <td class="text-right">Whole year</td>
-          </tr>
-          <tr>
-            <td>Month &amp; Day</td>
-            <td class="text-right">1803-#-# to 1806-#-#</td>
-          </tr>
-          <tr>
-            <td>Month</td>
-            <td class="text-right">1803-#-1 to 1806-#-31</td>
-          </tr>
-          <tr>
-            <td>Day</td>
-            <td class="text-right">1803-01-# to 1806-12-#</td>
-          </tr>
-        </tbody>
-      </table>
+      <%= render partial: "search_partials/date_filter_help" %>
     </div>
   </div>
 </div>
