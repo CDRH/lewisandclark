@@ -1,18 +1,29 @@
 namespace :calendar do
   desc "create calendar HTML"
 
+  DATA_FILE="app/assets/javascripts/calendar/dates.js"
+  # SOLR_URL set within task create, as CONFIG comes from :environment
+
   def get_journals
-    # pull the date information from rosie
-    solr_url = CONFIG['solr_url']
-    fields = ["id", "title", "lc_dateNotBefore_s", "lc_dateNotAfter_s", "creators"]
-    if solr_url
-      $solr = RSolrCdrh::Query.new(solr_url, fields)
+    # pull the date information from Solr
+    fields = %w{creators id lc_dateNotAfter_s lc_dateNotBefore_s title}
+
+    if SOLR_URL
+      $solr = RSolrCdrh::Query.new(SOLR_URL, fields)
+
+      # Retrieve # of rows first so not relying on hard-coded limit
+      rows = $solr.query({
+        "q" => "lc_searchtype_s:journal_file",
+        "fl" => "id",
+        "rows" => 1,
+      })[:num_found]
+
       res = $solr.query({
-        "qfield" => "lc_searchtype_s",
-        "qtext" => "journal_file",
-        # "rows" => 10
-        "rows" => 1100
+        "q" => "lc_searchtype_s:journal_file",
+        "rows" => rows,
+        "sort" => "lc_dateNotBefore_s asc",
       })
+
       return res[:docs]
     end
   end
@@ -74,15 +85,30 @@ namespace :calendar do
   end
 
   def write_to_file date_info
-    File.open("app/assets/javascripts/calendar/dates.js", "w") do |file|
+    File.open(DATA_FILE, "w") do |file|
       file.write(date_info)
     end
   end
 
   task create: :environment do
+    SOLR_URL = CONFIG['solr_url']
+
+    puts "Retrieving journal entries from Solr (#{SOLR_URL})\n\n"
     journals = get_journals
+
+    if journals.blank?
+      puts "No journal entries returned from Solr"
+      puts "Check the Solr index and try again\n\n"
+
+      exit(1)
+    end
+
+    puts "Generating JSON\n\n"
     date_info = make_calendar_json journals
+
+    puts "Writing to: #{DATA_FILE}\n\n"
     write_to_file date_info
   end
 
 end
+
