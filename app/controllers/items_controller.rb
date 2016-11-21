@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     options = create_search_options(params)
     res = $solr.query(options.merge({
       :fl => "id, lc_geo_coordinates_p, title, lc_filename_s",
-      :rows => ENTRIES["total_num"].to_i,
+      :rows => ENTRY_COUNT,
       :fq => ["lc_searchtype_s:journal_entry"]
     }))
     json = []
