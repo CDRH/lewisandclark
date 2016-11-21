@@ -105,7 +105,8 @@ class ItemsController < ApplicationController
     options[:fq] = fq
 
     # date search
-    if !options["date_from"].blank? || !options["date_to"].blank?
+    if (!options["date_from"].nil? && !options["date_from"].join('').empty?) \
+    || (!options["date_to"].nil? && !options["date_to"].join('').empty?)
       @from, @to = date_set(options["date_from"], options["date_to"])
       options[:fq] << "lc_dateNotAfter_s:[#{@from} TO #{@to}]"
     end

@@ -10,15 +10,30 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 
 # Rails.application.config.assets.precompile += %w( search.js )
+
+# items/map
 Rails.application.config.assets.precompile += %w(
-  bootstrap-year-calendar.min.js
-  calendar/dates.js
-  calendar/calendar.js
-  calendar.css
-
   leaflet.js
-  map.js
   leaflet.scss
+  map.js
+)
 
+# items/search
+Rails.application.config.assets.precompile += %w(
   search.js
 )
+
+# items/show
+Rails.application.config.assets.precompile += %w(
+  ekko-lightbox.min.js
+  item.js
+)
+
+# static/calendar
+Rails.application.config.assets.precompile += %w(
+  bootstrap-year-calendar.min.js
+  calendar.css
+  calendar/calendar.js
+  calendar/dates.js
+)
+
