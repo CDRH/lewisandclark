@@ -146,9 +146,10 @@ class ItemsController < ApplicationController
     date_from = date_overwrite(date_from, date_to)
     date_to = date_overwrite(date_to, date_from)
 
-    # after date potentially duplicated above, use defaults to cover missing months, dates, etc
-    date_from = date_default(date_from, ["1803", "01", "01"])
-    date_to = date_default(date_to, ["1806", "12", "31"])
+    # after date potentially duplicated above, use first/last entry years
+    # and first/last day of year to cover missing year, month, and day
+    date_from = date_default(date_from, [ENTRY_DATE_FIRST[0], "01", "01"])
+    date_to = date_default(date_to, [ENTRY_DATE_LAST[0], "12", "31"])
 
     # Set parameters so form populated with calculated dates
     params[:date_from] = date_from.split("-")

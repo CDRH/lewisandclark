@@ -14,3 +14,17 @@ ENTRY_COUNT = $solr.query({
   "rows" => 1,
 })[:num_found]
 
+ENTRY_DATE_FIRST = $solr.query({
+  "fl" => "date",
+  "q" => "*:*",
+  "rows" => 1,
+  "sort" => "lc_dateNotBefore_s asc",
+})[:docs][0]['date'].split("-")
+
+ENTRY_DATE_LAST = $solr.query({
+  "fl" => "date",
+  "q" => "*:*",
+  "rows" => 1,
+  "sort" => "lc_dateNotAfter_s desc",
+})[:docs][0]['date'].split("-")
+
