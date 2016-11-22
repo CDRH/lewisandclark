@@ -22,10 +22,10 @@ var popup = function(e) {
 // note: popover requires bootstrap to be loaded
 $(document).ready(function() {
   $('#calendar').calendar({
-    // configuration
-    maxDate: new Date("1807"),
-    minDate: new Date("1803"),
-    startYear: "1803",
+    // Values set in inline script in view from Solr initializer
+    maxDate: maxDate,
+    minDate: minDate,
+    startYear: startYear,
 
     // events
     clickDay: function(e) {
