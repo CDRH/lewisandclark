@@ -1,6 +1,7 @@
 <%= javascript_include_tag "ekko-lightbox.min", media: "all" %>
 <%= javascript_include_tag "item", media: "all" %>
 
+
 <!-- Progress Marker -->
 <% if @item["subCategory"] == "Journal Entries" %>
   <div class="row">
@@ -16,8 +17,8 @@
           <span class="sr-only"><%= @item['lc_timeline_place_s'] %>% Complete</span>
         </div><!-- /progress-bar -->
       </div>
-      <span class="first_date">September 1, 1803</span>
-      <span class="last_date">September 30, 1806</span>
+      <span class="first_date"><%= ENTRY_DATE_DISPLAY_FIRST %></span>
+      <span class="last_date"><%= ENTRY_DATE_DISPLAY_LAST %></span>
     </div> <!-- /col6 -->
     <div class="col-xs-3 text-left  prev_next_buttons">
       <% if @item["lc_next_s"] %>

@@ -11,16 +11,10 @@ namespace :calendar do
     if SOLR_URL
       $solr = RSolrCdrh::Query.new(SOLR_URL, fields)
 
-      # Retrieve # of rows first so not relying on hard-coded limit
-      rows = $solr.query({
-        "q" => "lc_searchtype_s:journal_file",
-        "fl" => "id",
-        "rows" => 1,
-      })[:num_found]
-
       res = $solr.query({
         "q" => "lc_searchtype_s:journal_file",
-        "rows" => rows,
+        # Use # of rows from initializer so not relying on hard-coded limit
+        "rows" => JRN_FILE_COUNT,
         "sort" => "lc_dateNotBefore_s asc",
       })
 
