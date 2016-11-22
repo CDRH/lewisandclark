@@ -52,7 +52,9 @@
           <%= link_to search_path({ parsed_field => name, "lc_searchtype_s" => "journal_entry" }) do %>
             <span class="index_term"><%= name %></span>
           <% end %>
-          <span class="count badge"><%= count %></span>
+          <span class="badge_surround">
+            <span class="count badge"><%= count %></span>
+          </span>
           <% if type %>
             <span class="index_type">(<%= type.titleize %>)</span>
           <% end %>

@@ -1,5 +1,18 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <h2>This page was not found!</h2>
+    <h2>Lost? Page not found</h2>
+
+    <p>You may want to try our <%= link_to "search", search_path({}), :class => "btn btn-xs btn-primary" %> to find the content you were looking for.</p>
+
+    <p>
+    <%= image_tag 'map404.jpg' %>
+    </p>
+
+    <p><small>
+    American Philosophical Society library<br/>
+Permission to reproduce image required.<br/>
+<a href="http://www.amphilsoc.org/library/rights">http://www.amphilsoc.org/library/rights</a>
+</small>
+</p>
   </div>
 </div>

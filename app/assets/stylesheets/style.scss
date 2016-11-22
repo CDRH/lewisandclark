@@ -846,3 +846,22 @@ table.table {
 .wdn-responsive-embed{display:block;height:0;padding:0;position:relative;overflow:hidden}.wdn-responsive-embed.wdn-aspect16x9{padding-bottom:56.25%}
 
 .wdn-responsive-embed .wdn-responsive-item,.wdn-responsive-embed embed,.wdn-responsive-embed iframe,.wdn-responsive-embed object,.wdn-responsive-embed video{border:0;position:absolute;top:0;left:0;width:100%;height:100%}
+
+
+
+/* Experimental Index page styling */
+.index_list {
+  display: table;
+
+  li {
+    display: table-row;
+
+    .badge,
+    .badge_surround,
+    .index_term,
+    .index_type {
+      display: table-cell;
+    }
+  }
+}
+
