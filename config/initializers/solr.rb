@@ -28,3 +28,15 @@ ENTRY_DATE_LAST = $solr.query({
   "sort" => "lc_dateNotAfter_s desc",
 })[:docs][0]['date'].split("-")
 
+ENTRY_DATE_DISPLAY_FIRST = DateTime.new(
+  ENTRY_DATE_FIRST[0].to_i,
+  ENTRY_DATE_FIRST[1].to_i,
+  ENTRY_DATE_FIRST[2].to_i)
+.strftime("%b %d, %Y")
+
+ENTRY_DATE_DISPLAY_LAST = DateTime.new(
+  ENTRY_DATE_LAST[0].to_i,
+  ENTRY_DATE_LAST[1].to_i,
+  ENTRY_DATE_LAST[2].to_i)
+.strftime("%b %d, %Y")
+
