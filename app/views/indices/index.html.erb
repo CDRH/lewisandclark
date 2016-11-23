@@ -30,19 +30,25 @@
     <br/>
 
 
-    <ul class="index_list">
+    <table class="index_list">
+    <tbody>
       <% @facets.each do |key, value| %>
-        <li>
+        <row>
           <% name_type = key.split("||") %>
-          <%= link_to search_path({ @field => key, "lc_searchtype_s" => "journal_entry" }) do %>
-            <span class="index_term"><%= name_type[0] %></span>
-          <% end %>
-          <span class="badge_surround"><span class="count badge"><%= value %></span></span>
+          
+            <td class="index_term">
+              <%= link_to search_path({ @field => key, "lc_searchtype_s" => "journal_entry" }) do %>
+                <%= name_type[0] %>
+                <% end %>
+                </td>
+          
+          <td class="badge_surround"><span class="count badge"><%= value %></span></td>
           <% if name_type[1] %>
-            <span class="index_type">(<%= name_type[1].titleize %>)</span>
+            <td class="index_type"><%= name_type[1].titleize %></td>
           <% end %>
-        </li>
+        </tr>
       <% end %>
-    </ul>
+      </tbody>
+    </table>
   </div>
 </div>
