@@ -7,7 +7,7 @@
 
 
 h1 {
-  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Cinzel Decorative', 'Times New Roman', Times, Garamond, serif;
   font-weight: 400;
   text-shadow: .1px .05em .1em #ffffff;
   line-height: 1.2em;
@@ -849,18 +849,19 @@ table.table {
 
 
 
-/* Experimental Index page styling */
-.index_list {
-  display: table;
+/* Index styling */
 
-  li {
-    display: table-row;
+.index_list .name {
+  padding-bottom: 0.75em;
 
-    .badge,
-    .badge_surround,
-    .index_term,
-    .index_type {
-      display: table-cell;
+  span {
+    border-bottom: 1px dotted #333;
+    display: block;
+
+    a {
+      background-color: #F4F4F4;
+      padding: 0 .375em .25em 0;
+      text-decoration: none;
     }
   }
 }

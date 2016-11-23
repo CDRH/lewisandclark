@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <div class="buffer-bottom-sm">
+    <div class="buffer-bottom">
       Sort by:
       <%= link_to "Alphabetical", sort("index"),
           class: "btn btn-xs #{facet_sort_selected('index', params['sort'])}", role: "button"
@@ -28,9 +28,10 @@
       %>
     </div>
 
-    <ul class="index_list">
+    <table class="index_list">
+    <tbody>
       <% @facets.each do |name_type, count| %>
-        <li>
+        <tr>
           <%
             name, type = name_type.split("||")
 
@@ -49,17 +50,25 @@
               parsed_field = @field
             end
           %>
-          <%= link_to search_path({ parsed_field => name, "lc_searchtype_s" => "journal_entry" }) do %>
-            <span class="index_term"><%= name %></span>
-          <% end %>
-          <span class="badge_surround">
-            <span class="count badge"><%= count %></span>
-          </span>
+          <td class="name">
+            <span>
+              <%= link_to search_path({ parsed_field => name, "lc_searchtype_s" => "journal_entry" }) do %>
+                <%= name %>
+              <% end %>
+            </span>
+          </td>
+          <td><%= count %></td>
           <% if type %>
-            <span class="index_type">(<%= type.titleize %>)</span>
+            <%
+              type = type.titleize
+              type = type.gsub(/\s+/, "&nbsp;")
+              type = type.html_safe
+            %>
+            <td><%= type %></td>
           <% end %>
-        </li>
+        </tr>
       <% end %>
-    </ul>
+      </tbody>
+    </table>
   </div>
 </div>
