@@ -860,12 +860,11 @@ table.table {
   margin-top: .2em;
   display: block;
   margin-right: .3em;
-}
 
-.index_term a {
-  background-color: #F4F4F4;
-  
-  padding: .1em .4em .1em 0;
+  a {
+    background-color: #F4F4F4;
+    padding: .1em .4em .1em 0;
+  }
 }
 
 .badge {
