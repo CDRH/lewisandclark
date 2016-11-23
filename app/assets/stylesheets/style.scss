@@ -851,28 +851,18 @@ table.table {
 
 /* Index styling */
 
-.index_list{
-  margin-top: 1em;
-}
+.index_list .name {
+  padding-bottom: 0.75em;
 
-.index_term {
-  border-bottom: 1px dotted #333;
-  margin-top: .2em;
-  display: block;
-  margin-right: .3em;
+  span {
+    border-bottom: 1px dotted #333;
+    display: block;
 
-  a {
-    background-color: #F4F4F4;
-    padding: .1em .4em .1em 0;
+    a {
+      background-color: #F4F4F4;
+      padding: 0 .375em .25em 0;
+      text-decoration: none;
+    }
   }
-}
-
-.badge {
-  background: none;
-  color: #000;
-}
-
-.index_type {
-  padding-bottom: .4em;
 }
 

@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <div class="buffer-bottom-sm">
+    <div class="buffer-bottom">
       Sort by:
       <%= link_to "Alphabetical", sort("index"),
           class: "btn btn-xs #{facet_sort_selected('index', params['sort'])}", role: "button"
@@ -50,15 +50,21 @@
               parsed_field = @field
             end
           %>
-          <td class="index_term">
-            <%= link_to search_path({ parsed_field => name, "lc_searchtype_s" => "journal_entry" }) do %><%= name %>
-            <% end %> 
+          <td class="name">
+            <span>
+              <%= link_to search_path({ parsed_field => name, "lc_searchtype_s" => "journal_entry" }) do %>
+                <%= name %>
+              <% end %>
+            </span>
           </td>
-          <td class="badge_surround">
-            <span class="count badge"><%= count %></span>
-          </td>
+          <td><%= count %></td>
           <% if type %>
-            <td class="index_type"><%= type.titleize %></td>
+            <%
+              type = type.titleize
+              type = type.gsub(/\s+/, "&nbsp;")
+              type = type.html_safe
+            %>
+            <td><%= type %></td>
           <% end %>
         </tr>
       <% end %>
