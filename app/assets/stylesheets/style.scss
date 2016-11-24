@@ -100,93 +100,27 @@ body {
 .buffer-right-sm {
   margin-right: 7px;
 }
+  
 
-/* =======================
-	Map Browse 
-	===================== */
+/* Tables */
 
-#map_container {
-  height: 400px;
+.tei_table {
+  width: auto;
+  margin: 1em auto;
+  font-size: .9em;
+}
+.tei_table td {
+  padding: 0 .2em;
 }
 
-.map_entries {
-  max-height: 200px;
-  overflow: auto;
+.tei_table td .cell_contents {
+  /* line-height: 1.2em; */
 }
 
-.map_browse_checklist {
-  max-height: 400px;
-  overflow: scroll; }
 
-/* Sidebar Spacing */
-.side-bar {
-  width: 400px;
-  padding: 1em 1em 1em 2em; }
+/* General Styles */
 
-.content {
-  padding-left: 400px; }
 
-.active > .side-bar {
-  margin-left: -330px; }
-
-.active > .content {
-  padding-left: 70px; }
-
-/* Sidebar everything else */
-/*.container {
-  overflow: hidden;
-  display: inline-block; }*/
-.side-bar {
-  position: absolute;
-  height: 100%;
-  transition: margin-left 0.5s;
-  background-color: #fff; }
-
-.side-bar ul {
-  list-style: none;
-  padding: 0px; }
-
-.side-bar ul .menu li a {
-  display: inline-table;
-  width: 100%; }
-
-.content {
-  transition: padding-left 0.5s; }
-
-.active > .side-bar {
-  transition: margin-left 0.5s; }
-
-.active > .content {
-  transition: padding-left 0.5s; }
-  
-  
-  /* =======================
-	 / Map Browse 
-	===================== */
-  
-  
-.entry .table > thead > tr > th,
-.entry .table > thead > tr > td,
-.entry .table > tbody > tr > th,
-.entry .table > tbody > tr > td,
-.entry .table > tfoot > tr > th,
-.entry .table > tfoot > tr > td,
-
-.footnote .table > thead > tr > th,
-.footnote .table > thead > tr > td,
-.footnote .table > tbody > tr > th,
-.footnote .table > tbody > tr > td,
-.footnote .table > tfoot > tr > th,
-.footnote .table > tfoot > tr > td {
-  border: none !important;
-  font-size: .9em !important;
-}
-
-.entry table.table,
-.footnote table.table {
-  width: auto !important;
-  margin: 0 auto !important;
-}
 
 .italic {
   font-style: italic;
@@ -741,7 +675,6 @@ table tr td {
 }
 
 .cell_bracket {
-	/*background-color: red;*/
 	font-weight: 100;
 }
 
@@ -864,5 +797,29 @@ table.table {
       text-decoration: none;
     }
   }
+}
+
+/* More TEI styling, to address cleanup issue */
+
+.footnote p {
+  margin: 1em 0 0 0;
+}
+
+.milestone {
+  width: 100%;
+  border-top: 2px solid #aaa;
+  height: 1px;
+  margin-bottom: 1em;
+}
+
+.editor_end {
+  width: 14em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footnote .tei_list_head {
+  font-size: 1em;
+  font-weight: 100;
 }
 
