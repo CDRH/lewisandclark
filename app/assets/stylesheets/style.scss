@@ -47,6 +47,7 @@ h1 .sml {
 }
 
 .home_search input,.home_search button {
+  background-color: #F5F5F5;
   background-color: rgba(255,255,255,.6);
 }
 
@@ -59,6 +60,7 @@ html {
   /* alternate #EFEDE8 */ }
 
 .navbar-default {
+  background-color: #2F5076;
   background-color: rgba(0, 41, 86, 0.8);
   border: none; }
 
@@ -71,6 +73,7 @@ html {
 
 .navbar-default .navbar-nav li a:hover {
   color: #fff;
+  background-color: #274669;
   background-color: rgba(24, 46, 75, .3);
 }
 
@@ -79,6 +82,7 @@ a {
   text-decoration: underline; }
 
 .page_content {
+  background-color: #F5F5F5;
   background-color: rgba(255, 255, 255, 0.4);
   margin-top: -25px;
   padding-top: 25px;
