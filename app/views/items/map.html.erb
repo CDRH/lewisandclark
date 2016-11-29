@@ -1,6 +1,6 @@
 <!-- javascripts -->
 <%= javascript_include_tag "leaflet", media: "all" %>
-<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+<%= javascript_include_tag "tile.stamen-1.3.0-https" %>
 
 <script>
   <% if @json.nil? %>
