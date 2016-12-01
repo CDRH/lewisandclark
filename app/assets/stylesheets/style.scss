@@ -219,12 +219,34 @@ p.list-group-item-text {
 column-count: 3;
 }
 
-.footer {margin: 4em 0 9em 0;
-text-align:center;}
+/* Footer */
 
-.footer img{
-  max-width:100%
+.footer {
+  margin: 4em 0 9em 0;
+  text-align:center;
 }
+
+.footernav {
+  margin: 1em 0 3em 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footernav li {
+  display: inline;
+  padding: 1em;
+}
+
+.footer_logo img {
+  max-width:100%
+  width: 300px;
+  margin-top: 2em;
+}
+
+.footer_info {
+  margin-bottom: 5em;
+}
+
 
 .toc ul {
   padding: 0 0 0 1em;
@@ -841,24 +863,3 @@ table.table {
   font-weight: 100;
 }
 
-/* Changes at the request of Jana, work into stylesheet if approved */
-
-.footernav {
-  margin: 1em 0 3em 0;
-  padding: 0;
-  list-style: none;
-}
-
-.footernav li {
-  display: inline;
-  padding: 1em;
-}
-
-.footer_logo img {
-  width: 300px;
-  margin-top: 2em;
-}
-
-.footer_info {
-  margin-bottom: 5em;
-}
