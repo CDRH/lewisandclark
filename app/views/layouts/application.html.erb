@@ -10,7 +10,7 @@
   <%= favicon_link_tag %>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
 
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -34,7 +34,7 @@
           <div class="site_title">
             <h1>
             <%= link_to home_path do %>
-              <span class="cap">J</span>ournals <span class="sml">of the</span><br/> <span class="cap">L</span>ewis &amp; <span class="cap">C</span>lark <span class="cap">E</span>xpedition
+              <span class="cap">J</span>ournals <span class="sml">of the</span><br/> <span class="cap">L</span>ewis <span class="amp">&amp;</span> <span class="cap">C</span>lark <span class="cap">E</span>xpedition
             <% end %>
             </h1>
           </div><!-- /site_title -->
@@ -101,6 +101,17 @@
   <div class="footer">
     <div class="container">
       <div class="footer_info">
+
+<ul class="footernav">
+            <li><%= link_to "Home", home_path %></li>
+            <li><%= link_to "Journals", journals_path %></li>
+            <li><%= link_to "Books & Articles", texts_path %></li>
+            <li><%= link_to "Images & Maps", images_path %></li>
+            <li><%= link_to "Audio & Video", multimedia_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Copyright", item_path("lc.about.privacy") %></li>
+          </ul>
+
         <p>Created by the <a href="http://cdrh.unl.edu">Center for Digital Research in the Humanities</a> <br/>in partnership with the <a href="http://www.nebraskapress.unl.edu">University of Nebraska Press</a><br/>
         and funding from the <a href="https://www.neh.gov/">National Endowment for the Humanities</a>.</p>
         <div class="footer_logo">
