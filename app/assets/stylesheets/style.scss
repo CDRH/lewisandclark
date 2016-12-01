@@ -8,7 +8,7 @@
 
 h1 {
   font-family: 'Cormorant Garamond', 'Garamond', 'Times New Roman', Times, serif;
-font-weight: 100;
+  font-weight: 100;
   text-shadow: .1px .05em .1em #ffffff;
  
 }
@@ -230,11 +230,12 @@ column-count: 3;
   margin: 1em 0 3em 0;
   padding: 0;
   list-style: none;
+
+  li {
+    display: inline;
+    padding: 1em;
 }
 
-.footernav li {
-  display: inline;
-  padding: 1em;
 }
 
 .footer_logo img {
