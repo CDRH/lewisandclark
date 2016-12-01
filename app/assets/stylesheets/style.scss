@@ -7,32 +7,40 @@
 
 
 h1 {
-  font-family: 'Cinzel Decorative', 'Times New Roman', Times, Garamond, serif;
-  font-weight: 400;
+  font-family: 'Cormorant Garamond', 'Garamond', 'Times New Roman', Times, serif;
+  font-weight: 100;
   text-shadow: .1px .05em .1em #ffffff;
-  line-height: 1.2em;
-  
+ 
 }
 
-a.regularization {
-  white-space: nowrap;
+.site_title h1 {
+  font-size: 3.4em;
+  line-height: 1em;
+  margin-top: .1em;
 }
 
 h1 a {
-  text-decoration:none !important;
-  color:#000 !important;
+  text-decoration: none !important;
+  color: #000 !important;
 }
 
 h1 .cap {
-  font-size: 1.4em;
-  letter-spacing: -.05em;
+  /*font-size: 1.4em;
+  letter-spacing: -.05em;*/
+  font-size: 1em;
 }
 
 h1 .sml {
   font-size: .7em;
-
   position: relative;
-  bottom: .1em;
+  bottom: .08em;
+}
+
+//.amp {
+//}
+
+a.regularization {
+  white-space: nowrap;
 }
 
 .home_search {
@@ -211,12 +219,35 @@ p.list-group-item-text {
 column-count: 3;
 }
 
-.footer {margin: 4em 0 9em 0;
-text-align:center;}
+/* Footer */
 
-.footer img{
-  max-width:100%
+.footer {
+  margin: 4em 0 9em 0;
+  text-align:center;
 }
+
+.footernav {
+  margin: 1em 0 3em 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline;
+    padding: 1em;
+}
+
+}
+
+.footer_logo img {
+  max-width:100%;
+  width: 300px;
+  margin-top: 2em;
+}
+
+.footer_info {
+  margin-bottom: 5em;
+}
+
 
 .toc ul {
   padding: 0 0 0 1em;
