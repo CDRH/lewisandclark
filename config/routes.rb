@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static#index', as: :home
 
   get 'about' => 'static#about', as: :about
+  get 'browserconfig' => 'static#browserconfig', as: :browserconfig
   get 'journals' => 'static#journals', as: :journals
   get 'journals/about' => 'static#journals_about', as: :j_about
   get 'journals/calendar' => 'static#calendar', as: :calendar
