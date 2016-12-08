@@ -249,11 +249,6 @@ Header
   //  /* line-height: 1.2em; */
   //}
 }
-.tei_table 
-
-.tei_table td .cell_contents {
-  /* line-height: 1.2em; */
-}
 
 .italic {
   font-style: italic;
@@ -305,60 +300,53 @@ a.regularization {
   font-weight: 600;
 }
 
-.tei_figure {
+/* Figures */
+
+.entry .tei_figure {
   margin: 1em 0;
   font-size: .9em;
-}
-
-.tei_figure p {
-  margin: .2em 0;
-  line-height: 1.2em;
-  text-indent:0;
-  margin-bottom: .5em;
-}
-
-.tei_figure .label {
-  display: none;
-}
-
-.tei_figure .caption {
-  font-size: 1.2em;
-  margin: .8em 0 .5em 0;
-  display: block;
-}
-
-.tei_figure .resp {
-  font-weight: 800;
-  margin-top: .5em;
-  display: block;
-}
-
-.tei_figure .orgName {
-  display: block;
-  margin-top: .5em;
-  border-top: solid #dfdfdf 1px;
-  padding-top: .5em;
-}
-
-.tei_figure .note
- {
-  display: block;
-  margin-top: .5em;
-} 
-
-.entry .tei_figure .orgName {
-  border-top: none;
-}
-
-.entry .tei_bibl span,
-.entry .tei_bibl div {
-  display: inline;
-}
-
-.tei_figure {
   display: block;
   padding:.5em 0
+
+  p {
+    margin: .2em 0;
+    line-height: 1.2em;
+    text-indent:0;
+    margin-bottom: .5em;
+  }
+
+  .label {
+    display: none;
+  }
+
+  .caption {
+    font-size: 1.2em;
+    margin: .8em 0 .5em 0;
+    display: block;
+  }
+
+  .resp {
+    font-weight: 800;
+    margin-top: .5em;
+    display: block;
+  }
+
+  .orgName {
+    display: block;
+    margin-top: .5em;
+    border-top: solid #dfdfdf 1px;
+    padding-top: .5em;
+    border-top: none;
+  }
+
+  .note {
+    display: block;
+    margin-top: .5em;
+  } 
+
 }
+
+/* Heads and bibls */
 
 h3.figure_head {
   font-size: 1.2em;
@@ -398,10 +386,16 @@ h2.title_main .title_sub {
 
 .footnote {
   margin-bottom: 1em;
-}
 
-.footnote p {
-  margin: 1em 0 0 0;
+  p {
+    margin: 1em 0 0 0;
+  }
+
+  .tei_list_head {
+    font-size: 1em;
+    font-weight: 100;
+  }
+
 }
 
 .milestone {
@@ -417,11 +411,6 @@ h2.title_main .title_sub {
   margin-right: auto;
 }
 
-.footnote .tei_list_head {
-  font-size: 1em;
-  font-weight: 100;
-}
-
 .tei_bibl .note {
   display: inline;
 }
@@ -430,7 +419,8 @@ h2.title_main .title_sub {
   margin-bottom:1em;
 }
 
-.notes .entry p, .notes .tei_div p {
+.notes .entry p, 
+.notes .tei_div p {
   text-indent: 0;
 }
 
@@ -458,6 +448,11 @@ h2.title_main .title_sub {
 
 .entry p, .tei_div p {
   text-indent: 2em;
+}
+
+.entry .tei_bibl span,
+.entry .tei_bibl div {
+  display: inline;
 }
 
 // List groups on Journals page, will need more tweaking
@@ -648,14 +643,11 @@ div.progress {
 
 /* Audio/Video */
 
-/* Video Embed CSS */
-
-/* This comes from UNL's CMS rules */
+// Video Embed CSS (This comes from UNL's CMS rules)
 
 .wdn-responsive-embed{display:block;height:0;padding:0;position:relative;overflow:hidden}.wdn-responsive-embed.wdn-aspect16x9{padding-bottom:56.25%}
 
 .wdn-responsive-embed .wdn-responsive-item,.wdn-responsive-embed embed,.wdn-responsive-embed iframe,.wdn-responsive-embed object,.wdn-responsive-embed video{border:0;position:absolute;top:0;left:0;width:100%;height:100%}
-
 
 /* Additional Texts */
 
@@ -743,11 +735,11 @@ table.dictionary td {
 
 /* Indentation fixes */
 
-.bibliography p, .links p {
-  text-indent:0;
-}
-
-.audio p {
+.bibliography p, 
+.links p,
+.additional p,
+.audio p
+{
   text-indent: 0;
 }
 
