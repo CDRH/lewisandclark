@@ -1,21 +1,29 @@
 class IndicesController < ApplicationController
   def index
+    @title = "Index of All Names"
+    @description = ""
     index_facets("all")
   end
 
   def nations
+    @title = "Index of Native Nations"
+    @description = ""
     index_facets("nations")
 
     render "index"
   end
 
   def people
+    @title = "Index of People"
+    @description = ""
     index_facets("people")
 
     render "index"
   end
 
   def places
+    @title = "Index of Places"
+    @description = ""
     index_facets("places")
 
     render "index"
