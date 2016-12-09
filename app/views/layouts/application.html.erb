@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:xs="http://www.w3.org/2001/XMLSchema" class="<%= @page_type %>">
 <head>
-  <title>Journals of the Lewis and Clark Expedition</title>
+  <title><% if @title %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
   <meta name="application-name" content="Journals of the Lewis and Clark Expedition">
+  <% if @description %>
+  <meta name="description" content="<%= @description %>">
+  <% end %>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
