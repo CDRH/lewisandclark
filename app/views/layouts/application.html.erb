@@ -24,9 +24,9 @@
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <% if !@extra_css.blank? %>
-    <% @extra_css.each do |css| %>
-  <%= css %>
-    <% end %>
+    <% @extra_css.each do |css|
+      concat "  #{css}".html_safe
+    end %>
   <% end %>
 
   <!-- Scripts -->
@@ -41,9 +41,9 @@
     ga('send', 'pageview');
   </script>
   <% if !@extra_js.blank? %>
-    <% @extra_js.each do |js| %>
-  <%= js %>
-    <% end %>
+    <% @extra_js.each do |js|
+      concat "  #{js}".html_safe
+    end %>
   <% end %>
 
   <!-- Fonts -->
