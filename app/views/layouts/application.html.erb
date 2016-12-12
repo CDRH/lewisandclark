@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:xs="http://www.w3.org/2001/XMLSchema" class="<%= @page_type %>">
 <head>
-  <title>Journals of the Lewis and Clark Expedition</title>
+  <title><% if !@title.blank? %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
   <meta name="application-name" content="Journals of the Lewis and Clark Expedition">
+  <% if !@description.blank? %>
+  <meta name="description" content="<%= @description %>">
+  <% end %>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
@@ -20,6 +23,11 @@
 
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <% if !@extra_css.blank? %>
+    <% @extra_css.each do |css| %>
+  <%= css %>
+    <% end %>
+  <% end %>
 
   <!-- Scripts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
@@ -32,6 +40,11 @@
     ga('create', 'UA-23044707-7', 'auto');
     ga('send', 'pageview');
   </script>
+  <% if !@extra_js.blank? %>
+    <% @extra_js.each do |js| %>
+  <%= js %>
+    <% end %>
+  <% end %>
 
   <!-- Fonts -->
   <%# fonts are being called from bootstrap scss variables file %>

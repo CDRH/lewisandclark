@@ -1,5 +1,9 @@
-<%= javascript_include_tag "search", media: "all" %>
+<%
+  @title = "Search the Journals"
+  @description = ""
 
+  @extra_js = [javascript_include_tag("search")]
+%>
 <!-- search form -->
 <%= render partial: "search_partials/searchbox" %>
 

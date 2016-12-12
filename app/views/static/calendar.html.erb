@@ -1,18 +1,27 @@
-<%= javascript_include_tag "bootstrap-year-calendar.min", media: "all" %>
-<%= javascript_include_tag "calendar/dates", media: "all" %>
-<%= javascript_include_tag "calendar/calendar", media: "all" %>
-<script>
-  maxDate = new Date("<%= ENTRY_DATE_LAST.join("-") %>");
+<%
+  @title = "Calendar of Entries"
+  @description = ""
 
-  // Augment by one day, as calendar excludes the day set as this variable
-  maxDate.setDate(maxDate.getDate() + 1);
+  @extra_css = [stylesheet_link_tag("calendar", media: "all")]
 
-  minDate = new Date("<%= ENTRY_DATE_FIRST.join("-") %>");
-  startYear = "<%= ENTRY_DATE_FIRST[0] %>";
-</script>
+  @extra_js = []
+  @extra_js << javascript_include_tag("bootstrap-year-calendar.min")
+  @extra_js << javascript_include_tag("calendar/dates")
+  @extra_js << javascript_include_tag("calendar/calendar")
 
-<%= stylesheet_link_tag "calendar", media: "all" %>
+  inline_js = <<-END
+  <script>
+    maxDate = new Date("#{ENTRY_DATE_LAST.join("-")}");
 
+    // Augment by one day, as calendar excludes the day set as this variable
+    maxDate.setDate(maxDate.getDate() + 1);
+
+    minDate = new Date("#{ENTRY_DATE_FIRST.join("-")}");
+    startYear = "#{ENTRY_DATE_FIRST[0]}";
+  </script>
+  END
+  @extra_js << inline_js.html_safe
+%>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <h4>Browse Journals by Date</h4><br/>

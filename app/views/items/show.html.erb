@@ -1,7 +1,11 @@
-<%= javascript_include_tag "ekko-lightbox.min", media: "all" %>
-<%= javascript_include_tag "item", media: "all" %>
+<%
+  @title = @item["title"]
+  #@description = "" # Item attributes available: ["id", "title", "text", "titleSort", "source", "lc_searchtype_s", "creators", "creator", "people", "places", "lc_index_combined_ss", "uriHTML", "date", "lc_timeline_place_s", "dateDisplay", "lc_dateNotBefore_s", "lc_dateNotAfter_s", "lc_previous_s", "lc_next_s", "lc_filename_s", "slug", "project", "uri", "uriXML", "image_id", "dataType", "publisher", "contributor", "contributors", "format", "principalInvestigator", "category", "subCategory", "_version_", "highlights"]
 
-
+  @extra_js = []
+  @extra_js << javascript_include_tag("ekko-lightbox.min")
+  @extra_js << javascript_include_tag("item")
+%>
 <!-- Progress Marker and Previous Next -->
 <% if @item["subCategory"] == "Journal Entries" %>
   <div class="row">
