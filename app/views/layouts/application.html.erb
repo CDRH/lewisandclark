@@ -23,6 +23,11 @@
 
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <% if !@extra_css.blank? %>
+    <% @extra_css.each do |css| %>
+  <%= css %>
+    <% end %>
+  <% end %>
 
   <!-- Scripts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
@@ -35,6 +40,11 @@
     ga('create', 'UA-23044707-7', 'auto');
     ga('send', 'pageview');
   </script>
+  <% if !@extra_js.blank? %>
+    <% @extra_js.each do |js| %>
+  <%= js %>
+    <% end %>
+  <% end %>
 
   <!-- Fonts -->
   <%# fonts are being called from bootstrap scss variables file %>
