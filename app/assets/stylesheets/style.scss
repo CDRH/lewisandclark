@@ -6,102 +6,70 @@
 /**************************************/
 
 
+/* -----------
+Basic Text Styles
+----------- */
+a {
+  color: #36659C;
+  text-decoration: underline;
+}
+
 h1 {
-  font-family: 'Cormorant Garamond', 'Garamond', 'Times New Roman', Times, serif;
+  font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Times, serif;
   font-weight: 100;
-  text-shadow: .1px .05em .1em #ffffff;
- 
+  text-shadow: 1px 1px 1px #FFF;
 }
 
-.site_title h1 {
-  font-size: 3.4em;
+hr {
+  display: block;
+  clear: both;
+  margin-top: 20px;
+}
+
+table {
   line-height: 1em;
-  margin-top: .1em;
+
+  tr td {
+    margin: 0;
+    padding: 0;
+  }
 }
 
-h1 a {
-  text-decoration: none !important;
-  color: #000 !important;
+.three_column {
+  column-count: 3;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
 }
 
-h1 .cap {
-  /*font-size: 1.4em;
-  letter-spacing: -.05em;*/
-  font-size: 1em;
+.tooltip {
+  text-indent: 0;
 }
 
-h1 .sml {
-  font-size: .7em;
-  position: relative;
-  bottom: .08em;
+
+/* -----------
+Basic Page Styles
+----------- */
+body {
+  background-color: transparent;
 }
-
-//.amp {
-//}
-
-a.regularization {
-  white-space: nowrap;
-}
-
-.home_search {
-
-  overflow: auto;
-  margin-top: 25px;
-}
-
-.home_search a {
-  
-  font-size: 1.2em;
-}
-
-.home_search input,.home_search button {
-  background-color: #F5F5F5;
-  background-color: rgba(255,255,255,.6);
-}
-
 
 html {
+  background-color: #EEE;
   background-image: url("../images/river2.png");
-  background-repeat: no-repeat;
   background-position: top;
-  background-color: #eeeeee;
-  /* alternate #EFEDE8 */ }
-
-.navbar-default {
-  background-color: #2F5076;
-  background-color: rgba(0, 41, 86, 0.8);
-  border: none; }
-
-.navbar-default .navbar-nav li a {
-  text-decoration: none; 
-  color: #fff;
-  font-size: 1.1em;
-  font-weight: 100;
+  background-repeat: no-repeat;
 }
 
-.navbar-default .navbar-nav li a:hover {
-  color: #fff;
-  background-color: #274669;
-  background-color: rgba(24, 46, 75, .3);
+ul.simple {
+  list-style-type: none;
+  margin: 1em 0;
+  padding: 0;
 }
-
-a {
-  color: #36659c;
-  text-decoration: underline; }
-
-.page_content {
-  background-color: #F5F5F5;
-  background-color: rgba(255, 255, 255, 0.4);
-  margin-top: -25px;
-  padding-top: 25px;
-  padding-bottom:2em; }
-
-body {
-  background-color: transparent; }
 
 .buffer-bottom {
   margin-bottom: 14px;
 }
+
 .buffer-bottom-sm {
   margin-bottom: 7px;
 }
@@ -109,121 +77,66 @@ body {
 .buffer-right {
   margin-right: 14px;
 }
+
 .buffer-right-sm {
   margin-right: 7px;
 }
 
-/* Map Styles */
-
-#map_container {
-  height: 400px;
-}
-  
-
-/* Tables */
-
-.tei_table {
-  width: auto;
-  margin: 1em auto;
-  font-size: .9em;
-}
-.tei_table td {
-  padding: 0 .2em;
-}
-
-.tei_table td .cell_contents {
-  /* line-height: 1.2em; */
-}
-
-
-/* General Styles */
-
-
-
-.italic {
-  font-style: italic;
-}
-
-.regularization {
-  border-bottom: solid 4px #e6e6e6;
-  box-shadow: inset 0 -4px 0 #e6e6e6;
-  text-decoration: none;
-  margin: 0 0 -3em 0;
-  padding: 0;
-  color: #000;
-}
-
-.underline {
-  border-bottom: solid #000 1px;
-}
-
-.double.underline {
-  border-bottom: 3px double black;
-}
-
-.tei_table_head {
+.center {
+  display: table;
+  margin: auto;
   text-align: center;
 }
 
-.ab .date {
-  padding-bottom: .5em;
-  text-align: right;
-  display: block;
+.clear_return {
+  clear: both;
+  height: 1em !important;
 }
 
-.entry {
-  border-bottom: solid #aaa 3px;
-  margin-bottom: 1em;
-  padding-bottom: .5em;
-}
-
-.entry p, .tei_div p {
-  text-indent: 2em;
-}
-
-.tooltip {
-  text-indent: 0;
+.page_content {
+  background-color: #F5F5F5;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin-top: -1.5em;
+  padding-bottom: 2em;
+  padding-top: 1.5em;
 }
 
 .right {
+  display: block;
   padding-bottom: .5em;
   text-align: right;
 }
 
-span.ab {
-}
-
-/* List groups on Journals page, will need more tweaking */
-a.list-group-item {
-  color: #fff;
-  text-decoration: none;
-  
-}
-
-a:hover.list-group-item{
-  background-color: $brand-success !important;
-  
-}
-
-p.list-group-item-text {
-  
-  color: #fff !important;
-  margin: .7em 0 .7em 0;
-}
-
-/* Columns */
-
-.three_column {
--moz-column-count: 3;
--webkit-column-count: 3;
-column-count: 3;
-}
-
 /* Footer */
+.buy_books {
+  background: url("../images/river_part.png") right -30px no-repeat scroll #EFEDE8;
+  border:  3px solid #FFF;
+  margin-bottom: 1em;
+  padding: 20px 30px;
+
+  &:hover {
+    border-color: #305074;
+  }
+}
+
+.buy_books_link {
+  color: #305074;
+  text-decoration: none !important;
+}
 
 .footer {
   margin: 4em 0 9em 0;
-  text-align:center;
+  text-align: center;
+}
+
+.footer_info {
+  margin-bottom: 5em;
+}
+
+.footer_logo img {
+  margin-top: 2em;
+  max-width: 100%;
+  width: 300px;
 }
 
 .footernav {
@@ -234,159 +147,210 @@ column-count: 3;
   li {
     display: inline;
     padding: 1em;
-}
-
-}
-
-.footer_logo img {
-  max-width:100%;
-  width: 300px;
-  margin-top: 2em;
-}
-
-.footer_info {
-  margin-bottom: 5em;
-}
-
-
-.toc ul {
-  padding: 0 0 0 1em;
-  margin: 0;
-}
-
-.buy_books {
-  background: url("../images/river_part.png") right -30px no-repeat scroll #EFEDE8;
-  padding: 20px 30px;
-border:  solid 3px #fff;
-margin-bottom: 1em;
-}
-
-.buy_books:hover {
-  border-color: #305074;
-}
-
-.buy_books_link {
-  text-decoration: none !important;
-  color: #305074;
-}
-
-.lead {
-  font-size: 1.2em;
-}
-
-
-
-
-
-/* Temporary until we finalize colors */
-
-.color-gray-darker {
-  background-color: $gray-darker;
-}
-
-.color-gray-dark {
-  background-color: $gray-dark;
-}
-
-.color-gray {
-  background-color: $gray;
-}
-
-.color-gray-light {
-  background-color: $gray-light;
-}
-
-.color-gray-lighter {
-  background-color: $gray-lighter;
-}
-
-.color-brand-primary {
-  background-color: $brand-primary;
-}
-
-.color-brand-success {
-  background-color: $brand-success;
-}
-
-.color-brand-info {
-  background-color: $brand-info;
-}
-
-.color-brand-warming {
-  background-color: $brand-warning;
-}
-
-.color-brand-danger {
-  background-color: $brand-danger;
-}
-
-
-@media (max-width: 768px) {
-  .site_title h1 a {
-    font-size: .7em !important;
-    line-height: 0;
-  }
-  .header .home_search .pull-right {
-    
-    width: 100%;
   }
 }
 
 .metadata {
-  border: solid 2px #aaa;
-  padding: 20px;
+  border: 2px solid #AAA;
   margin: 20px 0;
+  padding: 20px;
 }
 
 
+/* -----------
+Header
+----------- */
+/* Title */
+// Use if you want to switch the ampersand to another font
+//.amp {
+//}
 
-
-.tei_list_head {
-  margin-top: 1.2em;
-  font-size: 1.2em;
-  font-weight: 600;
+.header .home_search .pull-right {
+  @media (max-width: 768px) { & {
+    width: 100%;
+  } }
 }
 
-.contents ul,
-.mapList ul,
-.illusList ul,
-.chapter ul {
-  margin: .5em 0 1em 0;
-  padding: 0;
-}
+.site_title h1 {
+  font-size: 3.4em;
+  line-height: 1em;
+  margin-top: .1em;
 
-.contents ul li,
-.mapList ul li,
-.illusList ul li,
-.chapter li {
-  list-style: none;
-}
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
 
-.tei_figure {
-  
-  margin: 1em 0;
-  /* padding: 1em; */
-  font-size: .9em;
-}
+    @media (max-width: 768px) { & {
+      font-size: .7em !important;
+      line-height: 0;
+    } }
+  }
 
-/*
-@media (min-width: 768px) {
-  .tei_figure {
-    max-width: 50%;
+  .sml {
+    bottom: .08em;
+    font-size: .7em;
+    position: relative;
   }
 }
 
-.tei_figure img {
-  max-width: 300px;
-  max-height: 300px;
-}
-*/
+/* Search */
+.home_search {
+  margin-top: 25px;
+  overflow: auto;
 
-.tei_figure p {
-  margin: .2em 0;
-  line-height: 1.2em;
-    text-indent:0;
-  margin-bottom: .5em;
+  a {
+    font-size: 1.2em;
+  }
+
+  input,
+  .home_search button {
+    background-color: #F5F5F5;
+    background-color: rgba(255, 255, 255, .6);
+  }
+}
+
+/* Navbar */
+.navbar-default {
+  background-color: #2F5076;
+  background-color: rgba(0, 41, 86, 0.8);
+  border: none;
+
+  .navbar-nav li a {
+    color: #FFF;
+    font-size: 1.1em;
+    font-weight: 100;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #274669;
+      background-color: rgba(24, 46, 75, .3);
+      color: #FFF;
+    }
+  }
+}
+
+
+/* -----------
+ TEI Styles
+----------- */
+/* Tables */
+a.regularization {
+  white-space: nowrap;
+}
+
+.ab .date {
+  display: block;
+  padding-bottom: .5em;
+  text-align: right;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.regularization {
+  border-bottom: 4px solid #E6E6E6;
+  box-shadow: inset 0 -4px 0 #E6E6E6;
+  color: #000;
+  margin: 0 0 -3em 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.superscript {
+  font-size: .9em;
+  vertical-align: super;
+}
+
+.tei_list_head {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 1.2em;
+}
+
+.tei_table {
+  font-size: .9em;
+  margin: 1em auto;
+  width: auto;
+
+  td {
+    padding: 0 .2em;
+
+    // Leaving because it may need further adjustments in future
+    //& .cell_contents {
+    //  line-height: 1.2em;
+    //}
+  }
+}
+
+.tei_table_head {
+  text-align: center;
+}
+
+.underline {
+  border-bottom: 1px solid #000;
+
+  &.double {
+    border-bottom: 3px double #000;
+  }
+}
+
+/* Figures */
+.entry .tei_figure {
+  display: block;
+  font-size: .9em;
+  margin: 1em 0;
+  padding: .5em 0;
+
+  p {
+    line-height: 1.2em;
+    margin: .2em 0 .5em;
+    text-indent: 0;
+  }
+
+  .caption {
+    display: block;
+    font-size: 1.2em;
+    margin: .8em 0 .5em 0;
+  }
+
+  .label {
+    display: none;
+  }
+
+  .note {
+    display: block;
+    margin-top: .5em;
+  }
+
+  .orgName {
+    border-top: none;
+    display: block;
+    margin-top: .5em;
+    padding-top: .5em;
+  }
+
+  .resp {
+    display: block;
+    font-weight: 800;
+    margin-top: .5em;
+  }
+}
+
+/* Heads and Bibls */
+h2 {
+  &.title_main {
+    font-size: 1.4em;
+
+    & .title_sub {
+      display: block;
+      font-size: 1.4em;
+    }
+  }
 }
 
 h3.figure_head {
@@ -394,177 +358,196 @@ h3.figure_head {
   font-weight: 100;
 }
 
-h2.title_main {
-  font-size: 1.4em;
-}
-
-h2.title_main .title_sub {
-  
-  font-size: 1.4em;
-  display: block;
-}
-
-.title_author {
-  font-size: 1.4em;
-  display: block;
-  margin-bottom: .3em;
-}
-
 .book_bibl {
   font-size: .9em;
 }
 
-.sources .tei_bibl,
-.bibliography .tei_bibl,
-.bib .tei_bibl {
-  padding-left: 1.5em ;
-    text-indent: -1.5em ;
-  margin-bottom: .7em;
+.editor_end {
+  margin-left: auto;
+  margin-right: auto;
+  width: 14em;
 }
 
-.ref_link {
-  text-decoration:none;
+.footnote {
+  margin-bottom: 1em;
+
+  p {
+    margin: 1em 0 0 0;
   }
 
-
-
-
-.book_pagination {
-  margin: 1em 0;
-  
+  .tei_list_head {
+    font-size: 1em;
+    font-weight: 100;
+  }
 }
 
-.book_pagination .previous_link:after,
-.book_pagination .toc_link:after,
-.book_pagination .entire_text_link:after {
-  content: " | ";
+.milestone {
+  border-top: 2px solid #AAA;
+  height: 1px;
+  margin-bottom: 1em;
+  width: 100%;
 }
 
+.notes {
+  .entry p,
+  .tei_div p {
+    text-indent: 0;
+  }
+}
 
+.p {
+  margin-bottom: 1em;
+}
+
+.tei_bibl {
+  .bib &,
+  .bibliography &,
+  .source & {
+    margin-bottom: .7em;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+  }
+
+  .note {
+    display: inline;
+  }
+}
+
+.tei_div {
+  margin-bottom: 1em;
+}
 
 .tei_title {
   font-style: italic;
 }
 
-.footnote {
-  
+.title_author {
+  display: block;
+  font-size: 1.4em;
+  margin-bottom: .3em;
+}
+
+
+/* -----------
+  Site Sections
+----------- */
+/* Map Styles */
+#map_container {
+  height: 400px;
+}
+
+/* Journal Entries */
+.entry {
+  border-bottom: 3px solid #AAA;
   margin-bottom: 1em;
+  padding-bottom: .5em;
+
+  .tei_bibl {
+    div,
+    span {
+      display: inline;
+    }
+  }
 }
 
-.right {
-  display:block;
-  text-align:right;
+.entry p,
+.tei_div p {
+  text-indent: 2em;
 }
 
-.tei_bibl .note {
-  display: inline;
+// List groups on Journals page, will need more tweaking
+a {
+  &.list-group-item {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  &:hover.list-group-item {
+    background-color: $brand-success !important;
+  }
 }
 
-.tei_div {
-  margin-bottom:1em;
+p.list-group-item-text {
+  color: #FFF !important;
+  margin: .7em 0 .7em 0;
 }
 
-.notes .entry p, .notes .tei_div p {
-  text-indent: 0;
+@media (min-width: 768px) {
+  .entry_author {
+    float: left;
+    width: 55%;
+  }
+
+  .entry_date {
+    float: right;
+    margin-top: .8em;
+    text-align: left;
+  }
 }
 
-.bold {
-  font-weight:800;
+/* Journal Entries: Fancy tables and brackets */
+table.table {
+  margin-top: 2em !important;
 }
 
-table.dictionary td {
-    padding-left: 1.5em !important;
-    text-indent: -1.5em ;
+td {
+  line-height: 1.05em !important;
+  padding-right: .5em !important;
+
+  &.table_valign_middle {
+    vertical-align: middle !important;
+  }
 }
 
-.bibliography p, .links p {
-  text-indent:0;
+.cell_bracket {
+  font-weight: 100;
+
+  @mixin rowspan($num, $size) {
+    &.rowspan_#{$num} .cell_contents {
+      font-size: #{$size}em;
+    }
+  }
+  @include rowspan(2, 2.7);
+  @include rowspan(3, 4);
+  @include rowspan(4, 5);
+  @include rowspan(5, 6);
+  @include rowspan(6, 7);
+  @include rowspan(7, 8);
+  @include rowspan(8, 9);
+  @include rowspan(9, 10);
+  @include rowspan(10, 11);
+  @include rowspan(11, 12);
+  @include rowspan(12, 13);
+  @include rowspan(13, 14);
 }
 
+.table .table {
+  background-color: transparent;
+}
 
-
-
-
-
-.image_gallery_image {
-  
-  width: 300px;
-  height: 200px;
-  float: left;
-  padding: 15px;
-  margin: 10px 10px 0 0;
-  font-size: .9em;
-  line-height: 1.1em;
-  background-color: #EEEEEE;
+.table_halign_center {
   text-align: center;
 }
 
-.image_gallery_image img {
-  display: block;
-  margin: 0px auto 10px auto;
+.tei_tr {
+  // Can't get this to work with padding or margin, come back to later. look at 
+  // http://rosie.unl.edu/lewisandclark/item/lc.jrn.1804-01-21-1 as an example
+  border-bottom: .7em solid transparent;
 }
 
-.gallery_note {
-  display: block;
-  clear: both;
-  font-size: 1.1em;
-}
-
-hr {
-  display: block;
-  clear: both;
-  margin-top: 20px;
-}
-
-
-
-.tei_figure .label {
-  display: none;
-}
-
-.tei_figure .caption {
-  font-size: 1.2em;
-  margin: .8em 0 .5em 0;
-  display: block;
-}
-
-.tei_figure .resp {
-  font-weight: 800;
-  margin-top: .5em;
-  display: block;
-}
-
-.tei_figure .tei_name {
-  
-}
-
-.tei_figure .orgName {
-  display: block;
-  margin-top: .5em;
-  border-top: solid #dfdfdf 1px;
-  padding-top: .5em;
-
-}
-
-.tei_figure .note
- {
-  display: block;
-  margin-top: .5em;
-} 
-
-
-
-
-/* Progress Bar */
-
-
+/* Journal Entries: Progress Bar */
 div.progress {
-  border: solid 1px #aaa;
+  background-color: #CED8DB;
+  border: 1px solid #AAA;
   height: .5em;
-  background-color: #ced8db;
 }
 
-.first_date, .last_date {
+.btn {
+  text-decoration: none;
+}
+
+.first_date,
+.last_date {
   font-size: .7em;
   margin-top: -2em;
 }
@@ -576,254 +559,153 @@ div.progress {
 .last_date {
   float: right;
 }
-.progress_description {
-  text-align: center;
-  display: block;
-  font-size: .9em;
-}
-
-.btn {
-  text-decoration: none;
-}
 
 .prev_next_buttons .btn {
   margin-top: .5em;
+}
 
+.progress_description {
+  display: block;
+  font-size: .9em;
+  text-align: center;
 }
 
 /* Search results */
+.highlighting {
+  em {
+    display: inline-block;
+    font-weight: 700;
+  }
 
-.searchResults {
-  border-bottom: solid 1px #aaa;
-  padding: 10px 0;
+  li:after,
+  li:before {
+    content: "…";
+  }
 }
 
 .search_results_info {
-  
   border-right: 1px dotted #333;
   text-align: right;
 }
 
-.search_results_info ul,
-.search_results_title ul {
-  margin: 0;
-  padding: 0;
-}
+.search_results_info,
+.search_results_title {
+  ul {
+    margin: 0;
+    padding: 0;
 
-.search_results_info ul li,
-.search_results_title ul li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  line-height: 1.2em;
-}
-
-.searchResults .title {
-  font-size: 1.4em;
-  line-height: 1.2;
-  margin-bottom: .5em;
-}
-
-.highlighting li:before,
-.highlighting li:after
- {
-  content: "…";
-}
-
-.highlighting em {
-  display: inline-block;
-  font-weight: 700;
-
-}
-
-
-
-/* Journal Stylings */
-
-@media (min-width: 768px) {
-  .entry_date {
-	 text-align:left;
-	 
-	 float: right; 
-	 margin-top:.8em;
-	 
+    li {
+      line-height: 1.2em;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
   }
-  
-  .entry_author {float: left;
-  width: 55%;
+}
+
+.searchResults {
+  border-bottom: 1px solid #AAA;
+  padding: 10px 0;
+
+  .title {
+    font-size: 1.4em;
+    line-height: 1.2;
+    margin-bottom: .5em;
+  }
+}
+
+/* Audio/Video */
+// Video Embed CSS (This comes from UNL's CMS rules)
+.wdn-responsive-embed {
+  display: block;
+  height: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+
+  &.wdn-aspect16x9 {
+    padding-bottom: 56.25%;
   }
 
-
-  
- }
- 
-
-  
-  
-
-.clear_return {clear: both; height:1em !important;}
-
-.center {margin: auto;}
-
-
-ul.simple {
-	margin: 1em 0;
-	padding: 0;
-	list-style-type: none;
+  embed,
+  iframe,
+  object,
+  video,
+  .wdn-responsive-item {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
 
-.center {
-	display: table;
-	margin: auto;
-	text-align: center
+/* Additional Texts */
+.book_pagination {
+  margin: 1em 0;
+
+  .entire_text_link:after,
+  .previous_link:after,
+  .toc_link:after {
+    content: " | ";
+  }
 }
 
-div.p {
-	
-	margin-bottom: 1em;
+.chapter ul,
+.contents ul,
+.illusList ul,
+.mapList ul {
+  margin: .5em 0 1em 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
 }
 
-
-
-.entry .tei_figure .orgName {
-  border-top: none;
+.lead {
+  font-size: 1.2em;
 }
 
-.entry .tei_bibl span,
-.entry .tei_bibl div {
-	display: inline;
+.ref_link {
+  text-decoration: none;
 }
 
-
-
-.tei_figure {
-
-	display: block;
-	padding:.5em 0
+.toc ul {
+  margin: 0;
+  padding: 0 0 0 1em;
 }
 
-
-
-
-
-table {
-	line-height: 1em;
+/* Image Gallery */
+.gallery_note {
+  clear: both;
+  display: block;
+  font-size: 1.1em;
 }
 
-table tr td {
-	padding: 0;
-	margin: 0;
-}
-
-.cell_bracket {
-	font-weight: 100;
-}
-
-.rowspan_2.cell_bracket .cell_contents {
-	font-size: 2.7em}
-
-.rowspan_3.cell_bracket .cell_contents {
-	font-size: 4em}
-
-.rowspan_4.cell_bracket .cell_contents {
-	font-size: 5em;	
-}
-
-.rowspan_5.cell_bracket .cell_contents {
-	font-size: 6em;	
-}
-
-.rowspan_6.cell_bracket .cell_contents {
-	font-size: 7em;	
-}
-
-.rowspan_7.cell_bracket .cell_contents {
-	font-size: 8em;	
-}
-
-.rowspan_8.cell_bracket .cell_contents {
-	font-size: 9em;	
-}
-
-.rowspan_9.cell_bracket .cell_contents {
-	font-size: 10em;	
-}
-
-.rowspan_10.cell_bracket .cell_contents {
-	font-size: 11em;	
-}
-
-.rowspan_11.cell_bracket .cell_contents {
-	font-size: 12em;	
-}
-
-.rowspan_12.cell_bracket .cell_contents {
-	font-size: 13em;	
-}
-
-.rowspan_13.cell_bracket .cell_contents {
-	font-size: 14em;	
-}
-
-
-
-td.table_valign_middle {
-  vertical-align:middle !important;
-}
-
-td {
-  line-height: 1.05em !important;
-  padding-right: .5em !important;
-}
-
-.tei_tr {
-  /* Can't get this to work with padding or margin, come back to later. look at 
-  http://rosie.unl.edu/lewisandclark/item/lc.jrn.1804-01-21-1 as an example */
-  border-bottom: .7em solid transparent;
-}
-
-.table .table {
-  background-color: transparent;
-}
-
-.table_halign_center {
-  text-align: center;
-}
-
-table.table {
-  margin-top: 2em !important;
-}
-
-
-
-.tei_figure p {
-  
-  text-indent: 0;
-}
-
-/* Text display */
-
-.superscript {
+.image_gallery_image {
+  background-color: #EEE;
+  float: left;
   font-size: .9em;
-  vertical-align: super;
+  height: 200px;
+  line-height: 1.1em;
+  margin: 10px 10px 0 0;
+  padding: 15px;
+  text-align: center;
+  width: 300px;
+
+  img {
+    display: block;
+    margin: 0px auto 10px auto;
+  }
 }
 
-.audio p {
-  
-  text-indent: 0;
+/* Index */
+table.dictionary td {
+  padding-left: 1.5em !important;
+  text-indent: -1.5em ;
 }
-
-/* Video Embed CSS */
-
-/* This comes from UNL's CMS rules */
-
-.wdn-responsive-embed{display:block;height:0;padding:0;position:relative;overflow:hidden}.wdn-responsive-embed.wdn-aspect16x9{padding-bottom:56.25%}
-
-.wdn-responsive-embed .wdn-responsive-item,.wdn-responsive-embed embed,.wdn-responsive-embed iframe,.wdn-responsive-embed object,.wdn-responsive-embed video{border:0;position:absolute;top:0;left:0;width:100%;height:100%}
-
-
-
-/* Index styling */
 
 .index_list .name {
   padding-bottom: 0.75em;
@@ -840,27 +722,11 @@ table.table {
   }
 }
 
-/* More TEI styling, to address cleanup issue */
-
-.footnote p {
-  margin: 1em 0 0 0;
-}
-
-.milestone {
-  width: 100%;
-  border-top: 2px solid #aaa;
-  height: 1px;
-  margin-bottom: 1em;
-}
-
-.editor_end {
-  width: 14em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footnote .tei_list_head {
-  font-size: 1em;
-  font-weight: 100;
+/* Indentation fixes */
+.additional p,
+.audio p,
+.bibliography p,
+.links p {
+  text-indent: 0;
 }
 
