@@ -1,7 +1,7 @@
 Journals of the Lewis and Clark Expedition
 =================
 
-This rails project powers the [https://lewisandclarkjournals.unl.edu/](Journals of the Lewis and Clark Expedition) website.  It is intended for use with a Solr index designed around the CDRH's [API schema](https://github.com/CDRH/data/blob/master/schema.md)
+This rails project powers the [Journals of the Lewis and Clark Expedition](https://lewisandclarkjournals.unl.edu/) website.  It is intended for use with a Solr index designed around the CDRH's [API schema](https://github.com/CDRH/data/blob/master/schema.md).
 
 ## Technology
 
@@ -10,7 +10,7 @@ rails 5.0.0.1
 solr 5.5.0
 TEI P5
 
-For more information, please see the [https://lewisandclarkjournals.unl.edu/item/lc.about.technicalsummary](Technical Summary).
+For more information, please see the [Technical Summary](https://lewisandclarkjournals.unl.edu/item/lc.about.technicalsummary).
 
 ## Installation
 
@@ -24,4 +24,4 @@ If you wish to make changes to the calendar, you can run a rake task to update t
 
 ## Attribution and Project Team
 
-More information is available on the [https://lewisandclarkjournals.unl.edu/about](about pages).
+More information is available on the [about pages](https://lewisandclarkjournals.unl.edu/about).
