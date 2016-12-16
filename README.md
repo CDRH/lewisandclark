@@ -5,10 +5,10 @@ This rails project powers the [Journals of the Lewis and Clark Expedition](https
 
 ## Technology
 
-ruby 2.3.1
-rails 5.0.0.1
-solr 5.5.0
-TEI P5
+- ruby 2.3.1
+- rails 5.0.0.1
+- solr 5.5.0
+- TEI P5
 
 For more information, please see the [Technical Summary](https://lewisandclarkjournals.unl.edu/item/lc.about.technicalsummary).
 
