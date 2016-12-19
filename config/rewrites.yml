@@ -53,7 +53,7 @@
     to:         /item/lc.mult.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.(kloefkorn|video.+|white)(?:\.xml)?$/
+    from:       !ruby/regexp /^\/item\/lc\.(kloefkorn|video.+?|white)(?:\.xml)?$/
     to:         /item/lc.mult.$1
 -
     method:     r301
