@@ -80,7 +80,7 @@
                       id: "main_site_search", placeholder: "Search All Items",
                       class: "form-control" %>
                   <div class="input-group-btn">
-                    <%= submit_tag "Search", class: "btn btn-default" %>
+                    <%= submit_tag "Search", class: "btn btn-default", name: nil, data: { disable_with: false } %>
                   </div>
                 </div><!-- /input-group -->
                 <%= link_to search_path, class: "btn btn-link pull-right" do %>
