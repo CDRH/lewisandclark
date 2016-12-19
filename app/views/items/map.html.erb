@@ -29,7 +29,7 @@
   <%= hidden_field_tag(:qfield, "text") %>
   <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control") %>
   <span class="input-group-btn">
-    <%= submit_tag("Search", :class => "btn btn-primary") %>
+    <%= submit_tag "Search", class: "btn btn-primary", name: nil, data: { disable_with: false } %>
   </span>
 <% end %>
 
