@@ -1,7 +1,7 @@
 # XSL
 -
     method:     rewrite
-    from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+)&_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl$/
+    from:       !ruby/regexp /^\/(?:php\/xslt\.php|read\/)\?&?_xmlsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/files\/xml\/)?(.+?)?(?:&_xslsrc=(?:http:\/\/lewisandclarkjournals\.unl\.edu\/)?LCstyles\.xsl)?$/
     to:         /item/$1
     options:
         no_qs:  1
@@ -15,45 +15,49 @@
 # About
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.(advisoryboard|citations|faq|links|onlineeditorialprocedures|overview|privacy|projectteam|sponsors|technicalsummary)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(advisoryboard|citations|faq|links|onlineeditorialprocedures|overview|privacy|projectteam|sponsors|technicalsummary)(?:\.xml)?$/
     to:         /item/lc.about.$1
+-
+    method:     r301
+    from:       /links.html
+    to:         /item/lc.about.links
 
 # Image
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/img_(?:lc\.)?(.+)\.xml$/
+    from:       !ruby/regexp /^\/item\/img_(?:lc\.)?(.+?)(?:\.xml)?$/
     to:         /item/lc.img.$1
 
 # Journal Entry
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/(18.+)\.xml$/
+    from:       !ruby/regexp /^\/item\/(18.+?)(?:\.xml)?$/
     to:         /item/lc.jrn.$1
     options:
-        not:    /^\/item\/18.*kloefkorn/
+        not:    !ruby/regexp /^\/item\/18.*kloefkorn/
 
 # Journal Extras
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/((?:introduction|preface|v).+)\.xml$/
+    from:       !ruby/regexp /^\/item\/((?:introduction|preface|v).+?)(?:\.xml)?$/
     to:         /item/lc.jrn.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.(editorial\.procedures|editorial\.symbols|sources)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(editorial\.procedures|editorial\.symbols|sources)(?:\.xml)?$/
     to:         /item/lc.jrn.$1
 
 # Multimedia
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/(18.+kloefkorn.*)\.xml$/
+    from:       !ruby/regexp /^\/item\/(18.+kloefkorn.*?)(?:\.xml)?$/
     to:         /item/lc.mult.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.(kloefkorn|video.+|white)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(kloefkorn|video.+|white)(?:\.xml)?$/
     to:         /item/lc.mult.$1
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/(white.+)\.xml$/
+    from:       !ruby/regexp /^\/item\/(white.+?)(?:\.xml)?$/
     to:         /item/lc.mult.$1
 
 # Navigation
@@ -83,7 +87,7 @@
     to:         /images/plants_animals
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/img_(?:clark|lewis)\.xml$/
+    from:       !ruby/regexp /^\/item\/img_(?:clark|lewis)(?:\.xml)?$/
     to:         /images/people_places
 -
     method:     r301
@@ -91,7 +95,7 @@
     to:         /journals/index
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.(?:audio|multimedia)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.(?:audio|multimedia)(?:\.xml)?$/
     to:         /multimedia
 -
     method:     r301
@@ -111,13 +115,25 @@
     to:         /journals/contents
 -
     method:     r301
-    from:       !ruby/regexp /^\/(lewisandclark\/)?search.php$/
+    from:       /read/
+    to:         /journals/contents
+
+# Search
+-
+    method:     r301
+    from:       !ruby/regexp /^\/search\.php\?.*keyword=(.+?)(?:&.*)?$/
+    to:         /search?utf8=✓&qfield=text&qtext=$1
+    options:
+        no_qs:  1
+-
+    method:     r301
+    from:       !ruby/regexp /^\/(lewisandclark\/)?search\.php$/
     to:         /search
 
 # Supplementary
 -
     method:     r301
-    from:       !ruby/regexp /^\/item\/lc\.((?:allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield).*)\.xml$/
+    from:       !ruby/regexp /^\/item\/lc\.((?:allen|almost|alwin|bahmer|bedini|belyea|blake|bright|clarke|danisi|debres|devoto|foley|furtwangler|jackson|jenkinson|johnsgard|lavender|missing|moulton|oconnor|ronda|texts|winfield).*?)(?:\.xml)?$/
     to:         /item/lc.sup.$1
 
 # Remove trailing slashes
