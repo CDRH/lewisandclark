@@ -2,14 +2,15 @@
   @title = "Calendar of Entries"
   @description = ""
 
-  @extra_css = [stylesheet_link_tag("calendar", media: "all")]
+  @ext_css = %w( calendar )
 
-  @extra_js = []
-  @extra_js << javascript_include_tag("bootstrap-year-calendar.min")
-  @extra_js << javascript_include_tag("calendar/dates")
-  @extra_js << javascript_include_tag("calendar/calendar")
+  @ext_js = %w(
+    bootstrap-year-calendar.min
+    calendar/calendar
+    calendar/dates
+  )
 
-  inline_js = <<-END
+  date_range = <<-END
   <script>
     maxDate = new Date("#{ENTRY_DATE_LAST.join("-")}");
 
@@ -20,7 +21,8 @@
     startYear = "#{ENTRY_DATE_FIRST[0]}";
   </script>
   END
-  @extra_js << inline_js.html_safe
+
+  @inline_js = date_range.html_safe
 %>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
