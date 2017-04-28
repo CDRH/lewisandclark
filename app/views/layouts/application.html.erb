@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:xs="http://www.w3.org/2001/XMLSchema" class="<%= @page_type %>">
 <head>
-  <title><% if !@title.blank? %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
+  <title><% if @title.present? %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
   <meta name="application-name" content="Journals of the Lewis and Clark Expedition">
-  <% if !@description.blank? %>
+  <% if @description.present? %>
   <meta name="description" content="<%= @description %>">
   <% end %>
   
