@@ -6,7 +6,7 @@
   <% if @description.present? %>
   <meta name="description" content="<%= @description %>">
   <% end %>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application' %>
   <% if @ext_css.present?
     Array.wrap(@ext_css).each do |css|
       concat "  #{stylesheet_link_tag css}\n".html_safe
@@ -36,7 +36,7 @@
   end %>
 
   <!-- Scripts -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application' %>
   <% if @ext_js.present?
     Array.wrap(@ext_js).each do |js|
       concat "  #{javascript_include_tag js}\n".html_safe
