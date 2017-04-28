@@ -23,3 +23,5 @@
 //
 // require_tree .
 //= ekko-lightbox.min
+
+//= require_tree ./global
