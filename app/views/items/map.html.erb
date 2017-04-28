@@ -2,7 +2,6 @@
   @title = "Map of the Expedition"
   @description = ""
 
-  @ext_css = [stylesheet_link_tag("leaflet", media: "all")]
   @ext_css = %w( leaflet )
   @ext_js = %w(
     leaflet
@@ -10,16 +9,15 @@
     tile.stamen-1.3.0-https
   )
 
-  locations = "<script>"
-    if @json.nil?
+  locations = ""
+    if @json.empty?
       locations += "var locations = [];"
     else
       locations += "var locations = "
       locations += @json.html_safe
       locations += ";"
     end
-  locations += "</script>"
-  @inline_js = locations.html_safe
+  @inline_js = locations
 %>
 
 <h2>Map</h2>

@@ -24,16 +24,16 @@
 
   <!-- Stylesheets -->
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <% if @ext_css.present? %>
-    <% Array.wrap(@ext_css).each do |css| %>
-      <%= stylesheet_link_tag css %>
-    <% end %>
-  <% end %>
-  <% if @inline_css.present? %>
-    <% Array.wrap(@ext_css).each do |css| %>
-      <%= concat "  #{css}".html_safe %>
-    <% end %>
-  <% end %>
+  <% if @ext_css.present?
+    Array.wrap(@ext_css).each do |css|
+      concat "  #{stylesheet_link_tag css}\n".html_safe
+    end
+  end %>
+  <% if @inline_css.present?
+    Array.wrap(@ext_css).each do |css|
+      concat "  <style>\n#{css}\n  </style>\n".html_safe
+    end
+  end %>
 
   <!-- Scripts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
@@ -47,16 +47,16 @@
     ga('send', 'pageview');
   </script>
 
-  <% if @ext_js.present? %>
-    <% Array.wrap(@ext_js).each do |js| %>
-      <%= javascript_include_tag js %>
-    <% end %>
-  <% end %>
-  <% if @inline_js.present? %>
-    <% Array.wrap(@inline_js).each do |js| %>
-      <%= concat "  #{js}".html_safe %>
-    <% end %>
-  <% end %>
+  <% if @ext_js.present?
+    Array.wrap(@ext_js).each do |js|
+      concat "  #{javascript_include_tag js}\n".html_safe
+    end
+  end %>
+  <% if @inline_js.present?
+    Array.wrap(@inline_js).each do |js|
+      concat "  <script>\n#{js}\n  </script>\n".html_safe
+    end
+  end %>
 
   <!-- Fonts -->
   <%# fonts are being called from bootstrap scss variables file %>

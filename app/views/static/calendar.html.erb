@@ -10,19 +10,15 @@
     calendar/dates
   )
 
-  date_range = <<-END
-  <script>
-    maxDate = new Date("#{ENTRY_DATE_LAST.join("-")}");
+  @inline_js = <<-END.chomp
+maxDate = new Date("#{ENTRY_DATE_LAST.join("-")}");
 
-    // Augment by one day, as calendar excludes the day set as this variable
-    maxDate.setDate(maxDate.getDate() + 1);
+// Augment by one day, as calendar excludes the day set as this variable
+maxDate.setDate(maxDate.getDate() + 1);
 
-    minDate = new Date("#{ENTRY_DATE_FIRST.join("-")}");
-    startYear = "#{ENTRY_DATE_FIRST[0]}";
-  </script>
+minDate = new Date("#{ENTRY_DATE_FIRST.join("-")}");
+startYear = "#{ENTRY_DATE_FIRST[0]}";
   END
-
-  @inline_js = date_range.html_safe
 %>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
