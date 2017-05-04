@@ -2,7 +2,7 @@
   @title = "Search the Journals"
   @description = ""
 
-  @extra_js = [javascript_include_tag("search")]
+  @ext_js = %w(search)
 %>
 <!-- search form -->
 <%= render partial: "search_partials/searchbox" %>
@@ -69,7 +69,7 @@
               <% else %>
                 <%= link_to doc["title"], item_path(doc["id"]) %>
               <% end %>
-              <% if doc["highlights"] && !params["qtext"].blank? %>
+              <% if doc["highlights"] && params["qtext"].present? %>
                 <ul class="highlighting">
                   <% doc["highlights"].each do |hl| %>
                     <li><%= hl.html_safe %></li>

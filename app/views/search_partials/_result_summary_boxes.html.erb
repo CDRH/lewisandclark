@@ -1,6 +1,6 @@
 <div class="clearfix">
   <!-- text search -->
-  <% if !params["qtext"].blank? %>
+  <% if params["qtext"].present? %>
     <div class="pull-left form-inline buffer-bottom buffer-right-sm">
       <div class="input-group">
         <div class="input-group-addon" title="Search Text">
@@ -34,7 +34,7 @@
   <!-- selected facets -->
   <% if @facets %>
     <% Facets.facet_info.each do |facet_name, info| %>
-      <% if !params[facet_name].blank? && info["display"] %>
+      <% if params[facet_name].present? && info["display"] %>
         <div class="pull-left form-inline buffer-bottom buffer-right-sm">
           <div class="input-group">
             <div class="input-group-addon" title="<%= info['label'] %> Filter">

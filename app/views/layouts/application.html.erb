@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:xs="http://www.w3.org/2001/XMLSchema" class="<%= @page_type %>">
 <head>
-  <title><% if !@title.blank? %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
+  <title><% if @title.present? %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
   <meta name="application-name" content="Journals of the Lewis and Clark Expedition">
-  <% if !@description.blank? %>
+  <% if @description.present? %>
   <meta name="description" content="<%= @description %>">
   <% end %>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
@@ -23,29 +23,40 @@
   <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
 
   <!-- Stylesheets -->
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <% if !@extra_css.blank? %>
-    <% @extra_css.each do |css|
-      concat "  #{css}".html_safe
-    end %>
+  <%= stylesheet_link_tag 'application', media: nil %>
+  <% if @ext_css.present? || @inline_css.present? %>
+  <!-- Conditional -->
   <% end %>
+  <% if @ext_css.present?
+    Array.wrap(@ext_css).each do |css| %>
+  <%= stylesheet_link_tag css, media: nil %>
+    <% end
+  end %>
+  <% if @inline_css.present?
+    Array.wrap(@inline_css).each do |css| %>
+  <style>
+<%= css.html_safe %>
+  </style>
+    <% end
+  end %>
 
   <!-- Scripts -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-23044707-7', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <% if !@extra_js.blank? %>
-    <% @extra_js.each do |js|
-      concat "  #{js}".html_safe
-    end %>
+  <%= javascript_include_tag 'application' %>
+  <% if @ext_js.present? || @inline_js.present? %>
+  <!-- Conditional -->
   <% end %>
+  <% if @ext_js.present?
+    Array.wrap(@ext_js).each do |js| %>
+  <%= javascript_include_tag js %>
+    <% end
+  end %>
+  <% if @inline_js.present?
+    Array.wrap(@inline_js).each do |js| %>
+  <script>
+<%= js.html_safe %>
+  </script>
+    <% end
+  end %>
 
   <!-- Fonts -->
   <%# fonts are being called from bootstrap scss variables file %>
