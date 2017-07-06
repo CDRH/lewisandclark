@@ -35,6 +35,11 @@
     to:         /item/lc.jrn.$1
     options:
         not:    !ruby/regexp /^\/item\/18.*kloefkorn/
+# > Outdated Encore URLs
+-
+    method:     r301
+    from:       !ruby/regexp /^\/content\/(18.+?)(?:\.html)?$/
+    to:         /item/lc.jrn.$1
 
 # Journal Extras
 -
