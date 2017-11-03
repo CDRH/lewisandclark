@@ -238,7 +238,7 @@ a.regularization {
   white-space: nowrap;
 }
 
-.ab .date {
+.tei_ab .tei_date {
   display: block;
   padding-bottom: .5em;
   text-align: right;
@@ -250,6 +250,12 @@ a.regularization {
 
 .italic {
   font-style: italic;
+}
+
+.underline, 
+.tei_hi_underline, 
+.tei_rend_underline {
+  text-decoration: underline;
 }
 
 .regularization {
@@ -312,13 +318,13 @@ a.regularization {
     text-indent: 0;
   }
 
-  .caption {
+  .tei_caption {
     display: block;
     font-size: 1.2em;
     margin: .8em 0 .5em 0;
   }
 
-  .label {
+  .tei_label {
     display: none;
   }
 
@@ -327,14 +333,14 @@ a.regularization {
     margin-top: .5em;
   }
 
-  .orgName {
+  .tei_orgName {
     border-top: none;
     display: block;
     margin-top: .5em;
     padding-top: .5em;
   }
 
-  .resp {
+  .tei_resp {
     display: block;
     font-weight: 800;
     margin-top: .5em;
@@ -701,7 +707,7 @@ div.progress {
   }
 }
 
-.tei_figure .label {
+.tei_figure .tei_label {
     color: #000;
     font-weight: 100;
     font-size: 1em;
