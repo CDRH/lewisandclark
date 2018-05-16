@@ -55,7 +55,7 @@ body {
 
 html {
   background-color: #EEE;
-  background-image: url("../images/river2.png");
+  background-image: url(<%= asset_path "river2.png" %>);
   background-position: top;
   background-repeat: no-repeat;
 }
@@ -109,7 +109,7 @@ ul.simple {
 
 /* Footer */
 .buy_books {
-  background: url("../images/river_part.png") right -30px no-repeat scroll #EFEDE8;
+  background: url(<%= asset_path "river_part.png" %>) right -30px no-repeat scroll #EFEDE8;
   border:  3px solid #FFF;
   margin-bottom: 1em;
   padding: 20px 30px;
