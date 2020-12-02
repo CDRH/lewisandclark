@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
-# trying something to see if bundler can be forced to be older
-# which is required by rsolr_cdrh
-gem 'bundler', '~> 1.17.2'
-
 # Custom cdrh gems for solr
-gem 'rsolr_cdrh', :git => 'https://github.com/CDRH/rsolr_cdrh.git', :tag => '2.1.0'
-gem 'solr_helpers', :git => 'https://github.com/CDRH/solr_helpers.git', :tag => '1.0.0'
+gem 'rsolr_cdrh', git: 'https://github.com/CDRH/rsolr_cdrh.git', tag: 'v2.1.1'
+gem 'solr_helpers', git: 'https://github.com/CDRH/solr_helpers.git', tag: '1.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
