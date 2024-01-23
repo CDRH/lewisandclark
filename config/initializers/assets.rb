@@ -13,7 +13,6 @@ Rails.application.config.assets.precompile += %w(
   leaflet.js
   leaflet.scss
   map.js
-  tile.stamen-1.3.0-https
 )
 
 # items/search
