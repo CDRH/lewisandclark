@@ -1,7 +1,6 @@
 $(document).ready(function() {
   // map settings
   var markerColor = "#36659c";
-  var stamenType = "terrain";
   var startLat = 43;
   var startLong = -105;
   var startZoom = 5;
@@ -33,9 +32,15 @@ $(document).ready(function() {
              .setView(new L.LatLng(startLat, startLong), startZoom);
 
   // make base layer
-  var stamenLayer = new L.StamenTileLayer(stamenType);
-  map.addLayer(stamenLayer);
-
+  var baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attributionControl: false
+  });
+  map.addLayer(baseLayer);
+  L.control.attribution({
+    position: 'bottomleft',
+    prefix: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
+  }).addTo(map);
   var makeLinks = function(loc_name, entries) {
     if (entries) {
       var res = "<h4>" + loc_name + "</h4>";
