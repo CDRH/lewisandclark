@@ -11,7 +11,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # items/map
 Rails.application.config.assets.precompile += %w(
   leaflet.js
-  leaflet.scss
+  leaflet.css
   map.js
 )
 
