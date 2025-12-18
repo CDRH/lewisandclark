@@ -16,6 +16,7 @@ module ApiTemplate
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Render error pages with Rails
     config.exceptions_app = self.routes
   end
 end

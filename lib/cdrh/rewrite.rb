@@ -20,7 +20,9 @@ module CDRH
         # Save rewrites as class variable to only load once at server start
         if @@rewrites.nil?
             begin
-                @@rewrites = YAML.load_file("#{Rails.root}/config/rewrites.yml")
+                @@rewrites = YAML.load_file(
+                  "#{Rails.root}/config/rewrites.yml"
+                )
             rescue => e
                 puts "CDRH::Rewrite - Unable to open #{Rails.root}/config/rewrites.yml:\n  #{e}"
                 exit 1
