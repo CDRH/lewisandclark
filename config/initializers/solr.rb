@@ -1,4 +1,6 @@
-CONFIG = YAML.load_file("#{Rails.root.to_s}/config/solr.yml")[Rails.env]
+CONFIG = YAML.load_file(Rails.root.join("config", "solr.yml"),
+           aliases: true
+         )[Rails.env]
 
 $solr = RSolrCdrh::Query.new(CONFIG['solr_url'])
 

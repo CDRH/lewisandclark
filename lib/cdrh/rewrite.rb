@@ -21,7 +21,9 @@ module CDRH
         if @@rewrites.nil?
             begin
                 @@rewrites = YAML.load_file(
-                  "#{Rails.root}/config/rewrites.yml"
+                  "#{Rails.root}/config/rewrites.yml",
+                  aliases: true,
+                  permitted_classes: [Regexp]
                 )
             rescue => e
                 puts "CDRH::Rewrite - Unable to open #{Rails.root}/config/rewrites.yml:\n  #{e}"
