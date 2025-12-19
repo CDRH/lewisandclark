@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     @page_type = "map"
     options = create_search_options(params)
     res = $solr.query(options.merge({
-      :fl => "id, lc_geo_coordinates_p, title, lc_filename_s",
+      :fl => "id, lc_geo_coordinates_s, title, lc_filename_s",
       :rows => ENTRY_COUNT,
       :fq => ["lc_searchtype_s:journal_entry"]
     }))
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     # group all the incoming results by lat and long location
     # (there can be multiple entries per location)
     res[:docs].each do |item|
-      coords = item["lc_geo_coordinates_p"]
+      coords = item["lc_geo_coordinates_s"]
       if coords
         if places.has_key?(coords)
           places[coords] << item
