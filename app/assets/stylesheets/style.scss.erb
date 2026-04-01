@@ -557,6 +557,7 @@ div.progress {
 
 .btn {
   text-decoration: none;
+  white-space: initial;
 }
 
 .first_date,
@@ -749,3 +750,37 @@ table.dictionary td {
   text-indent: 0;
 }
 
+/* a11y changes */
+
+.back-to-top a {
+  background: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border: solid 1px $gray-light;
+  bottom: 0;
+  box-shadow: 0px 0px 5px 3px rgba($gray-dark,0.3);
+  padding: .5rem 2rem 0.5rem 1.25rem; // .1em 1em .3em 1em; 
+  position: fixed;
+  right: 2%;
+  z-index: 1000;
+
+  &:hover {
+  color: #000;
+  background-color: $gray-light;
+  }
+
+  &:after {
+    content: "\2191";
+    position: relative;
+    top: -1px;
+    left: 6px;
+  }
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a.btn:hover {
+  text-decoration: none;
+}
