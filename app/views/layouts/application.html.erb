@@ -63,7 +63,7 @@
 </head>
 
 <body>
-<a href="#wrapper" class="sr-only sr-only-focusable">
+<a href="#content_wrapper" class="sr-only sr-only-focusable">
   Skip to main content
 </a>
 
@@ -135,10 +135,10 @@
     </nav>
   </header><!-- /header -->
 
-  <div class="container page_content" id="wrapper">
+  <main class="container page_content" id="content_wrapper" tabindex="-1">
     <!-- grid added to specific views for better readability -->
     <%= yield %>
-  </div>
+  </main>
 
   <footer id="footer" class="footer">
     <div class="container">
