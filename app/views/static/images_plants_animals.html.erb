@@ -6,20 +6,24 @@
   <div class="col-md-10 col-md-offset-1">
     <h2>Images &amp; Maps</h2>
 
+    <nav id="navbar">
+    <div class="row">
     <ul class="nav nav-tabs">
-      <li role="presentation">
+      <li>
         <%= link_to "Journals", images_path %>
       </li>
-      <li role="presentation">
+      <li>
         <%= link_to "Maps", images_maps_path %>
       </li>
-      <li role="presentation">
+      <li>
         <%= link_to "People & Places", images_people_places_path %>
       </li>
-      <li role="presentation" class="active">
+      <li class="active">
         <%= link_to "Plants & Animals", images_plants_animals_path %>
       </li>
     </ul>
+    </div>
+    </nav>
 
     <br/>
     <p class="gallery_note">Note: These images are taken from Lewis and Clark on the Great Plains: A Natural History by Paul A. Johnsgard, courtesy of the University of Nebraska Press. Permission to reproduce is required.</p>
