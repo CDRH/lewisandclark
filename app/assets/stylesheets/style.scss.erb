@@ -788,3 +788,30 @@ a.btn:hover {
 ul.current-filters > li {
   list-style-type: none;
 }
+
+// sr-only with clip instead of position: absolute
+.sr-only-clip {
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7  */
+  clip: rect(1px, 1px, 1px, 1px); /* other legacy browsers */
+  clip-path: inset(50%); /* modern browsers */
+  border: 0;
+  display: inline-block;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1px;
+}
+
+// clip-path only, no display style
+.sr-only-clip-path {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

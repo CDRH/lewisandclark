@@ -21,15 +21,19 @@
         <!-- panel body -->
         <%# if requested parameter, then do not collapse facet %>
         <div class="panel-body collapse <%= class_in %>" id="fc-<%= facet_name %>">
-          <ul class="facet-list list-unstyled">
+          <ul class="list-unstyled">
             <% facet_res.each do |key, value| %>
               <% selected = facet_selected?(facet_name, key) %>
               <% label = key.length > 0 ? key : "No Label" %>
 
               <!-- list item -->
               <li <%= selected_class(selected) %>>
-                <%= link_to label, search_path(facet_link(facet_name, key)) %>
-                <span class="badge"><%= value %></span>
+                <%= link_to label, search_path(facet_link(facet_name, key)) %><span class="sr-only-clip">:</span>
+                <% if (value != 1) %>
+                <span class="badge"><%= value %><span class="sr-only-clip"><%= value %> results</span></span>
+                <% else %>
+                <span class="badge"><%= value %><span class="sr-only-clip"><%= value %> result</span></span>
+                <% end %>
                 <% if selected %>
                   <%= link_to search_path(remove_facet(facet_name)) do %>
                     <button class="btn btn-default btn-xs" aria-label="Clear <%= info['label'] %> Filter" title="Clear <%= info['label'] %> Filter">
