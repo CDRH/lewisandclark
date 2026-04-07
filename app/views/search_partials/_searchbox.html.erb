@@ -4,24 +4,27 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
-            <%= form_tag(search_path, :method => "get", role: "search", :class => "input-group") do %>
+            <%= form_tag(search_path, :method => "get", role: "search", :class => "search-text-group") do %>
               <%= hidden_field_tag(:qfield, "text") %>
               <%= render partial: "search_partials/date_hidden_fields" %>
-              <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "form-control", aria: { label: "Search" }) %>
+              <%= text_field_tag(:qtext, params[:qtext], :placeholder => "Search for...", :class => "search-text-field", aria: { label: "Search" }) %>
 
               <%= render partial: "search_partials/facet_hidden_fields" %>
 
-              <span class="input-group-btn">
+              <span class="search-text-button">
                 <%= submit_tag "Search", class: "btn btn-primary", name: nil, data: { disable_with: false } %>
               </span>
             <% end %>
           </div>
-          <div class="col-xs-8">
+          <div class="col-xs-9 col-sm-8">
             <%= render partial: "search_partials/help" %>
             <%= link_to "Browse All Items", search_path({ :all => true }) %>
           </div>
-          <div class="col-xs-4 text-right">
-            <%= link_to "Reset Search", search_path({}), :class => "clear_main_search_text" %>
+          <div class="col-xs-3 col-sm-4">
+            <div class="clear_main_search_text">
+            <%= link_to "Clear Search", search_path({}), rel: "search" %>
+            </div>
+            <div></div>
           </div>
         </div> <!-- /row -->
       </div> <!-- /panel-body -->
