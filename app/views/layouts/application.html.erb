@@ -108,7 +108,7 @@
       </div><!-- /row -->
     </div><!-- /container -->
 
-    <nav class="navbar navbar-default">
+    <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-label="Expand or collapse main menu">
@@ -121,19 +121,19 @@
         <nav id="navbar" class="navbar-collapse collapse" aria-label="Main Menu">
           <div class="row">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Journals", journals_path %></li>
-            <li><%= link_to "Books & Articles", texts_path %></li>
-            <li><%= link_to "Images & Maps", images_path %></li>
-            <li><%= link_to "Audio & Video", multimedia_path %></li>
+            <li><%= link_to "Home", home_path, 'aria-current': (current_page?(home_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Journals", journals_path, 'aria-current': (current_page?(journals_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Books & Articles", texts_path, 'aria-current': (current_page?(texts_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Images & Maps", images_path, 'aria-current': (current_page?(images_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Audio & Video", multimedia_path, 'aria-current': (current_page?(multimedia_path) ? 'page' : nil) %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "About", about_path, 'aria-current': (current_page?(about_path) ? 'page' : nil) %></li>
           </ul>
         </div>
         </nav><!--/.nav-collapse -->
       </div><!-- /container -->
-    </nav>
+    </div>
   </header><!-- /header -->
 
   <main class="container page_content" id="content_wrapper" tabindex="-1">
