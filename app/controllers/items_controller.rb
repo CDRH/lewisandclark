@@ -75,6 +75,16 @@ class ItemsController < ApplicationController
     @items = $solr.query(options)
     @total_pages = @items[:pages]
     @facets = $solr.get_facets(options)
+    # uses the view helper function "any_facets_selected?"
+    if params["qtext"].present? && view_context.any_facets_selected?
+      @title = "Search Results: \"#{params["qtext"]}\" - #{display_facets(params)}"
+    elsif params["qtext"].present?
+      @title = "Search Results: \"#{params["qtext"]}\""
+    elsif view_context.any_facets_selected?
+      @title = "Search Results: #{display_facets(params)}"
+    else
+      @title = "Search the Journals"
+    end
   end
 
   def create_search_options(aParams)
@@ -165,6 +175,10 @@ class ItemsController < ApplicationController
     has_sort = !params["sort"].blank?
     has_page = !params["page"].blank?
     return has_facets || has_query || has_sort || has_page
+  end
+
+  def display_facets(params)
+    params.except(:action,:sort,:controller,:qfield,:qtext).values.compact_blank.join(" / ")
   end
 
 end
