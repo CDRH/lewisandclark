@@ -42,7 +42,10 @@
           <% end %>
         </div>
         <div class="col-md-9 pagination_container">
-          <%= paginator(@total_pages) %>
+          <h2 class="sr-only" id="pagination_label">Pagination</h2>
+          <nav aria-labelledby="pagination_label">
+            <%= paginator(@total_pages) %>
+          </nav>
         </div>
       </div>
 
@@ -92,7 +95,10 @@
       <% end %>
 
       <div class="col-md-9 pagination_container">
-        <%= paginator(@total_pages) %>
+        <h2 class="sr-only" id="bottom_pagination_label">Bottom Pagination</h2>
+        <nav aria-labelledby="bottom_pagination_label">
+          <%= paginator(@total_pages) %>
+        </nav>
       </div>
     <% end %>  <%# end search results, sorting, and pagination %>
   </div><!-- col-md-9 -->
