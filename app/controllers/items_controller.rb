@@ -180,7 +180,7 @@ class ItemsController < ApplicationController
   end
 
   def display_facets(params)
-    params.except(:action,:sort,:controller,:qfield,:qtext).values.compact_blank.join(" / ")
+    params.except(:action,:sort,:controller,:qfield,:qtext,:commit,:rows).values.compact_blank.join(" / ")
   end
 
 end
