@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
     @total_pages = @items[:pages]
     @facets = $solr.get_facets(options)
     # add search terms and filters to page title
-    fl = Facets.facet_list << "date_from" << "date_to"
+    fl = Facets.facet_list << "date_from" << "date_to" << "page"
     param_keys = params.keys
     if params["qtext"].present? && param_keys.intersect?(fl)
       @title = "Search Results: \"#{params["qtext"]}\" - #{display_facets(params)}"
@@ -180,7 +180,7 @@ class ItemsController < ApplicationController
   end
 
   def display_facets(params)
-    params.except(:action,:sort,:controller,:qfield,:qtext,:page).values.compact_blank.join(" / ")
+    params.except(:action,:sort,:controller,:qfield,:qtext).values.compact_blank.join(" / ")
   end
 
 end
