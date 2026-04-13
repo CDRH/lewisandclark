@@ -82,7 +82,6 @@ class ItemsController < ApplicationController
       @title = "Search Results: \"#{params["qtext"]}\" - #{display_facets(params)}"
     elsif params["qtext"].present?
       @title = "Search Results: \"#{params["qtext"]}\""
-    #elsif view_context.any_facets_selected?
     elsif param_keys.intersect?(fl)
       @title = "Search Results: #{display_facets(params)}"
     else
