@@ -1,9 +1,9 @@
-<div class="pull-right">
+<div class="pull-right clear-facets">
   <%# rather than using clear_facet functionality, simply sending only text search
       in order to also clear out date searching %>
   <%= link_to search_path({:qfield => params[:qfield], :qtext => params[:qtext]}),
     class: "btn btn-default btn-sm" do %>
     Clear Filters
-    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"><span class="sr-only">Remove filter</span></span>
   <% end %>
 </div>

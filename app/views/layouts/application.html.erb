@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:xs="http://www.w3.org/2001/XMLSchema" class="<%= @page_type %>">
+<html lang="<%= I18n.locale %>" xmlns:xs="http://www.w3.org/2001/XMLSchema" class="<%= @page_type %>">
 <head>
   <title><% if @title.present? %><%= @title %> | <% end %>Journals of the Lewis and Clark Expedition</title>
   <meta name="application-name" content="Journals of the Lewis and Clark Expedition">
@@ -63,8 +63,12 @@
 </head>
 
 <body>
+<a href="#content_wrapper" class="sr-only sr-only-focusable">
+  Skip to main content
+</a>
 
-  <div class="header">
+  <div id="body_wrapper">
+  <header id="header" class="header">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -104,38 +108,39 @@
       </div><!-- /row -->
     </div><!-- /container -->
 
-    <nav class="navbar navbar-default">
+    <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-label="Expand or collapse main menu">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <nav id="navbar" class="navbar-collapse collapse" aria-label="Main Menu">
+          <div class="row">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Journals", journals_path %></li>
-            <li><%= link_to "Books & Articles", texts_path %></li>
-            <li><%= link_to "Images & Maps", images_path %></li>
-            <li><%= link_to "Audio & Video", multimedia_path %></li>
+            <li><%= link_to "Home", home_path, 'aria-current': (current_page?(home_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Journals", journals_path, 'aria-current': (current_page?(journals_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Books & Articles", texts_path, 'aria-current': (current_page?(texts_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Images & Maps", images_path, 'aria-current': (current_page?(images_path) ? 'page' : nil) %></li>
+            <li><%= link_to "Audio & Video", multimedia_path, 'aria-current': (current_page?(multimedia_path) ? 'page' : nil) %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "About", about_path, 'aria-current': (current_page?(about_path) ? 'page' : nil) %></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
+        </nav><!--/.nav-collapse -->
       </div><!-- /container -->
-    </nav>
-  </div><!-- /header -->
+    </div>
+  </header><!-- /header -->
 
-  <div class="container page_content" id="wrapper">
+  <main class="container page_content" id="content_wrapper" tabindex="-1">
     <!-- grid added to specific views for better readability -->
     <%= yield %>
-  </div>
+  </main>
 
-  <div class="footer">
+  <footer id="footer" class="footer">
     <div class="container">
       <div class="footer_info">
 
@@ -149,16 +154,20 @@
           <li><%= link_to "Copyright", item_path("lc.about.privacy") %></li>
         </ul>
 
-        <p>Created by the <a href="http://cdrh.unl.edu">Center for Digital Research in the Humanities</a> <br/>in partnership with the <a href="http://www.nebraskapress.unl.edu">University of Nebraska Press</a><br/>
+        <p>Created by the <a href="https://cdrh.unl.edu">Center for Digital Research in the Humanities</a> <br/>in partnership with the <a href="https://www.nebraskapress.unl.edu">University of Nebraska Press</a><br/>
         and funding from the <a href="https://www.neh.gov/">National Endowment for the Humanities</a>.</p>
         <div class="footer_logo">
-          <a href="http://www.unl.edu"><%= image_tag 'unl_logos.png' %></a><br/><br/>
-          <a href="http://www.nebraskapress.unl.edu"><%= image_tag 'nebraska-press.png' %></a><br/><br/>
-          <a href="http://www.neh.gov"><%= image_tag 'neh_logo.png' %></a>
+          <a href="https://www.unl.edu" rel="external"><%= image_tag 'unl_logos.png', alt: "UNL logo" %></a><br/><br/>
+          <a href="https://www.nebraskapress.unl.edu" rel="external"><%= image_tag 'nebraska-press.png', alt: "University of Nebraska Press logo" %></a><br/><br/>
+          <a href="https://www.neh.gov" rel="external"><%= image_tag 'neh_logo.png', alt: "NEH logo" %></a>
         </div>
       </div><!-- /footer_info -->
     </div> <!-- /container -->
-  </div><!-- /footer -->
+    <div class="back-to-top">
+      <a href="#body_wrapper">Back to top</a>
+    </div>
+  </footer><!-- /footer -->
+</div>
 </body>
 
 </html>

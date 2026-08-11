@@ -1,53 +1,66 @@
 <div class="clearfix">
+
+  <% if params["qtext"].present? || date_selection?(params["date_from"], params["date_to"]) || @facets %>
+  <h2 class="sr-only" id="filtered_by">Current Filters</h2>
+  <ul class="current-filters" aria-labelledby="#filtered_by">
+
   <!-- text search -->
   <% if params["qtext"].present? %>
+  <li>
     <div class="pull-left form-inline buffer-bottom buffer-right-sm">
       <div class="input-group">
         <div class="input-group-addon" title="Search Text">
           Search : <%= params["qtext"] %>
         </div>
-        <div class="input-group-btn" aria-label="Clear Search Text" title="Clear Search Text">
-          <%= link_to clear_search_text, class: "btn btn-default btn-sm", role: "button" do %>
+        <div class="input-group-btn">
+          <%= link_to clear_search_text, class: "btn btn-default btn-sm", role: "button", title: "Clear Search Text", "aria-label": "Clear Search Text" do %>
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           <% end %>
         </div>
       </div>
     </div>
+  </li>
   <% end %>
 
   <!-- date search -->
   <% if date_selection?(params["date_from"], params["date_to"]) %>
+  <li>
     <div class="pull-left form-inline buffer-bottom buffer-right-sm">
       <div class="input-group">
         <div class="input-group-addon" title="Date Selection">
           Date : <%= @from %> to <%= @to %>
         </div>
-        <div class="input-group-btn" aria-label="Clear Date Filter" title="Clear Date Filter">
-          <%= link_to search_path(clear_dates_params), class: "btn btn-default btn-sm", role: "button" do %>
+        <div class="input-group-btn">
+          <%= link_to search_path(clear_dates_params), class: "btn btn-default btn-sm", role: "button", title: "Clear Date Filter", "aria-label": "Clear Date Filter" do %>
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           <% end %>
         </div>
       </div>
     </div>
+  </li>
   <% end %>
 
   <!-- selected facets -->
   <% if @facets %>
     <% Facets.facet_info.each do |facet_name, info| %>
       <% if params[facet_name].present? && info["display"] %>
+      <li>
         <div class="pull-left form-inline buffer-bottom buffer-right-sm">
           <div class="input-group">
             <div class="input-group-addon" title="<%= info['label'] %> Filter">
               <%= info["label"] %> : <%= params[facet_name] %>
             </div>
-            <div class="input-group-btn" aria-label="Clear <%= info['label'] %> Filter" title="Clear <%= info['label'] %> Filter">
-              <%= link_to search_path(remove_facet(facet_name)), class: "btn btn-default btn-sm", role: "button" do %>
+            <div class="input-group-btn">
+              <%= link_to search_path(remove_facet(facet_name)), class: "btn btn-default btn-sm", role: "button", title: "Clear #{info['label']} Filter", "aria-label": "Clear #{info['label']} Filter" do %>
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               <% end %>
             </div>
           </div>
         </div>
+      </li>
       <% end %>
     <% end %>
   <% end %>
+</ul>
+<% end %>
 </div>

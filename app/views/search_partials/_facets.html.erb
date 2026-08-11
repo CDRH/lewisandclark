@@ -13,10 +13,17 @@
       <div class="panel panel-default">
 
         <!-- panel heading -->
-        <div class="clearfix panel-heading" data-toggle="collapse" data-target="#fc-<%= facet_name %>" aria-label="Show <%= info['label'] %> Filters" role="Option">
+        <a 
+          aria-label="Show <%= info['label'] %> Filters" 
+          class="panel-heading-link" 
+          data-toggle="collapse" 
+          href="#fc-<%= facet_name %>" 
+          role="button">
+        <div class="clearfix panel-heading">
           <h3 class="pull-left panel-title"><%= info["label"] %></h3>
           <span class="pull-right glyphicon <%= class_glyphicon %>" aria-hidden="true"></span>
         </div>
+      </a>
 
         <!-- panel body -->
         <%# if requested parameter, then do not collapse facet %>
@@ -28,8 +35,12 @@
 
               <!-- list item -->
               <li <%= selected_class(selected) %>>
-                <%= link_to label, search_path(facet_link(facet_name, key)) %>
-                <span class="badge"><%= value %></span>
+                <%= link_to label, search_path(facet_link(facet_name, key)) %><span class="sr-only-clip">:</span>
+                <% if (value != 1) %>
+                <span class="badge"><%= value %><span class="sr-only-clip"><%= value %> results</span></span>
+                <% else %>
+                <span class="badge"><%= value %><span class="sr-only-clip"><%= value %> result</span></span>
+                <% end %>
                 <% if selected %>
                   <%= link_to search_path(remove_facet(facet_name)) do %>
                     <button class="btn btn-default btn-xs" aria-label="Clear <%= info['label'] %> Filter" title="Clear <%= info['label'] %> Filter">

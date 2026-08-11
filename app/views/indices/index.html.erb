@@ -6,20 +6,24 @@
   <div class="col-md-10 col-md-offset-1">
     <h4>Index of Names Found in Lewis and Clark Journals</h4>
 
+    <nav id="navbar">
+    <div class="row">
     <ul class="nav nav-tabs buffer-bottom-sm">
-      <li role="presentation" <%= "class=active" if @selection == "all" %>>
+      <li <%= "class=active" if @selection == "all" %>>
         <%= link_to "All", index_path %>
       </li>
-      <li role="presentation" <%= "class=active" if @selection == "nations" %>>
+      <li <%= "class=active" if @selection == "nations" %>>
         <%= link_to "Native Nations", index_nations_path %>
       </li>
-      <li role="presentation" <%= "class=active" if @selection == "people" %>>
+      <li <%= "class=active" if @selection == "people" %>>
         <%= link_to "People", index_people_path %>
       </li>
-      <li role="presentation" <%= "class=active" if @selection == "places" %>>
+      <li <%= "class=active" if @selection == "places" %>>
         <%= link_to "Places", index_places_path %>
       </li>
     </ul>
+    </div>
+    </nav>
 
     <div class="buffer-bottom">
       Sort by:

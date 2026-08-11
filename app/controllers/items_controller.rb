@@ -75,6 +75,18 @@ class ItemsController < ApplicationController
     @items = $solr.query(options)
     @total_pages = @items[:pages]
     @facets = $solr.get_facets(options)
+    # add search terms and filters to page title
+    title_facets = Facets.facet_list << "date_from" << "date_to" << "page"
+    param_keys = params.keys
+    if params["qtext"].present? && param_keys.intersect?(title_facets)
+      @title = "Search Results: \"#{params["qtext"]}\" - #{display_facets(params)}"
+    elsif params["qtext"].present?
+      @title = "Search Results: \"#{params["qtext"]}\""
+    elsif param_keys.intersect?(title_facets)
+      @title = "Search Results: #{display_facets(params)}"
+    else
+      @title = "Search the Journals"
+    end
   end
 
   def create_search_options(aParams)
@@ -165,6 +177,10 @@ class ItemsController < ApplicationController
     has_sort = !params["sort"].blank?
     has_page = !params["page"].blank?
     return has_facets || has_query || has_sort || has_page
+  end
+
+  def display_facets(params)
+    params.except(:action,:sort,:controller,:qfield,:qtext,:commit,:rows).values.compact_blank.join(" / ")
   end
 
 end

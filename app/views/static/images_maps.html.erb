@@ -6,20 +6,16 @@
   <div class="col-md-10 col-md-offset-1">
     <h2>Images &amp; Maps</h2>
 
+    <nav id="navbar">
+    <div class="row">
     <ul class="nav nav-tabs">
-      <li role="presentation">
-        <%= link_to "Journals", images_path %>
-      </li>
-      <li role="presentation" class="active">
-        <%= link_to "Maps", images_maps_path %>
-      </li>
-      <li role="presentation">
-        <%= link_to "People & Places", images_people_places_path %>
-      </li>
-      <li role="presentation">
-        <%= link_to "Plants & Animals", images_plants_animals_path %>
-      </li>
+      <li><%= link_to "Journals", images_path %></li>
+      <li class="active"><%= link_to "Maps", images_maps_path %></li>
+      <li><%= link_to "People & Places", images_people_places_path %></li>
+      <li><%= link_to "Plants & Animals", images_plants_animals_path %></li>
     </ul>
+    </div>
+    </nav>
 
     <br/>
 
